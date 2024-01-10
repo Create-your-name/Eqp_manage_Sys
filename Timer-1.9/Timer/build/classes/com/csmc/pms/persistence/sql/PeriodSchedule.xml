@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PeriodSchedule">
+
+  <typeAlias alias="periodSchedule" type="com.csmc.pms.persistence.model.PeriodSchedule"/>
+
+  <select id="getDayUnFinishedPc" resultClass="periodSchedule" parameterClass="java.lang.String">
+		<![CDATA[select schedule_index as scheduleIndex,
+			       period_index as periodIndex,
+			       schedule_event as scheduleEvent,
+			       schedule_date as scheduleDate,
+			       schedule_note as scheduleNote,
+			       creator,
+			       pc_style_index as pcStyleIndex,
+			       t2.mail_address as mailAddress,
+			       t3.name as pcStyleName
+			  	 from period_schedule t1,account t2,pc_style t3
+			  	 where t1.creator = t2.account_no(+) 
+			  	      and t3.style_index = t1.pc_style_index
+			  	 	  and schedule_event='PC'
+			  	      and event_index is null
+			  	      and schedule_date = trunc(sysdate)
+			  	      order by creator]]>
+  </select>
+  
+  <select id="getWeekUnFinishedPc" resultClass="periodSchedule" parameterClass="java.lang.String">
+		<![CDATA[select schedule_index as scheduleIndex,
+			       period_index as periodIndex,
+			       schedule_event as scheduleEvent,
+			       schedule_date as scheduleDate,
+			       schedule_note as scheduleNote,
+			       creator,
+			       pc_style_index as pcStyleIndex,
+			       t2.mail_address as mailAddress
+			  	 from period_schedule t1,account t2
+			  	 where t1.creator = t2.account_no(+) 
+			  	 	  and schedule_event='PC'
+			  	      and pc_style_index in (select style_index from pc_style where name = #value#)
+			  	      and event_index is null
+			  	      and schedule_date > sysdate - 5
+			  	      and schedule_date < sysdate]]>
+  </select>
+
+</sqlMap>

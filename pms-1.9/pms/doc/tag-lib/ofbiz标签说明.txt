@@ -1,0 +1,102 @@
+--iterator标签：
+1.在页面中引入标签
+	<%@ taglib uri='ofbizTags' prefix='ofbiz' %>
+
+2.JAVA部分
+	ofbiz的查询方法获得一个List，返回即可。
+	List list=delegator.findAll("PcStyle");
+	request.setAttribute("pcStyleList", pcStyleList);
+
+3.页面部分
+	<ofbiz:if name="pcStyleList">
+	        <ofbiz:iterator name="cust" property="pcStyleList">
+		          <td><ofbiz:entityfield attribute="cust" field="name"/></td>
+		          <td><ofbiz:entityfield attribute="cust" field="description"/></td>
+		        </tr>
+	      </ofbiz:iterator>
+      </ofbiz:if>
+    说明： (1)property="pcStyleList"：从后台返回的List
+    	  (2)name="cust":从'pcStyleList'中取出值后放入'cust'中
+    	  (3)<ofbiz:entityfield attribute="cust" field="name"/>显示'name'栏位信息
+    	  (4)<ofbiz:inputvalue entityAttr="cust" field="name" fullattrs="true"/>
+
+参考页面：csmcgui/pms/basic/pcStyleEntry.jsp
+
+-4.Query Results List table rows by map
+    <%
+    List stoReqList = (List) request.getAttribute("stoReqList");
+    if(stoReqList != null && stoReqList.size() > 0) {
+    	for(Iterator it = stoReqList.iterator();it.hasNext();) {
+    		Map map = (Map) it.next();%>
+            <tr bgcolor="#DFE1EC">
+    		    <td class="en11px">
+    			    <input type="checkbox" name="stoReqSelect" id="stoReqSelect" value="<%=map.get("MATERIAL_STO_REQ_INDEX")%>">
+    			    <input type="hidden" name="stoReqIndex" value="<%=map.get("MATERIAL_STO_REQ_INDEX")%>">
+    			</td>
+
+    			<td class="en11px">
+    			    <%=UtilFormatOut.checkNull((String) map.get("MTR_NUM"))%>
+    			</td>
+
+    			<td class="en11px">
+    			    <%=map.get("MTR_DESC")%>
+    			</td>
+
+    			<td class="en11px">
+    			    <%=map.get("QTY")%>
+    			</td>
+
+    			<td class="en11px">
+    			    <%=map.get("DOC_TIME")%>
+    			</td>
+
+    			<td class="en11px">
+    			    <%=map.get("SHELF_LIFE_EXPIRATION_DATE").toString().substring(0, 10)%>
+    			</td>
+    		</tr>
+     <%
+      	}
+     }
+     %>
+
+-5.<ofbiz:if>, <ofbiz:iterator type="java.util.Map">, <ofbiz:format type="date">
+Query Results List table rows by ofbiz iterator java.util.Map
+     <ofbiz:if name="stoReqList">
+        	<ofbiz:iterator name="cust" property="stoReqList" type="java.util.Map">
+    	        <tr bgcolor="#DFE1EC">
+    	        	<td class="en11px"><ofbiz:entityfield attribute="cust" field="MATERIAL_STO_REQ_INDEX" /></td>
+    	        	<td class="en11px"><ofbiz:entityfield attribute="cust" field="MTR_NUM" /></td>
+    	        	<td class="en11px"><ofbiz:entityfield attribute="cust" field="MTR_DESC" /></td>
+    	        	<td class="en11px"><ofbiz:entityfield attribute="cust" field="QTY" /></td>
+    	        	<td class="en11px"><ofbiz:entityfield attribute="cust" field="DOC_TIME" /></td>
+    	        	<td class="en11px">
+    	        	    <ofbiz:format type="date">
+    	        	        <ofbiz:entityfield attribute="cust" field="SHELF_LIFE_EXPIRATION_DATE" />
+    	        	    </ofbiz:format>
+    	        	</td>
+    	        </tr>
+    	   	</ofbiz:iterator>
+        </ofbiz:if>
+
+-6.<ofbiz:iterator>, <ofbiz:entityfield>
+Query Results List table rows by ofbiz iterator org.ofbiz.core.entity
+        <ofbiz:iterator name="cust" property="matMaintainList">
+	        <tr bgcolor="#DFE1EC">
+	        	<td class="en11px"><ofbiz:entityfield attribute="cust" field="mtrNum" /></td>
+	        	<td class="en11px"><ofbiz:entityfield attribute="cust" field="mtrDesc" /></td>
+	        	<td class="en11px"><ofbiz:entityfield attribute="cust" field="mtrGrp" /></td>
+	        </tr>
+	   	</ofbiz:iterator>
+
+-7.<ofbiz:field>
+java set value: request.setAttribute("_USER_MESSAGE_", user_message);
+jsp get value:  <ofbiz:field attribute="_USER_MESSAGE_"/>
+
+-8.<ofbiz:inputvalue>
+the request parameter value will be used:
+<ofbiz:inputvalue entityAttr="cust" field="jobIndex" default="" tryEntityAttr="false"/>
+
+the entity field value will be used:
+<ofbiz:inputvalue entityAttr="cust" field="jobIndex" default="" tryEntityAttr="true"/>
+
+-9.

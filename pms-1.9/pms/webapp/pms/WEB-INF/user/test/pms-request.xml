@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+	<request-map uri="queryEquipmentTypeTest">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.test.event.ExtFaceTest" invoke="queryEquipmentType"/>
+    </request-map>
+    
+    <request-map uri="queryPcStyleTest">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.test.event.ExtFaceTest" invoke="queryPcStyle"/>
+    </request-map>
+    
+    <request-map uri="queryPCPeriodByPcStyleTest">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.test.event.ExtFaceTest" invoke="queryPcPeriodByPcStyle"/>
+    </request-map>
+    
+    <request-map uri="queryPMPeriodByEqpTypeTest">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.test.event.ExtFaceTest" invoke="queryPMPeriodByEqpType"/>
+    </request-map>
+
+    <request-map uri="sendMailTest">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.test.event.ExtFaceTest" invoke="sendMailTest"/>
+    </request-map>
+    
+</site-conf>

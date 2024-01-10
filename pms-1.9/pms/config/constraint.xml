@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gui-constraint PUBLIC "constraint.dtd" "http://www.***.com/dtds/rule.dtd">
+<gui-constraint>
+	<constraint name="checkMenugroupStatus">
+		<property name="expression" value="com.fa.csmcgui.webapp.opt.model.rule.CheckMenugStatusRule" />
+		<property name="consPos" value="SLOT" />
+		<property name="enableFlag" value="Y" />
+		<property name="constraintType" value="RULE" />
+	</constraint>
+</gui-constraint>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>MCS Site View-Map Configuration File</description>
+    <owner>CSMC (c) 2009 </owner>
+
+    <!-- ************************* Module Basic ************************* -->
+    <view-map name="defineMaterialEntry" type="region"/>
+    <view-map name="defineMaterial" type="region"/>
+    <view-map name="getSapMtrNum" type="region"/>
+    <view-map name="getMtrObject" type="region"/>
+    <view-map name="defineSuitMaterialEntry" type="region"/>
+    <view-map name="defineSuitMaterial" type="region"/>
+    <view-map name="defineVendorMaterialEntry" type="region"/>
+
+
+    <!-- ************************* Module Cabinet ************************* -->
+    <view-map name="intoCabinetQtyEntry" type="region"/>
+    <view-map name="intoCabinetBarcodeEntry" type="region"/>
+    <view-map name="inputBarcodeEntry" type="region"/>
+    <view-map name="inputBarcodeErrorEntry" type="region"/>
+    <view-map name="frozenOrUnfrozenEntry" type="region"/>
+    <view-map name="modifyVendorInfoEntry" type="region"/>
+    <view-map name="cancelVendorInfoEntry" type="region"/>
+    <view-map name="modifyCabinetMaterialEntry" type="region"/>
+    <view-map name="queryPhotoResistPickupEntry" type="region"/>
+    <view-map name="modifyStoReqEntry" type="region"/>
+    <view-map name="useSparePartEntry" type="region"/>
+
+
+    <!-- ************************* Module Use ************************* -->
+    <view-map name="cabinetBackStockEntry" type="region"/>
+    <view-map name="cabinetBackStockBarcodeEntry" type="region"/>
+
+    <view-map name="useMaterialByIdEntry" type="region"/>
+    <view-map name="useMaterialByQtyEntry" type="region"/>
+    <view-map name="useMaterialBySuitEntry" type="region"/>
+    <view-map name="useMaterialByBarcodeEntry" type="region"/>
+
+    <view-map name="fabRepairEntry" type="region"/>
+    <view-map name="supplementaryCompleteEntry" type="region"/>
+
+
+    <!-- ************************* Module Ship ************************* -->
+    <view-map name="leadConfirmEntry" type="region"/>
+    <view-map name="shipConfirmEntry" type="region"/>
+
+
+    <!-- ************************* Module Expiration Date ************************* -->
+    <view-map name="expirationDateEntry" type="region"/>
+    <view-map name="queryOverExpirationEntry" type="region"/>
+
+
+    <!-- ************************* Module Report ************************* -->
+    <view-map name="queryMaterialEntry" type="region"/>
+    <view-map name="queryMaterial" type="region"/>
+    <view-map name="queryMaterialStatusBoardEntry" type="region"/>
+    <view-map name="queryMaterialStatusDetail" type="region"/>
+    <view-map name="queryMaterialStatusHist" type="region"/>
+    <view-map name="queryStoReqEntry" type="region"/>
+
+    <view-map name="querySuitMaterialEntry" type="region"/>
+    <view-map name="querySuitMaterial" type="region"/>
+    <view-map name="queryVendorMaterialEntry" type="region"/>
+
+    <view-map name="queryUsingHistoryByEqptEntry" type="region"/>
+    <view-map name="materialTraceEntry" type="region"/>
+    <view-map name="materialQuaterAnalysisEntry" type="region"/>
+    <view-map name="materialQuaterAnalysisUsing" type="region"/>
+
+    <view-map name="queryEqpMaterialPriceEntry" type="region"/>
+    <view-map name="queryEqpMaterialPrice" type="region"/>
+
+    <view-map name="queryHaojianLingMaterialPriceEntry" type="region"/>
+	<view-map name="queryHaojianUseMaterialPriceEntry" type="region"/>
+	<view-map name="queryHaojianUseDetailPriceEntry" type="region"/>
+
+	<view-map name="queryStoCabinetEntry" type="region"/>
+	<view-map name="queryUsePeriodEntry" type="region"/>
+	<view-map name="querySpecialUsableTimeEntry" type="region"/>
+	<view-map name="queryRepairWashEntry" type="region"/>
+
+    <!-- ************************* 使用备件(关联表单) ************************* -->
+	<view-map name="partsUseEntry" type="region"/>
+
+    <view-map name="queryCabinetStock" type="region"/>
+
+    <view-map name="keyPartDelayHist" type="region"/>
+</site-conf>

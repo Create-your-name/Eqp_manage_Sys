@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+     <!--机台参数-->
+    <request-map uri="equipmentParamDefine">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="equipmentParamDefine"/>
+      <response name="error" type="view" value="equipmentParamDefine"/>
+    </request-map>
+
+	<request-map uri="equipmentParamList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="equipmentParamList"/>
+      <response name="success" type="view" value="equipmentParamDefine"/>
+      <response name="error" type="request" value="equipmentParamDefine"/>
+    </request-map>
+
+	<request-map uri="addEquipmentParam">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="addEquipmentParam"/>
+      <response name="success" type="view" value="equipmentParamDefine"/>
+      <response name="error" type="request" value="equipmentParamDefine"/>
+    </request-map>
+
+	<request-map uri="manageEquipmentParam">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="manageEquipmentParam"/>
+      <response name="success" type="request" value="equipmentParamList"/>
+      <response name="error" type="request" value="equipmentParamDefine"/>
+    </request-map>
+
+	<request-map uri="delEquipmentParam">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="delEquipmentParam"/>
+      <response name="success" type="request" value="equipmentParamList"/>
+      <response name="error" type="request" value="equipmentParamDefine"/>
+    </request-map>
+
+	<request-map uri="queryEquipmentParamByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEquipmentParamByIndex"/>
+    </request-map>
+
+     <!--保养周期设定-->
+    <request-map uri="defaultPeriodDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="defaultPeriodDefine"/>
+      <response name="success" type="view" value="defaultPeriodDefine"/>
+      <response name="error" type="view" value="defaultPeriodDefine"/>
+    </request-map>
+
+	<request-map uri="defaultPeriodList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="defaultPeriodList"/>
+      <response name="success" type="view" value="defaultPeriodDefine"/>
+      <response name="error" type="request" value="defaultPeriodDefine"/>
+    </request-map>
+
+
+	<request-map uri="addDefaultPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="addDefaultPeriod"/>
+      <response name="success" type="view" value="defaultPeriodDefine"/>
+      <response name="error" type="request" value="defaultPeriodDefine"/>
+    </request-map>
+
+	<request-map uri="manageDefaultPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="manageDefaultPeriod"/>
+      <response name="success" type="request" value="defaultPeriodList"/>
+      <response name="error" type="request" value="defaultPeriodDefine"/>
+    </request-map>
+
+	<request-map uri="delDefaultPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="delDefaultPeriod"/>
+      <response name="success" type="request" value="defaultPeriodList"/>
+      <response name="error" type="request" value="defaultPeriodDefine"/>
+    </request-map>
+
+	<request-map uri="queryDefaultPeriodByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="queryDefaultPeriodByIndex"/>
+    </request-map>
+
+    <request-map uri="defaultPeriodHold">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="defaultPeriodHold"/>
+      <response name="success" type="request" value="defaultPeriodList"/>
+      <response name="error" type="request" value="defaultPeriodDefine"/>
+    </request-map>
+
+    <!-- 设定机台保养日期-->
+   	<request-map uri="equipmentSchedule">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="equipmentSchedule"/>
+      <response name="success" type="view" value="equipmentSchedule"/>
+      <response name="error" type="view" value="equipmentSchedule"/>
+    </request-map>
+
+   	<request-map uri="equipmentScheduleDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="equipmentScheduleDefine"/>
+      <response name="success" type="view" value="equipmentScheduleDefine"/>
+      <response name="error" type="view" value="equipmentSchedule"/>
+    </request-map>
+
+    <request-map uri="equipmentScheduleAdd">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="equipmentScheduleAdd"/>
+      <response name="success" type="request" value="equipmentScheduleDefine"/>
+      <response name="error" type="view" value="equipmentSchedule"/>
+    </request-map>
+
+    <request-map uri="validEquipmentScheduleAdd">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="validEquipmentScheduleAdd"/>
+    </request-map>
+
+    <request-map uri="equipmentScheduleClear">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="equipmentScheduleClear"/>
+      <response name="success" type="request" value="equipmentScheduleDefine"/>
+      <response name="error" type="view" value="equipmentSchedule"/>
+    </request-map>
+
+    <request-map uri="validEquipmentScheduleClear">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="validEquipmentScheduleClear"/>
+    </request-map>
+
+    <request-map uri="sendSubmitPmDelay">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="sendSubmitPmDelay"/>
+      <response name="success" type="request" value="equipmentScheduleDefine"/>
+      <response name="error" type="view" value="equipmentSchedule"/>
+    </request-map>
+
+    <!--巡检周期设定-->
+    <request-map uri="pcPeriodDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="pcPeriodDefine"/>
+      <response name="success" type="view" value="pcPeriodDefine"/>
+      <response name="error" type="view" value="pcPeriodDefine"/>
+    </request-map>
+
+	<request-map uri="pcPeriodList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="pcPeriodList"/>
+      <response name="success" type="view" value="pcPeriodDefine"/>
+      <response name="error" type="request" value="pcPeriodDefine"/>
+    </request-map>
+
+	<request-map uri="addPcPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="addPcPeriod"/>
+      <response name="success" type="view" value="pcPeriodDefine"/>
+      <response name="error" type="request" value="pcPeriodDefine"/>
+    </request-map>
+
+	<request-map uri="managePcPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="managePcPeriod"/>
+      <response name="success" type="request" value="pcPeriodList"/>
+      <response name="error" type="request" value="pcPeriodDefine"/>
+    </request-map>
+
+	<request-map uri="delPcPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="delPcPeriod"/>
+      <response name="success" type="request" value="pcPeriodList"/>
+      <response name="error" type="request" value="pcPeriodDefine"/>
+    </request-map>
+
+	<request-map uri="queryPcPeriodByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="queryPcPeriodByIndex"/>
+    </request-map>
+
+    <!-- 巡检机台保养日期-->
+   	<request-map uri="pcSchedule">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="pcSchedule"/>
+      <response name="success" type="view" value="pcSchedule"/>
+      <response name="error" type="view" value="pcSchedule"/>
+    </request-map>
+
+   	<request-map uri="pcScheduleDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="pcScheduleDefine"/>
+      <response name="success" type="view" value="pcScheduleDefine"/>
+      <response name="error" type="view" value="pcSchedule"/>
+    </request-map>
+
+    <request-map uri="pcScheduleAdd">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="pcScheduleAdd"/>
+      <response name="success" type="request" value="pcScheduleDefine"/>
+      <response name="error" type="view" value="pcSchedule"/>
+    </request-map>
+
+    <request-map uri="pcScheduleClear">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="pcScheduleClear"/>
+      <response name="success" type="request" value="pcScheduleDefine"/>
+    </request-map>
+
+    <request-map uri="yearPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="yearPeriod"/>
+      <response name="success" type="view" value="yearPeriodSchedule"/>
+      <response name="error" type="view" value="yearPeriodSchedule"/>
+    </request-map>
+
+    <request-map uri="yearPeriodSchedule">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="yearPeriodSchedule"/>
+      <response name="success" type="view" value="yearPeriodSchedule"/>
+      <response name="error" type="view" value="yearPeriodSchedule"/>
+    </request-map>
+
+    <request-map uri="defaultPeriodClearInit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="defaultPeriodClearInit"/>
+      <response name="success" type="view" value="equipmentScheduleClear"/>
+      <response name="error" type="view" value="equipmentScheduleClear"/>
+    </request-map>
+
+    <request-map uri="defaultPeriodClear">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="defaultPeriodClear"/>
+      <response name="success" type="request" value="defaultPeriodClearInit"/>
+      <response name="error" type="request" value="defaultPeriodClearInit"/>
+    </request-map>
+
+    <!--填写机台参数-->
+    <request-map uri="equipmentParamEnter">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="equipmentParamEnter"/>
+      <response name="success" type="view" value="equipmentParamEnter"/>
+      <response name="error" type="view" value="equipmentParamEnter"/>
+    </request-map>
+
+    <request-map uri="equipmentParamValueList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="equipmentParamValueList"/>
+      <response name="success" type="view" value="equipmentParamEnter"/>
+      <response name="error" type="view" value="equipmentParamEnter"/>
+    </request-map>
+
+    <request-map uri="manageEquipmentParamValue">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="manageEquipmentParamValue"/>
+      <response name="success" type="request" value="equipmentParamValueList"/>
+      <response name="error" type="request" value="equipmentParamValueList"/>
+    </request-map>
+
+    <request-map uri="equipmentParamValueBatchEdit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="equipmentManualValueBatchEdit"/>
+      <response name="success" type="request" value="equipmentParamValueList"/>
+      <response name="error" type="request" value="equipmentParamValueList"/>
+    </request-map>
+
+
+	<request-map uri="queryEquipmentParamValueByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="queryEquipmentParamValueByIndex"/>
+    </request-map>
+
+    <!--建立设备保养表单-->
+    <request-map uri="createPmRecord">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="createPmRecord"/>
+      <response name="success" type="view" value="pmRecordList"/>
+       <response name="error" type="view" value="pmRecordList"/>
+    </request-map>
+
+    <request-map uri="queryPmRecordEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="queryPmForm"/>
+      <response name="success" type="view" value="pmRecordList"/>
+      <response name="error" type="view" value="pmRecordList"/>
+    </request-map>
+
+    <request-map uri="addPmFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="addPmForm"/>
+      <response name="success" type="view" value="pmFormAdd"/>
+    </request-map>
+
+    <request-map uri="addPatchPmFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="addPatchPmForm"/>
+      <response name="success" type="view" value="pmFormPatchAdd"/>
+    </request-map>
+
+    <request-map uri="submitPmForm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="submitPmForm"/>
+      <response name="pmdelete" type="view" value="smallPmDelete"/>
+      <response name="success" type="request" value="createPmRecord"/>
+    </request-map>
+
+    <request-map uri="subSumbitPmForm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="subSumbitPmForm"/>
+      <response name="success" type="view" value="subSmallPmFormDelete"/>
+    </request-map>
+
+    <!--填写保养表单-->
+    <!--保养表单显示一览-->
+    <request-map uri="enterPmRecord">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="enterPmRecord"/>
+      <response name="success" type="view" value="enterPmRecord"/>
+      <response name="error" type="view" value="enterPmRecord"/>
+    </request-map>
+
+
+    <!--显示保养记录画面-->
+    <request-map uri="pmRecordInfo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="pmRecordInfo"/>
+      <response name="manager" type="view" value="managePmRecord"/>
+      <response name="start" type="view" value="startPmRecord"/>
+      <response name="error" type="view" value="enterPmRecord"/>
+    </request-map>
+
+    <!-- 保养表单的开始 -->
+    <request-map uri="startPmFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="startPmForm"/>
+      <response name="success" type="request" value="qeuryUnscheduleEqpParamList"/>
+      <response name="error" type="request" value="pmRecordInfo"/>
+   	</request-map>
+
+   <request-map uri="pmFormPartsUpdateEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="updatePartsUse"/>
+      <response name="success" type="request" value="pmRecordInfo"/>
+   </request-map>
+
+   <request-map uri="pmFormManageTempSaveEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="tempSavePmForm"/>
+      <response name="success" type="request" value="pmRecordInfo"/>
+      <response name="error" type="request" value="pmRecordInfo"/>
+   </request-map>
+
+   <request-map uri="pmFormManageOverEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="overPmForm"/>
+      <response name="success" type="request" value="enterPmRecord"/>
+      <response name="error" type="request" value="enterPmRecord"/>
+   </request-map>
+
+   <request-map uri="pmFormEqpStatusUpdateEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="updateEqpState"/>
+   </request-map>
+
+   <request-map uri="pmFormEqpStatusQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="queryEqpState"/>
+   </request-map>
+
+   <request-map uri="pmQcTime">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="pmQcTime"/>
+   </request-map>
+
+   <request-map uri="updateMcsPmChangeTarget">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="updateMcsPmChangeTarget"/>
+   </request-map>
+
+   <request-map uri="submitPmDelete">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="submitPmDelete"/>
+      <response name="subPmForm" type="view" value="subPmForm"/>
+      <response name="success" type="request" value="enterPmRecord"/>
+   </request-map>
+
+   <request-map uri="submitSubSmallPmDelete">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="submitSubSmallPmDelete"/>
+      <response name="success" type="request" value="enterPmRecord"/>
+   </request-map>
+
+   <request-map uri="deletePmFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="deletePmFormEntry"/>
+      <response name="success" type="request" value="enterPmRecord"/>
+   </request-map>
+
+    <request-map uri="intoQueryOverPmForm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="intoQueryPmForm"/>
+      <response name="success" type="view" value="queryOverPmForm"/>
+   </request-map>
+
+    <request-map uri="overPmFormView">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="pmRecordInfo"/>
+      <response name="formview" type="view" value="viewOverPmForm"/>
+      <response name="error" type="request" value="intoQueryOverPmForm"/>
+   </request-map>
+
+    <request-map uri="queryOverPmFormByCondition">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="queryPmFormByCondition"/>
+      <response name="success" type="view" value="queryOverPmForm"/>
+      <response name="error" type="request" value="intoQueryOverPmForm"/>
+   </request-map>
+
+   <!-- 表单job状态查询 -->
+   <request-map uri="pmFormJobStatusQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="getJObStatus"/>
+   </request-map>
+
+   <request-map uri="pmFormPartsDelEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="delPartsUse"/>
+      <response name="success" type="request" value="pmRecordInfo"/>
+   </request-map>
+
+   <!-- 修改UnscheduleEqpParam手动输入值 -->
+   <request-map uri="qeuryUnscheduleEqpParamList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="getEquipmenManualValueListByEeqpId"/>
+      <response name="success" type="view" value="unscheduleEqpParamManage"/>
+      <response name="error" type="request" value="pmRecordInfo"/>
+      <response name="pmrecordinfo" type="request" value="pmRecordInfo"/>
+   </request-map>
+
+   <request-map uri="upateEquipmentParamManualValue">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="upateEquipmentParamManualValue"/>
+      <response name="success" type="request" value="pmRecordInfo"/>
+      <response name="error" type="request" value="pmRecordInfo"/>
+   </request-map>
+</site-conf>

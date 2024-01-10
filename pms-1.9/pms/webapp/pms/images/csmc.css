@@ -1,0 +1,23 @@
+.errorMessage {
+	font-family: "ËÎÌו", "Verdana", "Arial", "sans-serif";
+	font-size: 12px;
+	font-weight: normal;
+	color: red;
+	text-decoration: none;
+}
+.eventMessage {
+	font-family: "ËÎÌו", "Verdana", "Arial", "sans-serif";
+	font-size: 12px;
+	font-weight: normal;
+	color: blue;
+	text-decoration: none;
+}
+.cn12px {
+	font-family: "ËÎÌו", "Verdana", "Arial", "sans-serif";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+}
+
+

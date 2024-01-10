@@ -1,0 +1,30 @@
+@file name: pms项目java常用function.txt
+@version:  1.0  2009-7-6
+@author:   dinghh
+******************************************************************************
+
+1.取当前时间存入数据库, import org.ofbiz.base.util.UtilDateTime
+UtilDateTime.nowTimestamp()
+
+2.String校验, import org.apache.commons.lang.StringUtils;
+StringUtils.isNotEmpty(String)
+StringUtils.isEmpty(String)
+StringUtils.isNotNull(String)
+StringUtils.isNull(String)
+
+3.List & String check is empty, import com.csmc.pms.webapp.util.CommonUtil;
+CommonUtil.isNotEmpty(Object object)
+CommonUtil.isEmpty(Object object)
+CommonUtil.isNotNull(Object object)
+CommonUtil.isNull(Object object)
+
+4.得到用户工号或所有信息
+String userNo = CommonUtil.getUserNo(request);
+GenericValue user = CommonHelper.getUserInfo(request, delegator);
+
+5.得到PMS/MCS使用的Delegator
+GenericDelegator delegator = CommonUtil.getPmsDelegator(request);
+GenericDelegator delegator = CommonUtil.getMcsDelegator(request);
+
+6.得到页面全部参数
+Map paramMap = GeneralEvents.getInitParams(request, true, true);

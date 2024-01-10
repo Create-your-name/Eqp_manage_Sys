@@ -1,0 +1,134 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE entitygroup PUBLIC "-//OFBiz//DTD Entity Group//EN" "http://www.ofbiz.org/dtds/entitygroup.dtd">
+<!--
+/**
+ *  Title: Entity Generator Group Definitions for the General Data Model
+ *  Description: None
+ *  Copyright (c) 2001, 2002 The Open For Business Project - www.ofbiz.org
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *  copy of this software and associated documentation files (the "Software"),
+ *  to deal in the Software without restriction, including without limitation
+ *  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ *  and/or sell copies of the Software, and to permit persons to whom the
+ *  Software is furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included
+ *  in all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ *  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ *  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ *  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ *  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+ *  OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+ *  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *@author     David E. Jones (jonesde@ofbiz.org)
+ *@author     Andy Zeneski (jaz@ofbiz.org)
+ *@version    $Revision: 1.22 $
+ */
+-->
+
+<entitygroup>
+    <entity-group group="org.ofbiz.gui" entity="EqpQcStatus" />
+	<entity-group group="org.ofbiz.gui" entity="EqpQcHist" />
+	<entity-group group="org.ofbiz.gui" entity="ViolateRulePoint" />
+	<entity-group group="org.ofbiz.gui" entity="Alarm" />
+	<entity-group group="org.ofbiz.gui" entity="AlarmHist" />
+	<entity-group group="org.ofbiz.gui" entity="AlarmAction" />
+	<entity-group group="org.ofbiz.gui" entity="ReduceRatioQty" />
+	<entity-group group="org.ofbiz.gui" entity="EqpMaintainHoldList" />
+	<entity-group group="org.ofbiz.gui" entity="EqpMaintainHoldHist" />
+
+    <!--<entity-group group="org.ofbiz" entity="SequenceValueItem" />-->
+    <entity-group group="org.ofbiz" entity="MenuHierarchy" />
+
+	<entity-group group="org.ofbiz" entity="AccountPrivs" />
+	<entity-group group="org.ofbiz" entity="Account" />
+	<entity-group group="org.ofbiz" entity="PmsRoles" />
+
+	<entity-group group="org.ofbiz" entity="PcStyle" />
+	<entity-group group="org.ofbiz" entity="Equipment" />
+	<entity-group group="org.ofbiz" entity="EquipmentDept" />
+	<entity-group group="org.ofbiz" entity="EquipmentType" />
+	<entity-group group="org.ofbiz" entity="EquipmentVendor" />
+	<entity-group group="org.ofbiz" entity="PromisEqpStatus" />
+	<entity-group group="org.ofbiz" entity="PmsReason" />
+	<entity-group group="org.ofbiz" entity="EquipmentBasicData" />
+	<entity-group group="org.ofbiz" entity="EventCategory" />
+	<entity-group group="org.ofbiz" entity="EventSubcategory" />
+	<entity-group group="org.ofbiz" entity="UnscheduleParameter" />
+	<entity-group group="org.ofbiz" entity="UnscheduleEqpParam" />
+	<entity-group group="org.ofbiz" entity="UnscheduleEqpParamHist" />
+	<entity-group group="org.ofbiz" entity="EquipmentLocation" />
+	<entity-group group="org.ofbiz" entity="EquipmentSection" />
+
+	<entity-group group="org.ofbiz" entity="DefaultPeriod" />
+	<entity-group group="org.ofbiz" entity="EquipmentSchedule" />
+	<entity-group group="org.ofbiz" entity="EquipmentScheduleDel" />
+	<entity-group group="org.ofbiz" entity="PeriodSchedule" />
+
+	<entity-group group="org.ofbiz" entity="PartsData" />
+	<entity-group group="org.ofbiz" entity="Parts" />
+	<entity-group group="org.ofbiz" entity="PartsPm" />
+	<entity-group group="org.ofbiz" entity="PartsUse" />
+	<entity-group group="org.ofbiz" entity="PartsRequire" />
+
+	<entity-group group="org.ofbiz" entity="PmForm" />
+	<entity-group group="org.ofbiz" entity="AbnormalForm" />
+	<entity-group group="org.ofbiz" entity="AbnormalDocument" />
+	<entity-group group="org.ofbiz" entity="AbnormalDocFormRelation" />
+	<entity-group group="org.ofbiz" entity="DocumentUpload" />
+
+	<entity-group group="org.ofbiz" entity="FlowAction" />
+	<entity-group group="org.ofbiz" entity="FlowActionHist" />
+	<entity-group group="org.ofbiz" entity="FlowActionStatus" />
+	<entity-group group="org.ofbiz" entity="FlowActionRecord" />
+	<entity-group group="org.ofbiz" entity="FlowItemPoints" />
+	<entity-group group="org.ofbiz" entity="FlowActionItem" />
+	<entity-group group="org.ofbiz" entity="FlowActionItemTemp" />
+	<entity-group group="org.ofbiz" entity="FlowActionItemHist" />
+	<entity-group group="org.ofbiz" entity="FlowJob" />
+	<entity-group group="org.ofbiz" entity="FlowJobTemp" />
+	<entity-group group="org.ofbiz" entity="FlowJobHist" />
+
+	<entity-group group="org.ofbiz" entity="PcPeriod" />
+	<entity-group group="org.ofbiz" entity="TimeRange" />
+	<entity-group group="org.ofbiz" entity="FollowJob" />
+	<entity-group group="org.ofbiz" entity="FollowItem" />
+	<entity-group group="org.ofbiz" entity="FollowFormRelation" />
+	<entity-group group="org.ofbiz" entity="PcForm" />
+	<entity-group group="org.ofbiz" entity="ImproveDocument" />
+	<entity-group group="org.ofbiz" entity="PmAbnormalRecord" />
+	<entity-group group="org.ofbiz" entity="AbnormalBinding" />
+	<entity-group group="org.ofbiz" entity="FormJobRelation" />
+
+	<entity-group group="org.ofbiz" entity="EqpChgstatusHist" />
+	<entity-group group="org.ofbiz" entity="WfSubmit" />
+	<entity-group group="org.ofbiz" entity="WfSubmitObject" />
+	<entity-group group="org.ofbiz" entity="WfSubmitControl" />
+
+	<entity-group group="org.ofbiz" entity="PmNextStarttime" />
+	<entity-group group="org.ofbiz" entity="EquipmentSchedulePmDelete" />
+	<entity-group group="org.ofbiz" entity="EntitySyncRemove" />
+	<entity-group group="org.ofbiz" entity="PmNextYearDetail" />
+
+	<entity-group group="org.ofbiz" entity="PartsFilter" />
+	<entity-group group="org.ofbiz" entity="PartPlant" />
+
+	<entity-group group="org.ofbiz" entity="EqpMaintainHold" />
+
+	<entity-group group="org.ofbiz" entity="EquipmentModel"/>
+	<entity-group group="org.ofbiz" entity="KeyPartsUse"/>
+	<entity-group group="org.ofbiz" entity="KeyEqpParts"/>
+	<entity-group group="org.ofbiz" entity="KeyEqpPartsHist"/>
+	<entity-group group="org.ofbiz" entity="KeyPartsDelay"/>
+	<entity-group group="org.ofbiz" entity="KeypartsdelayResult"/>
+	<entity-group group="org.ofbiz" entity="KeyPartsDelayInfo"/>
+	<entity-group group="org.ofbiz" entity="KeyPartsMustchangeComm"/>
+	<entity-group group="org.ofbiz" entity="KeyEqpPartsClean"/>
+	<entity-group group="org.ofbiz" entity="KeyEqpPartsCleanHist"/>
+	<entity-group group="org.ofbiz" entity="PartsVendors" />
+	<entity-group group="org.ofbiz" entity="HighValueParts" />
+</entitygroup>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+    
+    <request-map uri="abnormalDocumentEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="abnormalDocumentEntry"/>
+      <response name="error" type="view" value="abnormalDocumentEntr1y"/>
+    </request-map>
+    
+    <request-map uri="abnormalDocumentEntryQuery">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="queryDocumentNo"/>
+      <response name="success" type="view" value="abnormalDocumentEntry"/>
+      <response name="error" type="view" value="abnormalDocumentEntry"/>
+    </request-map>
+    
+     <request-map uri="abnormalDocDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="abnormalDocDefineShow"/>
+      <response name="success" type="view" value="abnormalDocDefine"/>
+      <response name="error" type="view" value="abnormalDocumentEntry"/>
+    </request-map>
+    
+      <request-map uri="abnormalDocDefineSingle">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="abnormalDocDefineShow1"/>
+      <response name="success" type="view" value="abnormalDocDefine"/>
+      <response name="error" type="view" value="abnormalDocumentEntry"/>
+    </request-map>
+    
+    <request-map uri="abnormalDocDefineSave">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="saveDocument"/>
+      <response name="success" type="view" value="abnormalDocumentEntry"/>
+      <response name="error" type="view" value="abnormalDocumentEntry"/>
+    </request-map>
+    
+    <request-map uri="queryAbnormalDocument">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="queryAbnormalDocument"/>
+      <response name="error" type="view" value="queryAbnormalDocument"/>
+    </request-map>
+    
+    <request-map uri="abnormalDocumentEntryQuery1">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="queryDocumentNo1"/>
+      <response name="success" type="view" value="queryAbnormalDocument"/>
+      <response name="error" type="view" value="queryAbnormalDocument"/>
+    </request-map>
+    
+   <request-map uri="abnormalDocDefineSingle1">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="abnormalDocDefineShow1"/>
+      <response name="success" type="view" value="queryAbnormalDocDefine"/>
+      <response name="error" type="view" value="queryAbnormalDocument"/>
+    </request-map>
+    
+    <request-map uri="improveDocumentEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="improveDocumentEntry"/>
+      <response name="error" type="view" value="improveDocumentEntry"/>
+    </request-map>
+    
+     <request-map uri="improveDocumentEntry1">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="queryDocumentNo3"/>
+      <response name="success" type="view" value="improveDocumentEntry"/>
+      <response name="error" type="view" value="improveDocumentEntry"/>
+    </request-map>
+    
+    <request-map uri="abnormalDocDefineSingle2">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="queryDocumentNo2"/>
+      <response name="success" type="view" value="improveDocDefine"/>
+      <response name="error" type="view" value="improveDocDefine"/>
+    </request-map>
+
+    
+    <request-map uri="improveDocDefineSave">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="saveDocument1"/>
+      <response name="success" type="view" value="improveDocumentEntry"/>
+      <response name="error" type="view" value="improveDocDefine"/>
+    </request-map>
+    
+    <request-map uri="abnormalDocDefineSingle21">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="queryDocumentNo2"/>
+      <response name="success" type="view" value="queryImproveDocDefine"/>
+      <response name="error" type="view" value="queryImproveDocDefine"/>
+    </request-map>
+    
+    <request-map uri="queryImproveDocument">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="queryImproveDocument"/>
+      <response name="error" type="view" value="queryImproveDocument"/>
+    </request-map>
+    
+    <request-map uri="queryImproveDocumentEntry1">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="queryDocumentNo3"/>
+      <response name="success" type="view" value="queryImproveDocument"/>
+      <response name="error" type="view" value="queryImproveDocument"/>
+    </request-map>
+    
+    <request-map uri="queryShowPmChart">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryPmParamAnalysisChart"/>
+      <response name="success" type="view" value="queryShowPmChart"/>
+      <response name="error" type="view" value="queryShowPmChart"/>
+    </request-map>
+    
+    <request-map uri="queryShowPm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="queryShowPm"/>
+      <response name="success" type="view" value="queryShowPmChart"/>
+      <response name="error" type="view" value="queryShowPmChart"/>
+    </request-map>
+    
+    <request-map uri="queryNotEndDocument">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="queryNotEndDocument"/>
+      <response name="error" type="view" value="queryNotEndDocument"/>
+    </request-map>
+    
+    <request-map uri="queryNotEndDocumentSearch">
+      <security https="false" auth="true"/>
+	  <event type="java" path="com.csmc.pms.webapp.document.event.DocumentEvent" invoke="queryNotEndDocument"/>
+      <response name="success" type="view" value="queryNotEndDocument"/>
+      <response name="error" type="view" value="queryNotEndDocument"/>
+    </request-map>
+    
+    <request-map uri="flowLeadCheck">
+      <security https="false" auth="true"/>
+	  <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowLeadCheck"/>
+      <response name="success" type="view" value="flowLeadCheck"/>
+      <response name="error" type="view" value="flowLeadCheck"/>
+    </request-map>
+    
+    <request-map uri="flowLeadCheckBak">
+      <security https="false" auth="true"/>
+	  <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="flowLeadCheckBak"/>
+      <response name="success" type="view" value="flowLeadCheck"/>
+      <response name="error" type="view" value="flowLeadCheck"/>
+    </request-map>
+    
+    <request-map uri="flowIssueInfo">
+      <security https="false" auth="true"/>
+	  <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowIssueInfo"/>
+      <response name="success" type="view" value="flowIssueInfo"/>
+      <response name="error" type="view" value="flowIssueInfo"/>
+    </request-map>
+    
+    <request-map uri="queryFlowLeadCheck">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowLeadCheckNo"/>
+    </request-map>
+    
+    <request-map uri="queryFlowLeadCheckSubmit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowLeadCheckSubmit"/>
+      <response name="success" type="request" value="flowLeadCheck"/>
+      <response name="error" type="request" value="flowLeadCheck"/>
+    </request-map>
+    
+    <request-map uri="abnormalItemManage">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="manageQuFollowItem"/>
+      <response name="success" type="request" value="intoAddItemQuFollow"/>
+      <response name="error" type="request" value="intoAddItemQuFollow"/>
+    </request-map>
+    
+    <request-map uri="pmsDefault">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.DefaultEvent" invoke="pmsDefault"/>
+      <response name="success" type="view" value="pmsDefault"/>
+      <response name="error" type="view" value="pmsDefault"/>
+    </request-map>
+    
+    <request-map uri="abnormalChartEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="abnormalChartEntry"/>
+      <response name="error" type="view" value="abnormalChartEntry"/>
+    </request-map>
+    
+    <request-map uri="AbnormalTableShow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showAbnormalTable"/>
+      <response name="success" type="view" value="abnormalChartTable"/>
+      <response name="error" type="view" value="abnormalChartTable"/>
+    </request-map>
+    
+    <request-map uri="showAbnormalChartEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showAbnormalTable"/>
+      <response name="success" type="view" value="abnormalChartShow"/>
+      <response name="error" type="view" value="abnormalChartShow"/>
+    </request-map>
+    
+    <!-- applet init callServlet -->
+    <request-map uri="AbnormalChartShow">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="AbnormalChartShow"/>
+    </request-map>
+    <!-- end 设备异常用时查询 -->
+    
+    <!-- 首页确定界面 -->
+    <request-map uri="queryDefaultSub">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.DefaultEvent" invoke="queryDefaultSub"/>
+      <response name="success" type="view" value="pmsDefaultSub"/>
+      <response name="error" type="view" value="pmsDefaultSub"/>
+    </request-map>
+     <!-- 首页确定界面 -->
+     
+    <request-map uri="equiList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="equiList"/>
+      <response name="success" type="view" value="equiList"/>
+      <response name="error" type="view" value="equiList"/>
+    </request-map>
+    
+    <request-map uri="queryLeadCheckNo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryLeadCheckNo"/>
+      <response name="success" type="view" value="queryLeadCheckNo"/>
+      <response name="error" type="view" value="queryLeadCheckNo"/>
+    </request-map>
+    
+    <request-map uri="eventList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="queryOverFollowJob"/>
+      <response name="success" type="view" value="eventList"/>
+      <response name="error" type="view" value="eventList"/>
+    </request-map>
+    
+    <request-map uri="queryeventList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="eventList"/>
+      <response name="success" type="view" value="eventList"/>
+      <response name="error" type="view" value="eventList"/>
+    </request-map>
+</site-conf>

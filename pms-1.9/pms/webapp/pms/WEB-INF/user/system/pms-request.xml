@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+	<!--security mapping-->
+	<request-map uri="login">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.security.login.LoginEvents" invoke="login"/>
+      <response name="success" type="request" value="checkLogin"/>
+      <response name="error" type="view" value="login"/>
+    </request-map>
+    
+    <request-map uri="checkLogin">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.security.login.LoginEvents" invoke="checkLogin" />
+      <response name="success" type="view" value="login" />
+      <response name="error" type="view" value="login" />
+      <response name="checkerror" type="view" value="login" />
+    </request-map>
+    
+    <request-map uri="logout">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.security.login.LoginEvents" invoke="logout"/>
+      <response name="success" type="request" value="checkLogin"/>
+      <response name="error" type="view" value="main"/>
+    </request-map>
+    
+    <request-map uri="view">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="main"/>
+    </request-map>
+    
+    <!-- system module -->
+    <request-map uri="setupUser">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="setupUserEntry"/>
+    </request-map>
+    
+    <request-map uri="queryUser">
+        <security https="false" auth="true"/>
+		<event type="java" path="com.csmc.pms.webapp.sys.event.SecuritySetupEvent" invoke="getUserList"/>
+        <response name="success" type="view" value="queryUsers"/>
+    </request-map>
+    
+    <request-map uri="viewUserInfo">
+        <security https="false" auth="true"/>
+   		<event type="java" path="com.csmc.pms.webapp.sys.event.SecuritySetupEvent" invoke="getUserInfo"/>
+        <response name="success" type="view" value="viewUserInfo"/>
+        <response name="error" type="view" value="setupUserEntry"/>
+    </request-map>
+    
+    <request-map uri="updateUserInfo">
+        <security https="false" auth="true"/>
+   		<event type="java" path="com.csmc.pms.webapp.sys.event.SecuritySetupEvent" invoke="updateUserInfo"/>
+        <response name="error" type="view" value="viewUserInfo"/>
+        <response name="success" type="view" value="viewUserInfo"/>
+    </request-map>
+    
+    <request-map uri="setupUserPriv">
+        <security https="false" auth="true"/>
+   		<event type="java" path="com.csmc.pms.webapp.sys.event.SecuritySetupEvent" invoke="setupUserPriv"/>
+        <response name="error" type="view" value="viewUserInfo"/>
+        <response name="success" type="view" value="setupUserPriv"/>
+    </request-map>
+    
+    <request-map uri="updateUserPriv">
+        <security https="false" auth="true"/>
+		<event type="service" invoke="updateAccountPriv"/>
+        <response name="error" type="request" value="setupUserPriv"/>
+        <response name="success" type="request" value="setupUserPriv"/>
+    </request-map>
+    
+    <request-map uri="copyUserInfo">
+        <security https="false" auth="true"/>
+  		<event type="java" path="com.csmc.pms.webapp.sys.event.SecuritySetupEvent" invoke="copyUserInfo"/>
+        <response name="error" type="view" value="queryUsers"/>
+        <response name="success" type="view" value="viewUserInfo"/>
+    </request-map>
+    
+    <request-map uri="deleteUser">
+        <security https="false" auth="true"/>
+  		<event type="java" path="com.csmc.pms.webapp.sys.event.SecuritySetupEvent" invoke="deleteUser"/>
+        <response name="error" type="view" value="viewUserInfo"/>
+        <response name="success" type="request" value="setupUser"/>
+    </request-map>
+    
+	<request-map uri="setupUserGroup">
+		<security https="false" auth="true"/>
+		<event type="java" path="com.csmc.pms.webapp.sys.event.SecuritySetupEvent" invoke="getUserGroupInfo"/>
+		<response name="success" type="view" value="setupGroupPriv"/>
+	</request-map>
+	
+	<request-map uri="updateUserGroupInfo">
+		<security https="false" auth="true"/>
+		<event type="service" invoke="updateAccountPriv"/>
+		<response name="success" type="request" value="setupUserGroup"/>
+	</request-map>
+	
+	<request-map uri="queryGroupInfo">
+        <security https="false" auth="true"/>
+		<event type="java" path="com.csmc.pms.webapp.sys.event.GroupSetupEvent" invoke="getGroupInfo"/>
+        <response name="success" type="request" value="setupGroup"/>
+    </request-map>
+    
+    <request-map uri="changePwd">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="changePwd"/>
+    </request-map>
+
+    <request-map uri="changePwdDone">
+        <security https="false" auth="true"/>
+        <event type="java" path="com.csmc.pms.webapp.sys.event.SecuritySetupEvent" invoke="changePwdDone"/>
+        <response name="success" type="view" value="changePwd"/>
+    </request-map>
+    
+    <request-map uri="loginChangePwd">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="loginChangePwd"/>
+    </request-map>
+
+    <request-map uri="loginChangePwdDone">
+        <security https="false" auth="false"/>
+        <event type="java" path="com.csmc.pms.webapp.sys.event.SecuritySetupEvent" invoke="loginChangePwdDone"/>
+        <response name="success" type="view" value="login"/>
+        <response name="error" type="view" value="loginChangePwd"/>
+    </request-map>
+    
+    <!-- PMS 状思监控 -->
+    <request-map uri="checkPmsStatus">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.sys.event.DataSynchronization" invoke="checkPmsStatus"/>
+   	</request-map>
+
+    <!-- ???????????eqpId -->
+    <request-map uri="changeEqpStatus">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="changeEqpStatus"/>
+   	</request-map>
+</site-conf>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EquipmentSchedule">
+
+	<typeAlias alias="equipmentSchedule" type="com.csmc.pms.persistence.model.EquipmentSchedule" />
+
+	<select id="getDayUnFinishedPm" resultClass="equipmentSchedule">
+		<![CDATA[select t1.schedule_index as scheduleIndex,
+				       t1.equipment_id as equipmentId,
+				       t1.period_index as periodIndex,
+				       t1.schedule_event as scheduleEvent,
+				       t1.schedule_date as scheduleDate,
+				       t1.schedule_note as scheduleNote,
+				       t1.creator,
+				       t2.period_name as periodName,
+				       t4.equipment_engineer as equipmentEngineer,
+				       t5.section_leader as sectionLeader
+				 from equipment_schedule t1,default_period t2,time_range t3,equipment t4,equipment_section t5
+				 where t1.period_index=t2.period_index
+				 	 and t1.time_range_index=t3.range_index
+				 	 and t1.equipment_id = t4.equipment_id
+				 	 and t4.section = t5.section(+)
+				     and t1.time_range_index is not null and t2.default_days = 1 and t2.enabled = 1 
+					 and t1.schedule_event='PM' and t1.event_index is null
+					 and t1.schedule_date = trunc(sysdate)
+					 and t3.end_time<=to_char(sysdate,'hh24')]]>
+	</select>
+
+</sqlMap>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site View-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+    
+	<view-map name="pcStyleDefineEntry" type="region"/>
+	<view-map name="equipmentDefineEntry" type="region"/>
+	<view-map name="equipmentDefine" type="region"/>
+
+	<view-map name="reasonEntry" type="region"/>
+
+	<view-map name="queryEqpBasicInfoEntry" type="region"/>
+	<view-map name="queryEqpBasicInfo" type="region"/>
+	
+	<view-map name="unscheduleParameterEntry" type="region"/>
+	<view-map name="equipmentVendorEntry" type="region"/>
+	<view-map name="equipmentBasicEntry" type="region"/>
+	<view-map name="eventCategoryDefineEntry" type="region"/>
+	<view-map name="eventSubCategoryDefineEntry" type="region"/>
+	
+	<view-map name="equipmentParamDefine" type="region"/>
+	<view-map name="abnormalDocumentEntry" type="region"/>
+	<view-map name="abnormalDocDefine" type="region"/>
+</site-conf>

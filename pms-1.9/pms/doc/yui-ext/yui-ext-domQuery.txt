@@ -1,0 +1,18 @@
+1. 查询返回Html标签List
+	- var test = Ext.DomQuery.select('td',Ext.getDom('buttonArea'));
+		1.1 buttonArea 定义在Html中的Id,一般为div
+		1.2 返回buttonArea域内的td标签List
+	- var inputList = Ext.DomQuery.select('input,select',Ext.getDom('x-form'));
+		1.1 逗号分隔，取多个标签
+2. 循环标签List
+	-  Ext.each(inputList, function(item) {
+			item.value = "";
+		});
+
+3. 查询返回单个Node
+	- var statusIndex = Ext.DomQuery.selectNode('*[name^=statusIndex]', row);
+		1.1 *[name^=statusIndex] 返回标签中name为"statusIndex"起头的标签
+		1.2 如果返回集合，则默认取第一个
+
+4. 其他
+	- http://extjs.com/learn/Tutorial:DomQuery_Basics%28Chinese%29

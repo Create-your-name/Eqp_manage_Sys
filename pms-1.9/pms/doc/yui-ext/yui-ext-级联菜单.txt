@@ -1,0 +1,59 @@
+1. 定义记录集
+	- var RecordDef = Ext.data.Record.create([
+	      {name: 'id'}, 
+		  {name: 'name'}
+	  ]);
+	1.1 id,name对应返回json中的栏位名
+
+2. 定义DataStore
+	- var ds = new Ext.data.Store({
+          proxy: new Ext.data.HttpProxy({
+              url: 'http://localhost:8080/csmcgui/control/queryFlowPMPeriod'
+          }),
+          reader: new Ext.data.JsonReader({}, RecordDef)
+      });
+    1.1 url定义request.xml
+    1.2 reader定义读取方式
+
+3. 定义ComboBox
+	- var search = new Ext.form.ComboBox({
+	     store: ds,
+	     displayField:'name',
+	     valueField:'id',
+	     hiddenName:'id',
+	     typeAhead: true,
+	     mode: 'local',
+	     triggerAction: 'all'
+     });
+     search.applyTo('search');
+     
+     3.1 displayField为下拉菜单显示名
+     3.2 valueField为value
+     3.3 hiddenName为隐藏要提交的Value
+     3.4 mode为'local'，默认不加载store的数据，如果定义'remote'则根据设定的DataSotre默认加载
+     3.5 search.applyTo，ComboBox的实际应用标签，这里只能定义text的
+     	即：<input type="text" size="40" name="search" id="search" autocomplete="off"/>
+     	注意aotocomplete为off
+     3.6 问题，按理定义valueField和hiddenName后，submit提交id，但实际测试没有效果
+     	所以我们只能在最终提交取数据的时候,去用search.getValue()获得ComboBox的值
+     	已经解决：hiddenName设定后自动生成一个隐藏标签，将store的value设定给他
+
+4. 级联的动作定义
+	- 例：根据设备大类查询带出巡检样式
+		这时我们要将级联时间定义在eqpType这个ComoBox上
+	
+	eqpType.on('select',function() {
+	 	var val = eqpType.getValue();
+	 	ds.load({params:{equipmentType:val}});
+    });
+    4.1 将select事件捆绑在设备大类上,on
+    4.2 load中params中定义要提交value（多个用,分隔）,执行返回结果集，捆绑在search上。
+	4.3 在每次选择完毕以后要清空search上的值。
+	
+5.ComboBox中DisplayField的显示
+	search.getDisplayField(search.getValue())
+
+	
+6 参考
+	- pms/workflow/flowDefine.jsp
+	

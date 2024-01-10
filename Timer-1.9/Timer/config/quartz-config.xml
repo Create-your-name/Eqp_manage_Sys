@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!--<ref local="pmsPcDayTrigger"/>
+				<ref local="pmsPcWeekTrigger"/>
+				<ref local="pmsPmDayTrigger"/>
+				<ref local="pmsUnscheduleParamTrigger"/>-->
+				<ref local="pmsDelayPmDayTrigger"/>
+				<ref local="forecastPmDay"/>
+				<ref local="requisitionOverdue"/>
+				<ref local="pmsKeyPartUseTrigger"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="pmsPcDayTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+  		<property name="jobDetail">
+  			<bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+					<property name="targetObject" ref="pmsPcDayJob"/>
+					<property name="targetMethod" value="start"/>
+			  </bean>
+		 	</property>
+
+  		<property name="cronExpression" value="0 0 15 ? * MON-FRI"/>
+	</bean>
+
+	<bean id="pmsPcWeekTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+  		<property name="jobDetail">
+  			<bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+					<property name="targetObject" ref="pmsPcWeekJob"/>
+					<property name="targetMethod" value="start"/>
+			  </bean>
+		 	</property>
+
+  		<property name="cronExpression" value="0 0 15 ? * FRI"/>
+	</bean>
+
+	<bean id="pmsPmDayTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+  		<property name="jobDetail">
+  			<bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+					<property name="targetObject" ref="pmsPmDayJob"/>
+					<property name="targetMethod" value="start"/>
+			  </bean>
+		 	</property>
+
+  		<property name="cronExpression" value="0 0 15 ? * *"/>
+	</bean>
+
+	<bean id="pmsDelayPmDayTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+  		<property name="jobDetail">
+  			<bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+					<property name="targetObject" ref="pmsDelayPmDayJob"/>
+					<property name="targetMethod" value="start"/>
+			  </bean>
+		 	</property>
+
+  		<property name="cronExpression" value="0 50 8 ? * *"/>
+	</bean>
+	
+	<bean id="pmsUnscheduleParamTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+  		<property name="jobDetail">
+  			<bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+					<property name="targetObject" ref="pmsUnscheduleParamJob"/>
+					<property name="targetMethod" value="start"/>
+			  </bean>
+		 	</property>
+
+  		<property name="cronExpression" value="0 0 9 ? * *"/>
+	</bean>
+	
+	<bean id="forecastPmDay" class="org.springframework.scheduling.quartz.CronTriggerBean">
+  		<property name="jobDetail">
+  			<bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+					<property name="targetObject" ref="forecastPmDayJob"/>
+					<property name="targetMethod" value="start"/>
+			  </bean>
+		 	</property>
+
+  		<property name="cronExpression" value="0 25 15 ? * *"/>
+	</bean>
+
+	<bean id="requisitionOverdue" class="org.springframework.scheduling.quartz.CronTriggerBean">
+  		<property name="jobDetail">
+  			<bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+					<property name="targetObject" ref="requisitionOverdueJob"/>
+					<property name="targetMethod" value="start"/>
+			  </bean>
+		 	</property>
+
+  		<property name="cronExpression" value="0 0 11 ? * THU"/>
+	</bean>
+
+	<bean id="pmsKeyPartUseTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+  			<bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+					<property name="targetObject" ref="keyPartUseDayJob"/>
+					<property name="targetMethod" value="start"/>
+			  </bean>
+		 	</property>
+
+  		<property name="cronExpression" value="0 0 10 ? * *"/>
+	</bean>
+
+	<bean id="pmsPcDayJob" class="com.csmc.pms.job.PcDayJob"/>
+	<bean id="pmsPcWeekJob" class="com.csmc.pms.job.PcWeekJob"/>
+	<bean id="pmsPmDayJob" class="com.csmc.pms.job.PmDayJob"/>
+	<bean id="pmsDelayPmDayJob" class="com.csmc.pms.job.DelayPmDayJob"/>
+	<bean id="pmsUnscheduleParamJob" class="com.csmc.pms.job.UnscheduleParamJob"/>
+	<bean id="forecastPmDayJob" class="com.csmc.pms.job.ForecastPmDay"/>
+	<bean id="requisitionOverdueJob" class="com.csmc.pms.job.RequisitionOverdueJob"/>
+	<bean id="keyPartUseDayJob" class="com.csmc.pms.job.KeyPartUseDayJob"/>
+
+</beans>

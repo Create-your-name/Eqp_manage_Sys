@@ -1,0 +1,80 @@
+- 获得数据库和Service连接
+	1. GenericDelegator delegator = GenericDelegator.getGenericDelegator("pms");
+	2. LocalDispatcher dispatcher = GenericDispatcher.getLocalDispatcher("pms",delegator);
+
+- ofbiz配置文件说明
+	1. entitydef/pms/entitymodel.xml 表结构
+		1.1 entity-name 表名 ex. PcStyle
+		1.2 package-name 空间名 ex. pms
+		1.3 never-cache 缓存
+		1.4 no-auto-stamp ofbiz日期栏位(记录的添加、更新)
+		1.5 field 栏位名（详见ofbiz/components/entity/fieldtype定义）
+	2. entity/pms/entitygroup.xml 表目录
+	3. servicedef/pms/services.xml Service定义文件
+	4. webapp/WEB-INF/controller.xml 流程控制文件
+	5. webapp/WEB-INF/request-map/pms-request.xml 请求配置
+	6. webapp/WEB-INF/view-map/pms-view.xml 跳转页面配置
+	7. webapp/WEB-INF/regions.xml 模板页面配置
+
+- ofbiz常用的数据库操作说明
+	1. 主键查询 delegator.findByPrimaryKey ，表名+主键
+		1.1 GenericValue gv = delegator.findByPrimaryKey("ApcCdForm", UtilMisc.toMap("formIndex", formIndex));
+	2. And查询 findByAnd，表名+栏位
+		2.1 List list = delegator.findByAnd("ApcOverlayFeedback", UtilMisc.toMap("maskName", maskName, "eqpId", eqpId));
+	3. Or查询 findByOr
+	4. 模糊查询 findByLike
+	5. Where查询 findByWhereString
+	6. 条件查询 findByCondition
+	7. 新建记录 makeValue,delegator.create()
+	8. 新建记录并且验证是否存在 makeValidValue,delegator.createOrStore()
+	9. 批量保存(transaction insert or update) delegator.storeAll
+	10. 删除记录 delegator.remove
+	11. 批量删除 delegator.removeAll
+
+- 代码举例：
+1.新建记录
+Long id = delegator.getNextSeqId("pmFormSeqIndex");     
+pmFormMap.put("pmIndex", id);
+GenericValue gv = delegator.makeValidValue("PmForm", pmFormMap);
+delegator.create(gv);
+
+2.按条件查询Entity
+EntityWhereString con = new EntityWhereString("schedule_Date = to_date('" + scheduleDate + "','yyyy-MM-dd') and equipment_Id ='" + eqpId + "' and  event_index is  null and period_Index = '" + periodIndex + "'");
+List equipmentScheduleList = delegator.findByCondition("EquipmentSchedule", con, null, null);
+return equipmentScheduleList;
+
+- ofbiz的Service配置说明
+	1. 几个表的更新、插入、修改必须写成Service方式，事务控管
+	2. 配置Service.xml
+		<service name="importDiffBoatInfo" engine="java"
+            location="com.fa.csmcgui.webapp.apc.service.ApcService" invoke="importDiffBoatInfo" auth="false">
+			<description>importDiffBoatInfo</description>			
+			<attribute name="menugroup" type="java.lang.String" mode="IN" optional="false" />
+			<attribute name="eqpId" type="java.lang.String" mode="OUT" optional="false" />
+    	</service>
+    	2.1 IN参数是传入参数，多个in参数map方式传入
+    	2.2 OUT参数传出参数，Service运行完后返回一个Map,Map中get返回的Out参数
+    3. 调用代码
+    	//Service Save Flow Action
+    	Map result = dispatcher.runSync("importDiffBoatInfo",UtilMisc.toMap("menugroup" ,menugroup));
+    	//throw exception
+		if (ModelService.RESPOND_ERROR.equals(result.get(ModelService.RESPONSE_MESSAGE))) {
+			throw new GenericServiceException((String) result.get(ModelService.ERROR_MESSAGE));
+		}
+	
+- 其他数据操作说明
+	1. SQLProcess.excuteSQLQuery 查询
+	2. SQLProcess.excuteSQLUpdate 更新、添加、删除
+	
+- debug配置
+	1. 在Eclipse中新增RemoteDebug，设置项目csmcgui
+	2. 配置端口号8091
+	3. F5-进入该方法，F6-下一步，F7-跳出该方法
+	
+- 日期的保存
+	1. 数据库设置为Date型
+	2. Java代码中统一用Timestamp进行存放，存入数据库后的格式 yyyy-mm-dd hh24:mi:ss
+	3. 如果用java.sql.Date形式存放，则数据库格式为 yyyy-mm-dd
+	
+- 在线文档地址 http://docs.ofbiz.org/display/OFBADMIN/OFBiz+Documentation+Index
+- 在线API文档 http://www.langhua.cn/ofbiz-javadoc/overview-summary.html

@@ -1,0 +1,1109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE regions PUBLIC "-//OFBiz//DTD Regions Config//EN" "http://www.ofbiz.org/dtds/regions.dtd">
+<regions>
+    <define id='PMS_REGION' template='/templates/pms_template.jsp'>
+        <put section='title'>Application Page</put> <!-- this is a default and is meant to overridden -->
+        <put section='error' content='/includes/pms-errormsg.jsp'/>
+        <put section='content' content='/content.jsp'/> <!-- this is a default and is meant to overridden -->
+    </define>
+    <define id='MAIN_REGION' template='/templates/main_template.jsp'>
+        <put section='title'>Application Page</put> <!-- this is a default and is meant to overridden -->
+        <put section='error' content='/includes/errormsg.jsp'/>
+        <put section='content' content='/content.jsp'/> <!-- this is a default and is meant to overridden -->
+    </define>
+    <define id='SIMPLE_REGION' template='/templates/x_main_template.jsp'>
+        <put section='error' content='/includes/errormsg.jsp'/>
+    </define>
+
+    <!-- ====== Start PMS View Specific Regions ====== -->
+    <define id='login' region='SIMPLE_REGION'>
+        <put section='content' content='/login.jsp'/> <!-- this is a default and is meant to overridden -->
+    </define>
+
+    <define id='content' region='PMS_REGION'>
+        <put section='title'>Welcome to CSMC GUI System</put>
+        <put section='content' content='/content.jsp'/>
+    </define>
+    <define id='setupUserEntry' region='MAIN_REGION'>
+        <put section='title'>User Setup</put>
+        <put section='content' content='/sys/setupUserEntry.jsp'/>
+    </define>
+      <define id='viewUserInfo' region='MAIN_REGION'>
+        <put section='title'>User Infomation</put>
+        <put section='content' content='/sys/viewUserInfo.jsp'/>
+    </define>
+    <define id='queryUsers' region='MAIN_REGION'>
+        <put section='title'>用户设置</put>
+        <put section='content' content='/sys/listAllUser.jsp'/>
+    </define>
+    <define id='setupUserPriv' region='MAIN_REGION'>
+        <put section='title'>用户权限设置</put>
+        <put section='content' content='/sys/setupUserPriv.jsp'/>
+    </define>
+    <define id='setupGroupPriv' region='MAIN_REGION'>
+        <put section='title'>用户组权限信息</put>
+        <put section='content' content='/sys/setupGroupPriv.jsp'/>
+    </define>
+    <define id="changePwd" region="MAIN_REGION">
+		<put section="title" type="default">修改密码</put>
+		<put section="content" content="/sys/changePwd.jsp" type="default" />
+	</define>
+
+    <!-- (fileUpload) -->
+    <define id="fileUploadDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">文件上传下载</put>
+		<put section="content" content="/pms/common/fileUpload.jsp" type="default" />
+	</define>
+
+	<define id="pcStyleDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">设置巡检样式</put>
+		<put section="content" content="/pms/basic/pcStyleEntry.jsp" type="default" />
+	</define>
+
+	<define id="equipmentDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">设备基本资料</put>
+		<put section="content" content="/pms/basic/equipmentDefineEntry.jsp" type="default" />
+	</define>
+
+	<define id="equipmentDefine" region="PMS_REGION">
+		<put section="title" type="default">设备资料更改</put>
+		<put section="content" content="/pms/basic/equipmentDefine.jsp" type="default" />
+	</define>
+
+	<define id="reasonEntry" region="PMS_REGION">
+		<put section="title" type="default">异常/超时分类码设定</put>
+		<put section="content" content="/pms/basic/reasonAndOverTimeEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryEqpBasicInfoEntry" region="PMS_REGION">
+		<put section="title" type="default">查询机台基本资料</put>
+		<put section="content" content="/pms/report/queryEqpBasicInfoEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryEqpBasicInfo" region="PMS_REGION">
+		<put section="title" type="default">机台基本资料</put>
+		<put section="content" content="/pms/report/queryEqpBasicInfo.jsp" type="default" />
+	</define>
+
+	<define id="unscheduleParameterEntry" region="PMS_REGION">
+		<put section="title" type="default">不定期保养参数设定</put>
+		<put section="content" content="/pms/basic/unscheduleParameterEntry.jsp" type="default" />
+	</define>
+
+	<define id="equipmentVendorEntry" region="PMS_REGION">
+		<put section="title" type="default">清洗备件厂商</put>
+		<put section="content" content="/pms/basic/equipmentVendorEntry.jsp" type="default" />
+	</define>
+
+	<define id="equipmentBasicEntry" region="PMS_REGION">
+		<put section="title" type="default">设备型号维护</put>
+		<put section="content" content="/pms/basic/equipmentBasicEntry.jsp" type="default" />
+	</define>
+
+	<define id="eventCategoryDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">事件分类</put>
+		<put section="content" content="/pms/basic/eventCategory.jsp" type="default" />
+	</define>
+
+	<define id="eventSubCategoryDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">事件细项</put>
+		<put section="content" content="/pms/basic/eventSubCategory.jsp" type="default" />
+	</define>
+
+	<define id="equipmentParamDefine" region="PMS_REGION">
+		<put section="title" type="default">设备参数定义</put>
+		<put section="content" content="/pms/basic/equipmentParamDefine.jsp" type="default" />
+	</define>
+
+	<define id="recylePartsDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">recyleParts</put>
+		<put section="content" content="/pms/parts/recylePartsDefine.jsp" type="default" />
+	</define>
+
+	<define id="partsNoDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">partsNo查询</put>
+		<put section="content" content="/pms/parts/partsNoDefine.jsp" type="default" />
+	</define>
+
+	<!-- 线边仓 -->
+	<define id="pmPartsDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">保养物料设定</put>
+		<put section="content" content="/pms/parts/pmPartsEnactment.jsp" type="default" />
+	</define>
+	<define id="filterPartsDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">低价物料设定</put>
+		<put section="content" content="/pms/parts/filterPartsDefine.jsp" type="default" />
+	</define>
+
+	<define id="mcsStoMarginEntry" region="PMS_REGION">
+        <put section="title" type="default">保养物料设定</put>
+        <put section="content" content="/pms/parts/mcsStoMarginEntry.jsp" type="default" />
+    </define>
+
+    <define id="partsQueryEntry" region="PMS_REGION">
+        <put section="title" type="default">partsNo查询</put>
+        <put section="content" content="/pms/parts/partsInfoList.jsp" type="default" />
+    </define>
+
+    <define id="mcsStoQueryEntry" region="PMS_REGION">
+        <put section="title" type="default">线边仓库存余量查询</put>
+        <put section="content" content="/pms/report/mcsStoReport.jsp" type="default" />
+    </define>
+    <define id="pmPartsUsedQueryEntry" region="PMS_REGION">
+        <put section="title" type="default">PM用料明细查询</put>
+        <put section="content" content="/pms/report/pmPartsUsedReport.jsp" type="default" />
+    </define>
+    <define id="pmPartsUsedCostQueryEntry" region="PMS_REGION">
+        <put section="title" type="default">PM费用汇总查询</put>
+        <put section="content" content="/pms/report/pmPartsUsedCostReport.jsp" type="default" />
+    </define>
+    <!-- end 线边仓 -->
+
+	<define id="partsUserDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">机台用料查询</put>
+		<put section="content" content="/pms/report/cleanRecordReport.jsp" type="default" />
+	</define>
+
+	<define id="queryEqpAvailUpTime" region="PMS_REGION">
+		<put section="title" type="default">查询Available/UpTime Chart</put>
+		<put section="content" content="/pms/report/queryEqpAvailUpTime.jsp" type="default" />
+	</define>
+
+	<define id="showEqpAvailUpTimeChart" region="PMS_REGION">
+		<put section="title" type="default">Available/UpTime Chart</put>
+		<put section="content" content="/pms/report/showEqpAvailUpTimeChart.jsp" type="default" />
+	</define>
+
+	<define id="abnormalDocumentEntry" region="PMS_REGION">
+		<put section="title" type="default">查询异常报告书</put>
+		<put section="content" content="/pms/document/abnormalDocumentEntry.jsp" type="default" />
+	</define>
+
+	<define id="abnormalDocDefine" region="PMS_REGION">
+		<put section="title" type="default">填写异常报告书</put>
+		<put section="content" content="/pms/document/abnormalDocDefine.jsp" type="default" />
+	</define>
+		<define id="queryAbnormalDocument" region="PMS_REGION">
+		<put section="title" type="default">查询异常报告书</put>
+		<put section="content" content="/pms/document/queryAbnormalDocument.jsp" type="default" />
+	</define>
+
+	<define id="queryAbnormalDocDefine" region="PMS_REGION">
+		<put section="title" type="default">查询异常报告书明细</put>
+		<put section="content" content="/pms/document/queryAbnormalDocDefine.jsp" type="default" />
+	</define>
+
+	<define id="pmForecastPlan" region="PMS_REGION">
+		<put section="title" type="default">PM预测报表</put>
+		<put section="content" content="/pms/report/pmForecastPlan.jsp" type="default" />
+	</define>
+
+	<define id="pmForecastPlanByPeriod" region="PMS_REGION">
+		<put section="title" type="default">PM预测报表</put>
+		<put section="content" content="/pms/report/pmForecastPlanByPeriod.jsp" type="default" />
+	</define>
+
+	<define id="defaultPeriodDefine" region="PMS_REGION">
+		<put section="title" type="default">设备保养周期</put>
+		<put section="content" content="/pms/period/defaultPeriodDefine.jsp" type="default" />
+	</define>
+	<define id="equipmentScheduleDefine" region="PMS_REGION">
+		<put section="title" type="default">设定机台保养日期</put>
+		<put section="content" content="/pms/period/equipmentScheduleDefine.jsp" type="default" />
+	</define>
+
+	<define id="equipmentSchedule" region="PMS_REGION">
+		<put section="title" type="default">设定机台保养日期</put>
+		<put section="content" content="/pms/period/equipmentSchedule.jsp" type="default" />
+	</define>
+
+	<define id="pmPartsUseDiffDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">备件领料和使用差异查询</put>
+		<put section="content" content="/pms/report/drawMateDifferentiaReport.jsp" type="default" />
+	</define>
+
+	<define id="partsInfoDiffDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">备件使用信息</put>
+		<put section="content" content="/pms/report/partInfoReport.jsp" type="default" />
+	</define>
+
+	<define id="pcPeriodDefine" region="PMS_REGION">
+		<put section="title" type="default">巡检保养周期</put>
+		<put section="content" content="/pms/period/pcPeriodDefine.jsp" type="default" />
+	</define>
+
+	<define id="pcScheduleDefine" region="PMS_REGION">
+		<put section="title" type="default">设定巡检日期</put>
+		<put section="content" content="/pms/period/pcScheduleDefine.jsp" type="default" />
+	</define>
+
+	<define id="pcSchedule" region="PMS_REGION">
+		<put section="title" type="default">设定巡检日期初始</put>
+		<put section="content" content="/pms/period/pcSchedule.jsp" type="default" />
+	</define>
+
+	<define id="followJobDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">问题追踪列表</put>
+		<put section="content" content="/pms/qufollow/quFollowJobList.jsp" type="default" />
+	</define>
+
+	<define id="addQuFollowDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">新增问题追踪</put>
+		<put section="content" content="/pms/qufollow/quFollowJobAdd.jsp" type="default" />
+	</define>
+
+	<define id="addQuFolloItemwDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">管理问题追踪步骤</put>
+		<put section="content" content="/pms/qufollow/quFollowJobItemAdd.jsp" type="default" />
+	</define>
+
+	<define id="editQuFolloDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">修改问题追踪</put>
+		<put section="content" content="/pms/qufollow/quFollowJobEdit.jsp" type="default" />
+	</define>
+
+	<define id="queryPmScheduleEntry" region="PMS_REGION">
+		<put section="title" type="default">查询机台保养日期</put>
+		<put section="content" content="/pms/report/queryPmScheduleEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryPmSchedule" region="PMS_REGION">
+		<put section="title" type="default">查询机台保养日期</put>
+		<put section="content" content="/pms/report/queryPmSchedule.jsp" type="default" />
+	</define>
+
+	<define id="queryPcScheduleEntry" region="PMS_REGION">
+		<put section="title" type="default">查询巡检日期</put>
+		<put section="content" content="/pms/report/queryPcScheduleEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryPcSchedule" region="PMS_REGION">
+		<put section="title" type="default">查询巡检日期</put>
+		<put section="content" content="/pms/report/queryPcSchedule.jsp" type="default" />
+	</define>
+
+	<define id="yearPeriodSchedule" region="PMS_REGION">
+		<put section="title" type="default">年度PM计划生成</put>
+		<put section="content" content="/pms/period/yearPeriodSchedule.jsp" type="default" />
+	</define>
+
+	<define id="equipmentScheduleClear" region="PMS_REGION">
+		<put section="title" type="default">PM计划删除</put>
+		<put section="content" content="/pms/period/equipmentScheduleClear.jsp" type="default" />
+	</define>
+
+	<define id="overFollowJobDefine" region="PMS_REGION">
+		<put section="title" type="default">已结案问题追踪表查询</put>
+		<put section="content" content="/pms/qufollow/overCaseFollowJobList.jsp" type="default" />
+	</define>
+
+	<define id="overFollowJobDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">已结案问题追踪步骤表</put>
+		<put section="content" content="/pms/qufollow/overCaseFollowJobItemList.jsp" type="default" />
+	</define>
+
+	<define id="setupPcFormEntry" region="PMS_REGION">
+		<put section="title" type="default">建立/填写巡检表单</put>
+		<put section="content" content="/pms/form/pc/setupPcFormEntry.jsp" type="default" />
+	</define>
+
+     <define id="inputPcFormEntry" region="PMS_REGION">
+		<put section="title" type="default">填写巡检表单</put>
+		<put section="content" content="/pms/form/pc/inputPcFormEntry.jsp" type="default" />
+	</define>
+
+	<define id="newInputPcFormEntry" region="PMS_REGION">
+		<put section="title" type="default">巡检表单查询</put>
+		<put section="content" content="/pms/form/pc/newInputPcFormEntry.jsp" type="default" />
+	</define>
+
+	<define id="tsInfoListEntry" region="PMS_REGION">
+		<put section="title" type="default">异常记录查询</put>
+		<put section="content" content="/pms/form/ts/tsRecordList.jsp" type="default" />
+	</define>
+
+	<define id="tsFormAddEntry" region="PMS_REGION">
+		<put section="title" type="default">建立异常记录表单</put>
+		<put section="content" content="/pms/form/ts/tsFormAdd.jsp"  type="default" />
+	</define>
+
+	<define id="patchTsFormEntry" region="PMS_REGION">
+		<put section="title" type="default">建立异常表单补填作业</put>
+		<put section="content" content="/pms/form/ts/tsFormPatchAdd.jsp"  type="default" />
+	</define>
+
+	<define id="equipmentParamEnter" region="PMS_REGION">
+		<put section="title" type="default">机台参数输入</put>
+		<put section="content" content="/pms/form/pm/equipmentParamEnter.jsp" type="default" />
+	</define>
+
+	<define id="queryEqpParamHist" region="PMS_REGION">
+		<put section="title" type="default">机台参数表</put>
+		<put section="content" content="/pms/report/queryEqpParamHist.jsp"  type="default" />
+	</define>
+
+	<define id="showEqpParamChart" region="PMS_REGION">
+		<put section="title" type="default">机台参数图</put>
+		<put section="content" content="/pms/report/showEqpParamChart.jsp"  type="default" />
+	</define>
+
+	<define id="abnormalFormList" region="PMS_REGION">
+		<put section="title" type="default">异常表单查询</put>
+		<put section="content" content="/pms/form/ts/abnormalFormList.jsp"  type="default" />
+	</define>
+
+	<define id="abnormalFormManage" region="PMS_REGION">
+		<put section="title" type="default">填写异常表单</put>
+		<put section="content" content="/pms/form/ts/abnormalFormManage.jsp"  type="default" />
+	</define>
+
+	<define id="showPmParamAnalysisChartEntry" region="PMS_REGION">
+		<put section="title" type="default">查询机台保养纪录参数分析图</put>
+		<put section="content" content="/pms/report/showPmParamAnalysisChartEntry.jsp" type="default" />
+	</define>
+
+	<define id="showPmParamAnalysisChart" region="PMS_REGION">
+		<put section="title" type="default">机台保养纪录参数分析图</put>
+		<put section="content" content="/pms/report/showPmParamAnalysisChart.jsp" type="default" />
+	</define>
+
+	<define id="showMsaPmEntry" region="PMS_REGION">
+        <put section="title" type="default">查询MSA机台保养纪录</put>
+        <put section="content" content="/pms/report/showMsaPmEntry.jsp" type="default" />
+    </define>
+
+    <define id="showMsaPm" region="PMS_REGION">
+        <put section="title" type="default">MSA机台保养纪录</put>
+        <put section="content" content="/pms/report/showMsaPm.jsp" type="default" />
+    </define>
+
+	<define id="abnormalFormPartsQueryEntry" region="PMS_REGION">
+		<put section="title" type="default">PARTS查询</put>
+		<put section="content" content="/pms/form/ts/partsInfoList.jsp" type="default" />
+	</define>
+
+	<define id="improveDocumentEntry" region="PMS_REGION">
+		<put section="title" type="default">改善类报告书</put>
+		<put section="content" content="/pms/document/improveDocumentEntry.jsp" type="default" />
+	</define>
+
+	<define id="improveDocDefine" region="PMS_REGION">
+		<put section="title" type="default">改善类报告书明细</put>
+		<put section="content" content="/pms/document/improveDocDefine.jsp" type="default" />
+	</define>
+
+	<define id="queryImproveDocument" region="PMS_REGION">
+		<put section="title" type="default">改善类报告书</put>
+		<put section="content" content="/pms/document/queryImproveDocument.jsp" type="default" />
+	</define>
+
+	<define id="queryImproveDocDefine" region="PMS_REGION">
+		<put section="title" type="default">改善类报告书</put>
+		<put section="content" content="/pms/document/queryImproveDocDefine.jsp" type="default" />
+	</define>
+
+	<define id="queryImproveDocDefine" region="PMS_REGION">
+		<put section="title" type="default">改善类报告书明细</put>
+		<put section="content" content="/pms/document/queryImproveDocDefine.jsp" type="default" />
+	</define>
+
+	<define id="queryShowPmChart" region="PMS_REGION">
+		<put section="title" type="default">保养表单超规范数据查询</put>
+		<put section="content" content="/pms/document/queryShowPmChart.jsp" type="default" />
+	</define>
+
+	<define id="flowActionEntry" region="PMS_REGION">
+		<put section="title" type="default">基本动作查询</put>
+		<put section="content" content="/pms/workflow/flowActionEntry.jsp" type="default" />
+	</define>
+
+	<define id="flowActionDefine" region="PMS_REGION">
+		<put section="title" type="default">基本动作设定</put>
+		<put section="content" content="/pms/workflow/flowActionDefine.jsp" type="default" />
+	</define>
+
+	<define id="flowEntry" region="PMS_REGION">
+		<put section="title" type="default">处理程序查询</put>
+		<put section="content" content="/pms/workflow/flowDefineEntry.jsp" type="default" />
+	</define>
+
+	<define id="flowDefine" region="PMS_REGION">
+		<put section="title" type="default">处理程序设定</put>
+		<put section="content" content="/pms/workflow/flowDefine.jsp" type="default" />
+	</define>
+
+	<define id="flowStart" region="PMS_REGION">
+		<put section="title" type="default">启动处理程序</put>
+		<put section="content" content="/pms/workflow/flowStart.jsp" type="default" />
+	</define>
+
+	<define id="flowProcess" region="PMS_REGION">
+		<put section="title" type="default">执行处理程序</put>
+		<put section="content" content="/pms/workflow/flowProcess.jsp" type="default" />
+	</define>
+
+	<define id="abnormalFormStart" region="PMS_REGION">
+		<put section="title" type="default">开始异常表单</put>
+		<put section="content" content="/pms/form/ts/abnormalFormStart.jsp" type="default" />
+	</define>
+
+	<define id="pmRecordList" region="PMS_REGION">
+		<put section="title" type="default">建立保养表单</put>
+		<put section="content" content="/pms/form/pm/pmRecordList.jsp"  type="default" />
+	</define>
+
+	<define id="pmFormAdd" region="PMS_REGION">
+		<put section="title" type="default">保养表单的建立</put>
+		<put section="content" content="/pms/form/pm/pmFormAdd.jsp"  type="default" />
+	</define>
+
+	<define id="pmFormPatchAdd" region="PMS_REGION">
+		<put section="title" type="default">保养补填表单的建立</put>
+		<put section="content" content="/pms/form/pm/pmFormPatchAdd.jsp"  type="default" />
+	</define>
+
+	<define id="subPmForm" region="PMS_REGION">
+		<put section="title" type="default">保养补填子设备表单的建立</put>
+		<put section="content" content="/pms/form/pm/subPmForm.jsp"  type="default" />
+	</define>
+
+	<define id="queryOverAbnormalForm" region="PMS_REGION">
+		<put section="title" type="default">已完成的异常表单查询</put>
+		<put section="content" content="/pms/form/ts/abnormalFormQueryList.jsp" type="default" />
+	</define>
+
+	<define id="newQueryOverAbnormalForm" region="PMS_REGION">
+		<put section="title" type="default">已完成的异常表单查询</put>
+		<put section="content" content="/pms/form/ts/newAbnormalFormQueryList.jsp" type="default" />
+	</define>
+
+	<define id="viewOverAbnormalForm" region="PMS_REGION">
+		<put section="title" type="default">查看异常表单</put>
+		<put section="content" content="/pms/form/ts/abnormalFormView.jsp" type="default" />
+	</define>
+
+	<define id="DefaultStartAbnormalForm" region="PMS_REGION">
+		<put section="title" type="default">未完成异常表单</put>
+		<put section="content" content="/pms/form/ts/DefaultStartAbnormalForm.jsp" type="default" />
+	</define>
+
+	<define id="newViewOverAbnormalForm" region="PMS_REGION">
+		<put section="title" type="default">查看异常表单</put>
+		<put section="content" content="/pms/form/ts/newAbnormalFormView.jsp" type="default" />
+	</define>
+
+	<define id="addQuFollowByFormDefineEntry" region="PMS_REGION">
+		<put section="title" type="default">新增问题追踪</put>
+		<put section="content" content="/pms/qufollow/quFollowJobAddByForm.jsp" type="default" />
+	</define>
+
+	<define id="queryNotEndDocument" region="PMS_REGION">
+		<put section="title" type="default">未填数据查询</put>
+		<put section="content" content="/pms/document/queryNotEndDocument.jsp" type="default" />
+	</define>
+
+	<define id="enterPmRecord" region="PMS_REGION">
+		<put section="title" type="default">保养表单填写</put>
+		<put section="content" content="/pms/form/pm/enterPmRecord.jsp"  type="default" />
+	</define>
+
+	<define id="startPmRecord" region="PMS_REGION">
+		<put section="title" type="default">保养表单开始画面</put>
+		<put section="content" content="/pms/form/pm/pmRecordStart.jsp"  type="default" />
+	</define>
+
+	<define id="managePmRecord" region="PMS_REGION">
+		<put section="title" type="default">保养表单填写画面</put>
+		<put section="content" content="/pms/form/pm/pmRecordManage.jsp"  type="default" />
+	</define>
+
+	<define id="pmFormPartsQueryEntry" region="PMS_REGION">
+		<put section="title" type="default">PART选择画面</put>
+		<put section="content" content="/pms/form/pm/partsInfoList.jsp"  type="default" />
+	</define>
+
+	<define id="flowLeadCheck" region="PMS_REGION">
+		<put section="title" type="default">主管签核</put>
+		<put section="content" content="/pms/workflow/flowLeadCheck.jsp" type="default" />
+	</define>
+
+	<define id="flowIssueInfo" region="PMS_REGION">
+		<put section="title" type="default">申请人查询送签信息</put>
+		<put section="content" content="/pms/workflow/flowIssueInfo.jsp" type="default" />
+	</define>
+
+	<define id="flowDataView" region="PMS_REGION">
+		<put section="title" type="default">查看流程数据</put>
+		<put section="content" content="/pms/workflow/flowDataView.jsp" type="default" />
+	</define>
+
+	<define id="flowDataEdit" region="PMS_REGION">
+		<put section="title" type="default">修改流程数据</put>
+		<put section="content" content="/pms/workflow/flowDataEdit.jsp" type="default" />
+	</define>
+
+	<define id="sendSubmitResult" region="PMS_REGION">
+		<put section="title" type="default">送签结果</put>
+		<put section="content" content="/pms/workflow/sendSubmitResult.jsp" type="default" />
+	</define>
+
+	<define id="showPmFormChartEntry" region="PMS_REGION">
+		<put section="title" type="default">设备保养用时查询</put>
+		<put section="content" content="/pms/report/showPmFormChartEntry.jsp" type="default" />
+	</define>
+
+	<define id="showPmFormChart" region="PMS_REGION">
+		<put section="title" type="default">设备保养用时分析图</put>
+		<put section="content" content="/pms/report/showPmFormChart.jsp" type="default" />
+	</define>
+
+	<define id="showAbnormalFormChartEntry" region="PMS_REGION">
+		<put section="title" type="default">设备异常用时查询</put>
+		<put section="content" content="/pms/report/showAbnormalFormChartEntry.jsp" type="default" />
+	</define>
+
+	<define id="showAbnormalFormChart" region="PMS_REGION">
+		<put section="title" type="default">设备异常用时分析图</put>
+		<put section="content" content="/pms/report/showAbnormalFormChart.jsp" type="default" />
+	</define>
+
+	<define id="queryPcFormEntry" region="PMS_REGION">
+		<put section="title" type="default">查询巡检表单</put>
+		<put section="content" content="/pms/form/pc/queryPcFormEntry.jsp" type="default" />
+	</define>
+
+	<define id="newQueryPcFormEntry" region="PMS_REGION">
+		<put section="title" type="default">巡检表单查询</put>
+		<put section="content" content="/pms/form/pc/newQueryPcFormEntry.jsp" type="default" />
+	</define>
+
+	<define id="pmsDefault" region="PMS_REGION">
+		<put section="title" type="default">首页</put>
+		<put section="content" content="/pms/report/pmsDefault.jsp" type="default" />
+	</define>
+
+	<define id="abnormalChartEntry" region="PMS_REGION">
+		<put section="title" type="default">异常分析统计报表</put>
+		<put section="content" content="/pms/report/abnormalChartEntry.jsp" type="default" />
+	</define>
+
+	<define id="showPmEventChartEntry" region="PMS_REGION">
+		<put section="title" type="default">查询机台保养事件分析图</put>
+		<put section="content" content="/pms/report/showPmEventChartEntry.jsp" type="default" />
+	</define>
+
+	<define id="showPmEventChart" region="PMS_REGION">
+		<put section="title" type="default">机台保养事件分析图-总图</put>
+		<put section="content" content="/pms/report/showPmEventChart.jsp" type="default" />
+	</define>
+
+	<define id="showPmEventEqpChart" region="PMS_REGION">
+		<put section="title" type="default">机台保养事件分析图</put>
+		<put section="content" content="/pms/report/showPmEventEqpChart.jsp" type="default" />
+	</define>
+
+	<define id="showPmEventEqpDetail" region="PMS_REGION">
+		<put section="title" type="default">保养事件分析图机台细项</put>
+		<put section="content" content="/pms/report/showPmEventEqpDetail.jsp" type="default" />
+	</define>
+
+	<define id="smallPmDelete" region="PMS_REGION">
+		<put section="title" type="default">PM小保养的删除</put>
+		<put section="content" content="/pms/form/pm/smallPmDelete.jsp" type="default" />
+	</define>
+
+	<define id="subSmallPmFormDelete" region="PMS_REGION">
+		<put section="title" type="default">PM子设备小保养的删除</put>
+		<put section="content" content="/pms/form/pm/subSmallPmFormDelete.jsp" type="default" />
+	</define>
+
+	<define id="pmsDefaultSub" region="PMS_REGION">
+		<put section="title" type="default">保养查询</put>
+		<put section="content" content="/pms/report/pmsDefaultSub.jsp" type="default" />
+	</define>
+
+	<define id="abnormalChartTable" region="PMS_REGION">
+		<put section="title" type="default">异常分析统计报表</put>
+		<put section="content" content="/pms/report/abnormalChartTable.jsp" type="default" />
+	</define>
+
+	<define id="abnormalChartShow" region="PMS_REGION">
+		<put section="title" type="default">异常分析统计报表</put>
+		<put section="content" content="/pms/report/abnormalChartShow.jsp" type="default" />
+	</define>
+
+	<define id="queryOverPmForm" region="PMS_REGION">
+		<put section="title" type="default">已完成的保养表单查询</put>
+		<put section="content" content="/pms/form/pm/pmFormQueryList.jsp" type="default" />
+	</define>
+
+	<define id="newQueryOverPmForm" region="PMS_REGION">
+		<put section="title" type="default">已完成的保养表单查询</put>
+		<put section="content" content="/pms/form/pm/newPmFormQueryList.jsp" type="default" />
+	</define>
+
+	<define id="newQueryDailyOverPmForm" region="PMS_REGION">
+		<put section="title" type="default">每日检查表查询</put>
+		<put section="content" content="/pms/form/pm/newDailyPmFormQueryList.jsp" type="default" />
+	</define>
+
+	<define id="viewOverPmForm" region="PMS_REGION">
+		<put section="title" type="default">已完成保养表单</put>
+		<put section="content" content="/pms/form/pm/pmFormView.jsp" type="default" />
+	</define>
+
+	<define id="newViewOverPmForm" region="PMS_REGION">
+		<put section="title" type="default">已完成保养表单</put>
+		<put section="content" content="/pms/form/pm/newPmFormView.jsp" type="default" />
+	</define>
+
+	<define id="equiList" region="PMS_REGION">
+		<put section="title" type="default">设备查询</put>
+		<put section="content" content="/pms/basic/equiList.jsp" type="default" />
+	</define>
+
+	<define id="queryLeadCheckNo" region="PMS_REGION">
+		<put section="title" type="default">问题追踪查询</put>
+		<put section="content" content="/pms/workflow/queryLeadCheckNo.jsp" type="default" />
+	</define>
+
+	<define id="flowStructureView" region="PMS_REGION">
+		<put section="title" type="default">查看流程明细</put>
+		<put section="content" content="/pms/workflow/flowStructureShow.jsp" type="default" />
+	</define>
+
+	<define id="flowActionItemApplyView" region="PMS_REGION">
+		<put section="title" type="default">查看动作项目明细</put>
+		<put section="content" content="/pms/workflow/flowActionItemApplyView.jsp" type="default" />
+	</define>
+
+	<define id="histFlowDefine" region="PMS_REGION">
+		<put section="title" type="default">查看历史流程</put>
+		<put section="content" content="/pms/workflow/histFlowDefine.jsp" type="default" />
+	</define>
+
+	<define id="eventList" region="PMS_REGION">
+		<put section="title" type="default">事件List</put>
+		<put section="content" content="/pms/report/eventList.jsp" type="default" />
+	</define>
+
+	<define id="flowDataEdit" region="PMS_REGION">
+		<put section="title" type="default">修改流程数据</put>
+		<put section="content" content="/pms/workflow/flowDataEdit.jsp" type="default" />
+	</define>
+
+	<define id="showFlowAction" region="PMS_REGION">
+		<put section="title" type="default">显示流程动作</put>
+		<put section="content" content="/pms/workflow/flowActionShow.jsp" type="default" />
+	</define>
+
+	<define id="unscheduleEqpParamManage" region="PMS_REGION">
+		<put section="title" type="default">手动输入值列表</put>
+		<put section="content" content="/pms/form/pm/pmFormStartModifyParm.jsp" type="default" />
+	</define>
+
+	<define id="queryUndoPmformlist" region="PMS_REGION">
+		<put section="title" type="default">查询未结束保养表单</put>
+		<put section="content" content="/pms/form/pm/queryUndoPmlist.jsp" type="default" />
+	</define>
+
+	<define id="queryUndoTsformlist" region="PMS_REGION">
+		<put section="title" type="default">查询未结束异常表单</put>
+		<put section="content" content="/pms/form/ts/queryUndoTslist.jsp" type="default" />
+	</define>
+
+	<define id="editPmFormByLeader" region="PMS_REGION">
+		<put section="title" type="default">修改保养表单</put>
+		<put section="content" content="/pms/form/pm/editPmFormByLeader.jsp" type="default" />
+	</define>
+
+	<define id="editTsFormByLeader" region="PMS_REGION">
+		<put section="title" type="default">修改异常表单</put>
+		<put section="content" content="/pms/form/ts/editTsFormByLeader.jsp" type="default" />
+	</define>
+
+	<define id="selectTsUnPmEntry" region="PMS_REGION">
+		<put section="title" type="default">异常期间未作保养</put>
+		<put section="content" content="/pms/form/ts/selectTsUnPmEntry.jsp" type="default" />
+	</define>
+    <!-- end pms project management regions -->
+
+
+	<!-- ====== Start MCS View Specific Regions ====== -->
+
+	<!-- ************************* Module Basic ************************* -->
+
+    <define id="defineMaterialEntry" region="PMS_REGION">
+		<put section="title" type="default">物料信息设定</put>
+		<put section="content" content="/mcs/basic/defineMaterialEntry.jsp"  type="default" />
+	</define>
+
+    <define id="defineMaterial" region="PMS_REGION">
+		<put section="title" type="default">物料信息维护</put>
+		<put section="content" content="/mcs/basic/defineMaterial.jsp"  type="default" />
+	</define>
+
+	<define id="getSapMtrNum" region="PMS_REGION">
+	    <put section="title" type="default">料号选择</put>
+	    <put section="content" content="/mcs/basic/defineGetSapMtrNum.jsp" type="default" />
+	</define>
+
+	<define id="getMtrObject" region="PMS_REGION">
+	    <put section="title" type="default">物料信息维护</put>
+	    <put section="content" content="/mcs/basic/defineGetMtrObject.jsp" type="default" />
+	</define>
+
+
+  	<define id="defineSuitMaterialEntry" region="PMS_REGION">
+		<put section="title" type="default">套件设定</put>
+		<put section="content" content="/mcs/basic/defineSuitMaterialEntry.jsp"  type="default" />
+	</define>
+
+    <define id="defineSuitMaterial" region="PMS_REGION">
+		<put section="title" type="default">套件料号设定</put>
+		<put section="content" content="/mcs/basic/defineSuitMaterial.jsp"  type="default" />
+	</define>
+
+    <define id="defineVendorMaterialEntry" region="PMS_REGION">
+		<put section="title" type="default">厂商料号设定</put>
+		<put section="content" content="/mcs/basic/defineVendorMaterialEntry.jsp"  type="default" />
+	</define>
+
+    <!-- ************************* Module Cabinet ************************* -->
+    <define id="intoCabinetQtyEntry" region="PMS_REGION">
+		<put section="title" type="default">领料暂存(按数量)</put>
+		<put section="content" content="/mcs/cabinet/intoCabinetQtyEntry.jsp" type="default" />
+	</define>
+
+	<define id="intoCabinetBarcodeEntry" region="PMS_REGION">
+		<put section="title" type="default">领料暂存(按BarCode)</put>
+		<put section="content" content="/mcs/cabinet/intoCabinetBarCodeEntry.jsp" type="default" />
+	</define>
+
+	<define id="inputBarcodeEntry" region="PMS_REGION">
+		<put section="title" type="default">录入条码</put>
+		<put section="content" content="/mcs/cabinet/inputBarcodeEntry.jsp" type="default" />
+	</define>
+
+	<define id="inputBarcodeErrorEntry" region="PMS_REGION">
+		<put section="title" type="default">修改重名条码</put>
+		<put section="content" content="/mcs/cabinet/inputBarcodeErrorEntry.jsp" type="default" />
+	</define>
+
+	<define id="frozenOrUnfrozenEntry" region="PMS_REGION">
+		<put section="title" type="default">放回冰箱/重新恒温</put>
+		<put section="content" content="/mcs/cabinet/frozenOrUnfrozenEntry.jsp" type="default" />
+	</define>
+
+	<define id="modifyVendorInfoEntry" region="PMS_REGION">
+		<put section="title" type="default">库房发货数据修改</put>
+		<put section="content" content="/mcs/cabinet/modifyVendorInfoEntry.jsp" type="default" />
+	</define>
+
+    <define id="cancelVendorInfoEntry" region="PMS_REGION">
+        <put section="title" type="default">库房发货撤销</put>
+        <put section="content" content="/mcs/cabinet/cancelVendorInfoEntry.jsp" type="default" />
+    </define>
+
+    <define id="modifyCabinetMaterialEntry" region="PMS_REGION">
+        <put section="title" type="default">修改暂存物料</put>
+        <put section="content" content="/mcs/cabinet/modifyCabinetMaterialEntry.jsp" type="default" />
+    </define>
+
+    <define id="queryPhotoResistPickupEntry" region="PMS_REGION">
+        <put section="title" type="default">光刻胶领用查询</put>
+        <put section="content" content="/mcs/cabinet/queryPhotoResistPickupEntry.jsp" type="default" />
+    </define>
+
+    <define id="modifyStoReqEntry" region="PMS_REGION">
+        <put section="title" type="default">线边仓数量盘点</put>
+        <put section="content" content="/mcs/cabinet/modifyStoReqEntry.jsp" type="default" />
+    </define>
+
+    <define id="useSparePartEntry" region="PMS_REGION">
+        <put section="title" type="default">更换备耗件</put>
+        <put section="content" content="/mcs/cabinet/useSparePartEntry.jsp" type="default" />
+    </define>
+
+
+    <!-- ************************* Module Use ************************* -->
+    <define id="cabinetBackStockEntry" region="PMS_REGION">
+		<put section="title" type="default">暂存退库</put>
+		<put section="content" content="/mcs/use/cabinetBackStockEntry.jsp" type="default" />
+	</define>
+
+	<define id="cabinetBackStockBarcodeEntry" region="PMS_REGION">
+		<put section="title" type="default">暂存退库(BARCODE)</put>
+		<put section="content" content="/mcs/use/cabinetBackStockBarcodeEntry.jsp" type="default" />
+	</define>
+
+    <define id="useMaterialByIdEntry" region="PMS_REGION">
+		<put section="title" type="default">按片号使用</put>
+		<put section="content" content="/mcs/use/useMaterialByIdEntry.jsp" type="default" />
+	</define>
+
+    <define id="useMaterialByQtyEntry" region="PMS_REGION">
+		<put section="title" type="default">按数量使用</put>
+		<put section="content" content="/mcs/use/useMaterialByQtyEntry.jsp" type="default" />
+	</define>
+
+	<define id="useMaterialBySuitEntry" region="PMS_REGION">
+		<put section="title" type="default">按套件使用</put>
+		<put section="content" content="/mcs/use/useMaterialBySuitEntry.jsp" type="default" />
+	</define>
+
+	<define id="useMaterialByBarcodeEntry" region="PMS_REGION">
+		<put section="title" type="default">按Barcode使用</put>
+		<put section="content" content="/mcs/use/useMaterialByBarcodeEntry.jsp" type="default" />
+	</define>
+
+    <define id="fabRepairEntry" region="PMS_REGION">
+		<put section="title" type="default">维修与清洗 管理</put>
+		<put section="content" content="/mcs/use/fabRepairEntry.jsp" type="default" />
+	</define>
+
+	<define id="supplementaryCompleteEntry" region="PMS_REGION">
+		<put section="title" type="default">补填石英历史使用</put>
+		<put section="content" content="/mcs/use/supplementaryCompleteEntry.jsp"  type="default" />
+	</define>
+
+
+    <!-- ************************* Module Ship ************************* -->
+    <define id="leadConfirmEntry" region="PMS_REGION">
+		<put section="title" type="default">报废与出厂维修课长确认 </put>
+		<put section="content" content="/mcs/ship/leadConfirmEntry.jsp" type="default" />
+	</define>
+
+	<define id="shipConfirmEntry" region="PMS_REGION">
+		<put section="title" type="default">入库报废仓库确认 </put>
+		<put section="content" content="/mcs/ship/shipConfirmEntry.jsp" type="default" />
+	</define>
+
+
+    <!-- ************************* Module Expiration Date ************************* -->
+	<define id="expirationDateEntry" region="PMS_REGION">
+		<put section="title" type="default">有效期管理 </put>
+		<put section="content" content="/mcs/expiration/expirationDateEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryOverExpirationEntry" region="PMS_REGION">
+		<put section="title" type="default">超有效期查询 </put>
+		<put section="content" content="/mcs/expiration/queryOverExpirationEntry.jsp" type="default" />
+	</define>
+
+    <!-- ************************* Module Report ************************* -->
+    <define id="queryMaterialEntry" region="PMS_REGION">
+		<put section="title" type="default">物料基本资料查询</put>
+		<put section="content" content="/mcs/report/queryMaterialEntry.jsp" type="default" />
+	</define>
+
+	<define id="keyPartDelayHist" region="PMS_REGION">
+		<put section="title" type="default">关键备件超期使用报表</put>
+		<put section="content" content="/pms/report/partsUseDelayHist.jsp" type="default" />
+	</define>
+
+    <define id="queryMaterial" region="PMS_REGION">
+		<put section="title" type="default">物料基本资料详细信息</put>
+		<put section="content" content="/mcs/report/queryMaterial.jsp" type="default" />
+	</define>
+
+    <define id="queryMaterialStatusBoardEntry" region="PMS_REGION">
+		<put section="title" type="default">物料状态汇总</put>
+		<put section="content" content="/mcs/report/queryMaterialStatusBoardEntry.jsp" type="default" />
+	</define>
+
+    <define id="queryMaterialStatusDetail" region="PMS_REGION">
+		<put section="title" type="default">物料状态汇总 详细信息</put>
+		<put section="content" content="/mcs/report/queryMaterialStatusDetail.jsp" type="default" />
+	</define>
+
+    <define id="queryMaterialStatusHist" region="PMS_REGION">
+		<put section="title" type="default">物料状态汇总 历史信息</put>
+		<put section="content" content="/mcs/report/queryMaterialStatusHist.jsp" type="default" />
+	</define>
+
+    <define id="queryStoReqEntry" region="PMS_REGION">
+		<put section="title" type="default">领料单查询</put>
+		<put section="content" content="/mcs/report/queryStoReqEntry.jsp" type="default" />
+	</define>
+
+    <define id="querySuitMaterialEntry" region="PMS_REGION">
+		<put section="title" type="default">套件查询</put>
+		<put section="content" content="/mcs/report/querySuitMaterialEntry.jsp" type="default" />
+	</define>
+
+    <define id="querySuitMaterial" region="PMS_REGION">
+		<put section="title" type="default">套件料号查询</put>
+		<put section="content" content="/mcs/report/querySuitMaterial.jsp" type="default" />
+	</define>
+
+	<define id="queryVendorMaterialEntry" region="PMS_REGION">
+		<put section="title" type="default">厂商料号查询</put>
+		<put section="content" content="/mcs/report/queryVendorMaterialEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryUsingHistoryByEqptEntry" region="PMS_REGION">
+		<put section="title" type="default">按设备查询历史使用</put>
+		<put section="content" content="/mcs/report/queryUsingHistoryByEqptEntry.jsp" type="default" />
+	</define>
+
+	<define id="materialTraceEntry" region="PMS_REGION">
+		<put section="title" type="default">物料追踪</put>
+		<put section="content" content="/mcs/report/materialTraceEntry.jsp" type="default" />
+	</define>
+
+	<define id="materialQuaterAnalysisEntry" region="PMS_REGION">
+		<put section="title" type="default">季度异常用量分析</put>
+		<put section="content" content="/mcs/report/materialQuaterAnalysisEntry.jsp" type="default" />
+	</define>
+
+	<define id="materialQuaterAnalysisUsing" region="PMS_REGION">
+		<put section="title" type="default">季度异常用量分析 实际用量明细</put>
+		<put section="content" content="/mcs/report/materialQuaterAnalysisUsing.jsp" type="default" />
+	</define>
+
+	<define id="queryEqpMaterialPriceEntry" region="PMS_REGION">
+		<put section="title" type="default">设备使用金额汇总</put>
+		<put section="content" content="/mcs/report/queryEqpMaterialPriceEntry.jsp" type="default" />
+	</define>
+
+    <define id="queryEqpMaterialPrice" region="PMS_REGION">
+		<put section="title" type="default">设备使用金额汇总 详细信息</put>
+		<put section="content" content="/mcs/report/queryEqpMaterialPrice.jsp" type="default" />
+	</define>
+
+	<define id="queryHaojianLingMaterialPriceEntry" region="PMS_REGION">
+		<put section="title" type="default">备耗件领用金额汇总</put>
+		<put section="content" content="/mcs/report/queryHaojianLingMaterialPriceEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryHaojianUseMaterialPriceEntry" region="PMS_REGION">
+		<put section="title" type="default">备耗件使用金额汇总</put>
+		<put section="content" content="/mcs/report/queryHaojianUseMaterialPriceEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryHaojianUseDetailPriceEntry" region="PMS_REGION">
+		<put section="title" type="default">备耗件使用金额明细</put>
+		<put section="content" content="/mcs/report/queryHaojianUseDetailPriceEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryStoCabinetEntry" region="PMS_REGION">
+		<put section="title" type="default">线边仓查询</put>
+		<put section="content" content="/mcs/report/queryStoCabinetEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryUsePeriodEntry" region="PMS_REGION">
+		<put section="title" type="default">备件寿命查询</put>
+		<put section="content" content="/mcs/report/queryUsePeriodEntry.jsp" type="default" />
+	</define>
+
+	<define id="querySpecialUsableTimeEntry" region="PMS_REGION">
+		<put section="title" type="default">特殊寿命规范查询</put>
+		<put section="content" content="/mcs/report/querySpecialUsableTimeEntry.jsp" type="default" />
+	</define>
+
+	<define id="queryRepairWashEntry" region="PMS_REGION">
+		<put section="title" type="default">维修与清洗查询</put>
+		<put section="content" content="/mcs/report/queryRepairWashEntry.jsp" type="default" />
+	</define>
+
+	<!-- End MCS View Specific Regions -->
+
+	<define id="keyPartsMaintain" region="PMS_REGION">
+		<put section="title" type="default">关键备件维护</put>
+		<put section="content" content="/pms/basic/keyPartsMaintain.jsp" type="default" />
+	</define>  
+	
+	<define id="keyPartsUnuse" region="PMS_REGION">
+		<put section="title" type="default">关键备件下机维护</put>
+		<put section="content" content="/pms/basic/keyPartsUnuse.jsp" type="default" />
+	</define>  
+	
+	<define id="keyPartsUsedQueryEntry" region="PMS_REGION">
+		<put section="title" type="default">关键备件使用查询</put>
+		<put section="content" content="/pms/report/keyPartUseQueryReport.jsp" type="default" />
+	</define>
+	
+	<define id="keyPartsEqpQueryEntry" region="PMS_REGION">
+		<put section="title" type="default">关键备件模板查询</put>
+		<put section="content" content="/pms/report/keyPartEqpQueryReport.jsp" type="default" />
+	</define>
+	
+	<define id="keyPartsUpdateQueryEntry" region="PMS_REGION">
+		<put section="title" type="default">关键备件更新查询</put>
+		<put section="content" content="/pms/report/keyPartUpdateQueryReport.jsp" type="default" />
+	</define>
+
+	<define id="keyPartsMustchangeCommQueryEntry" region="PMS_REGION">
+		<put section="title" type="default">必换件超期使用查询</put>
+		<put section="content" content="/pms/report/keyPartMustchangeCommQueryReport.jsp" type="default" />
+	</define>
+	
+    <define id="technicalSparePartsSet" region="PMS_REGION">
+        <put section="title" type="default">无料号备件设定</put>
+        <put section="content" content="/pms/basic/technicalSparePartsSet.jsp" type="default" />
+    </define>
+
+	<define id="queryKeyParts" region="PMS_REGION">
+		<put section="title" type="default">KEYPART维护画面</put>
+		<put section="content" content="/pms/basic/keyPartsInfoList.jsp"  type="default" />
+	</define>
+
+	<define id="queryKeyPartsDelayList" region="PMS_REGION">
+		<put section="title" type="default">KEYPARTSDELAY维护画面</put>
+		<put section="content" content="/pms/basic/keyPartsDelayInfoList.jsp"  type="default" />
+	</define>
+
+	<define id="technicalSparePartsSet" region="PMS_REGION">
+        <put section="title" type="default">无料号备件设定</put>
+        <put section="content" content="/pms/basic/technicalSparePartsSet.jsp" type="default" />
+    </define>
+
+	<define id="partBatchNumList" region="PMS_REGION">
+		<put section="title" type="default">备件批次列表</put>
+		<put section="content" content="/pms/form/pm/partBatchNumList.jsp" type="default" />
+	</define>
+
+	<define id="keyEqpPartsCleanMaintain" region="PMS_REGION">
+        <put section="title" type="default">关键备件清洗件维护</put>
+        <put section="content" content="/pms/basic/keyPartsCleanEntry.jsp" type="default" />
+    </define>
+
+	<define id="partsVendorsMaintain" region="PMS_REGION">
+        <put section="title" type="default">物料供应商维护</put>
+        <put section="content" content="/pms/basic/partsVendorsEntry.jsp" type="default" />
+    </define>
+
+	<define id="vendorsPartsQueryEntry" region="PMS_REGION">
+		<put section="title" type="default">供应商PARTS查询</put>
+		<put section="content" content="/pms/basic/vendorsPartsInfoList.jsp" type="default" />
+	</define>
+
+	<define id="keyPartsCleanUpdateReport" region="PMS_REGION">
+        <put section="title" type="default">关键备件清洗件修改查询</put>
+        <put section="content" content="/pms/report/keyPartsCleanUpdateQuery.jsp" type="default" />
+    </define>
+    
+    <define id="keyPartsCleanUseReport" region="PMS_REGION">
+        <put section="title" type="default">关键备件清洗件使用查询</put>
+        <put section="content" content="/pms/report/keyPartsCleanUseQuery.jsp" type="default" />
+    </define> 
+
+	<!-- ************************* 使用备件(补填) ************************* -->
+	<define id="partsUseEntry" region="PMS_REGION">
+        <put section="title" type="default">备耗件使用(补填)</put>
+        <put section="content" content="/mcs/cabinet/usePartsEntry.jsp" type="default" />
+    </define>
+
+	<!-- ************************* FAB5 备耗件石英库存金额查询 ************************* -->
+	<define id="queryCabinetStock" region="PMS_REGION">
+        <put section="title" type="default">线边仓库存金额查询</put>
+        <put section="content" content="/mcs/report/queryCabinetStockEntry.jsp" type="default" />
+    </define>
+
+	<!-- ************************* FAB5 高价物料设定 ************************* -->
+	<define id="highValuePartsDefine" region="PMS_REGION">
+        <put section="title" type="default">高价物料设定</put>
+        <put section="content" content="/pms/parts/highValuePartsDefine.jsp" type="default" />
+    </define>
+</regions>

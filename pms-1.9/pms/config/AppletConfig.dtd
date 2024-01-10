@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    To refer to this DTD in your XML file, use the following declaration:
+<!DOCTYPE chart PUBLIC "AppletConfig.dtd" "">
+-->
+
+<!ELEMENT  chart  (graph*)>
+
+<!ELEMENT  graph  (line*,point*,background?,DividedPointCount?,Formula?,bincount?)>
+<!ATTLIST  graph
+    name  CDATA  #IMPLIED    
+>
+
+<!ELEMENT line EMPTY>
+<!ATTLIST  line
+    name  (SPECIFICATION_LIMIT_LINE | PM_LINE | CONTROL_LIMIT_LINE | R_CONTROL_LIMIT_LINE |   
+    	   TARGET_LINE | CENTER_LINE | ZONEA_LINE | ZONEB_LINE |
+    	   CONNECT_LINE | BOX_OUTLINE | DISTRIBUTION_CURVE)  #REQUIRED
+    color  (RED | BLACK | BLUE | GREEN | WHITE | CYAN | DARK_GRAY | 
+    		GRAY | LIGHT_GRAY | MAGENTA | ORANGE | PINK | YELLOW
+    		| BROWN | DARK_BLUE | DARK_GREEN)  #IMPLIED
+    style  (SOLID | DASH | DOT | NONE ) #IMPLIED
+    pattern  (LINE | POINT | STAIRSTEP ) #IMPLIED
+>
+
+<!ELEMENT point EMPTY>
+<!ATTLIST  point
+    name  (NORMAL | RULEVIOLATED | ANNOTATED | EXCLUDED | 
+    	   PLACEHOLDER | HIGHLIGHTED | OUTOFRANGE | 
+    	   ZONEA_AREA | ZONEB_AREA | ZONEC_AREA)  #REQUIRED
+    color  (RED | BLACK | BLUE | GREEN | WHITE | CYAN | DARK_GRAY | 
+    		GRAY | LIGHT_GRAY | MAGENTA | ORANGE | PINK | YELLOW
+    		| BROWN | DARK_BLUE | DARK_GREEN)  #IMPLIED
+    style  (NONE | BULLET | CIRCLE | CIRCLEX | 
+    	    DASH | DIAMOND | DOT | FLAG | PLUS |
+    	    SQUARE | SQUAREX | TRIANGLE | X ) #IMPLIED
+>
+
+<!ELEMENT background EMPTY >
+<!ATTLIST  background
+     color  (RED | BLACK | BLUE | GREEN | WHITE | CYAN | DARK_GRAY | 
+    		GRAY | LIGHT_GRAY | MAGENTA | ORANGE | PINK | YELLOW
+    		| BROWN | DARK_BLUE | DARK_GREEN)  #IMPLIED
+>
+<!ELEMENT DividedPointCount (#PCDATA) >
+<!ELEMENT Formula (#PCDATA) >
+<!ELEMENT bincount (#PCDATA) >

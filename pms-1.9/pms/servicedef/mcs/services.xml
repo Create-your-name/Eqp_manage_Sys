@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE services PUBLIC "-//OFBiz//DTD Services Config//EN" "http://www.ofbiz.org/dtds/services.dtd">
+
+<services>
+    <description>MCS Component Services</description>
+    <vendor>OFBiz</vendor>
+    <version>1.0</version>
+
+    <service name="intoCabinetByQty" engine="java"
+            location="com.csmc.mcs.webapp.cabinet.service.CabinetService" invoke="intoCabinetByQty" auth="false">
+		<description>Into Cabinet By Qty</description>
+		<attribute name="userNo" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="stoReqSelectStr" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="useQtyMap" type="java.util.HashMap" mode="IN" optional="false" />
+		<attribute name="returnMsg" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+
+    <service name="useMaterialByCabinet" engine="java"
+            location="com.csmc.mcs.webapp.cabinet.service.CabinetService" invoke="useMaterialByCabinet" auth="false">
+		<description>Use Material By Cabinet</description>
+		<attribute name="paramMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMsg" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+
+    <service name="useSparePartBySto" engine="java"
+            location="com.csmc.mcs.webapp.cabinet.service.CabinetService" invoke="useSparePartBySto" auth="false">
+		<description>Use Spare Part By Stock</description>
+		<attribute name="paramMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMsg" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+
+    <service name="changeMaterialStatusById" engine="java"
+            location="com.csmc.mcs.webapp.use.service.UseService" invoke="changeMaterialStatusById" auth="false">
+		<description>change Material Status By Id</description>
+		<attribute name="paramMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMap" type="java.util.Map" mode="OUT" optional="false" />
+    </service>
+
+    <service name="changeMaterialStatusByQty" engine="java"
+            location="com.csmc.mcs.webapp.use.service.UseService" invoke="changeMaterialStatusByQty" auth="false">
+		<description>change Material Status By Qty</description>
+		<attribute name="paramMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMap" type="java.util.Map" mode="OUT" optional="false" />
+    </service>
+
+    <service name="saveExpirationDate" engine="java"
+            location="com.csmc.mcs.webapp.expiration.service.ExpirationService" invoke="saveExpirationDate" auth="false">
+		<description>save Expiration Date</description>
+		<attribute name="paramMap" type="java.util.Map" mode="IN" optional="false" />
+    </service>
+
+    <service name="manageUsingHistory" engine="java"
+            location="com.csmc.mcs.webapp.use.service.UseService" invoke="manageUsingHistory" auth="false">
+		<description>Manage Using History</description>
+		<attribute name="usingMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMsg" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+</services>

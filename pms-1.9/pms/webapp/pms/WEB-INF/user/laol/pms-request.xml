@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+    <request-map uri="queryFlowActionEntryInfo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowActionEntryInfo"/>
+      <response name="success" type="view" value="flowActionEntry"/>
+      <response name="error" type="view" value="flowActionEntry"/>
+    </request-map>
+
+    <request-map uri="queryFlowActionList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowActionList"/>
+      <response name="success" type="request" value="queryFlowActionEntryInfo"/>
+      <response name="error" type="request" value="queryFlowActionEntryInfo"/>
+    </request-map>
+
+    <request-map uri="queryFlowAction">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowAction"/>
+      <response name="success" type="view" value="flowActionDefine"/>
+      <response name="error" type="view" value="flowActionDefine"/>
+    </request-map>
+
+    <request-map uri="copyFlowAction">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="copyFlowAction"/>
+      <response name="success" type="request" value="queryFlowActionList"/>
+      <response name="error" type="request" value="queryFlowActionList"/>
+    </request-map>
+
+    <request-map uri="deleteFlowAction">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="deleteFlowAction"/>
+      <response name="success" type="request" value="queryFlowActionList"/>
+      <response name="error" type="request" value="queryFlowActionList"/>
+    </request-map>
+
+    <request-map uri="saveFlowAction">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="saveFlowAction"/>
+      <response name="success" type="request" value="queryFlowAction"/>
+      <response name="error" type="request" value="queryFlowActionEntryInfo"/>
+    </request-map>
+
+    <request-map uri="showFlowAction">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowAction"/>
+      <response name="success" type="view" value="showFlowAction"/>
+      <response name="error" type="view" value="showFlowAction"/>
+    </request-map>
+
+    <request-map uri="queryFlowActionItem">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowActionItem"/>
+    </request-map>
+
+    <request-map uri="saveFlowActionItem">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="saveFlowActionItem"/>
+      <response name="success" type="request" value="queryFlowAction"/>
+      <response name="error" type="request" value="queryFlowAction"/>
+    </request-map>
+
+    <request-map uri="deleteFlowActionItem">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="deleteFlowActionItem"/>
+      <response name="success" type="request" value="queryFlowAction"/>
+      <response name="error" type="request" value="queryFlowAction"/>
+    </request-map>
+
+    <request-map uri="queryFlowActionItemTemp">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowActionItemTemp"/>
+    </request-map>
+
+    <request-map uri="saveFlowActionItemTemp">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="saveFlowActionItemTemp"/>
+      <response name="success" type="request" value="queryFlowAction"/>
+      <response name="error" type="request" value="queryFlowAction"/>
+    </request-map>
+
+    <request-map uri="deleteFlowActionItemApply">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="deleteFlowActionItemApply"/>
+      <response name="success" type="request" value="queryFlowAction"/>
+      <response name="error" type="request" value="queryFlowAction"/>
+    </request-map>
+
+    <request-map uri="deleteFlowActionItemTemp">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="deleteFlowActionItemTemp"/>
+      <response name="success" type="request" value="queryFlowAction"/>
+      <response name="error" type="request" value="queryFlowAction"/>
+    </request-map>
+
+    <request-map uri="sendSubmitFlowActionItem">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="sendSubmitFlowActionItem"/>
+      <response name="success" type="request" value="queryFlowAction"/>
+      <response name="error" type="request" value="queryFlowAction"/>
+    </request-map>
+
+    <request-map uri="queryFlowEntryInfo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowActionEntryInfo"/>
+      <response name="success" type="view" value="flowEntry"/>
+      <response name="error" type="view" value="flowEntry"/>
+    </request-map>
+
+    <request-map uri="queryFlowList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlowList"/>
+      <response name="success" type="view" value="flowEntry"/>
+      <response name="error" type="view" value="flowEntry"/>
+    </request-map>
+
+    <request-map uri="queryFlow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryFlow"/>
+      <response name="success" type="view" value="flowDefine"/>
+      <response name="error" type="view" value="flowEntry"/>
+    </request-map>
+
+    <request-map uri="runFlow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="runFlow"/>
+      <response name="start" type="view" value="flowStart"/>
+      <response name="process" type="view" value="flowProcess"/>
+      <response name="error" type="view" value="flowProcess"/>
+    </request-map>
+
+    <request-map uri="viewFlow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="viewFlow"/>
+      <response name="success" type="view" value="flowDataView"/>
+      <response name="error" type="view" value="flowDataView"/>
+    </request-map>
+
+    <request-map uri="editFlowData">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="viewFlow"/>
+      <response name="success" type="view" value="flowDataEdit"/>
+      <response name="error" type="view" value="flowDataEdit"/>
+    </request-map>
+
+    <request-map uri="editFlowDataDone">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="editFlow"/>
+      <response name="success" type="request" value="editFlowData"/>
+      <response name="error" type="request" value="editFlowData"/>
+    </request-map>
+
+    <request-map uri="viewFlowActionItemApply">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="viewFlowActionItemApply"/>
+      <response name="success" type="view" value="flowActionItemApplyView"/>
+      <response name="error" type="view" value="flowActionItemApplyView"/>
+    </request-map>
+
+    <request-map uri="viewFlowStructure">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="viewFlowStructure"/>
+      <response name="success" type="view" value="flowStructureView"/>
+      <response name="error" type="view" value="flowStructureView"/>
+    </request-map>
+
+    <request-map uri="queryHistFlow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryHistFlow"/>
+      <response name="success" type="view" value="histFlowDefine"/>
+      <response name="error" type="view" value="histFlowDefine"/>
+    </request-map>
+
+    <request-map uri="viewHistFlow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="viewHistFlow"/>
+      <response name="success" type="view" value="flowStructureView"/>
+      <response name="error" type="view" value="flowStructureView"/>
+    </request-map>
+
+    <request-map uri="sendFlowSubmit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="sendFlowSubmit"/>
+      <response name="success" type="view" value="sendSubmitResult"/>
+      <response name="error" type="view" value="sendSubmitResult"/>
+    </request-map>
+
+    <request-map uri="sendSubmit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="sendSubmit"/>
+      <response name="success" type="view" value="sendSubmitResult"/>
+      <response name="error" type="view" value="sendSubmitResult"/>
+    </request-map>
+
+    <request-map uri="sendSubmitProcess">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="sendSubmitProcess"/>
+      <response name="success" type="view" value="sendSubmitResult"/>
+      <response name="error" type="view" value="sendSubmitResult"/>
+    </request-map>
+
+    <request-map uri="submit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="submit"/>
+      <response name="success" type="view" value="sendSubmitResult"/>
+      <response name="error" type="view" value="sendSubmitResult"/>
+    </request-map>
+
+    <request-map uri="queryDcopList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="queryDcopList"/>
+      <response name="success" type="view" value="dcoplist"/>
+      <response name="error" type="view" value="dcoplist"/>
+    </request-map>
+
+    <request-map uri="addFlow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="addFlow"/>
+      <response name="success" type="view" value="flowDefine"/>
+      <response name="error" type="view" value="flowEntry"/>
+    </request-map>
+
+    <request-map uri="addFlowAction">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="addFlowAction"/>
+      <response name="success" type="view" value="flowDefine"/>
+      <response name="error" type="view" value="flowDefine"/>
+    </request-map>
+
+    <request-map uri="resortFlowAction">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="resortFlowAction"/>
+      <response name="success" type="view" value="flowDefine"/>
+      <response name="error" type="view" value="flowDefine"/>
+    </request-map>
+
+    <request-map uri="stepResortFlowAction">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="stepResortFlowAction"/>
+      <response name="success" type="view" value="flowDefine"/>
+      <response name="error" type="view" value="flowDefine"/>
+    </request-map>
+
+    <request-map uri="removeFlowAction">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="removeFlowAction"/>
+      <response name="success" type="view" value="flowDefine"/>
+      <response name="error" type="view" value="flowDefine"/>
+    </request-map>
+
+    <request-map uri="deleteFlowJobTemp">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="deleteFlowJobTemp"/>
+      <response name="success" type="view" value="flowEntry"/>
+      <response name="error" type="view" value="flowDefine"/>
+    </request-map>
+
+    <request-map uri="saveFlow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="saveFlow"/>
+      <response name="success" type="view" value="flowDefine"/>
+      <response name="error" type="view" value="flowDefine"/>
+    </request-map>
+
+    <request-map uri="queryUndoPmformlistEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="queryUndoPmformlist"/>
+    </request-map>
+
+    <request-map uri="queryUndoPmformlist">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="queryUndoPmformlist"/>
+      <response name="success" type="view" value="queryUndoPmformlist"/>
+      <response name="error" type="view" value="queryUndoPmformlist"/>
+    </request-map>
+
+    <request-map uri="queryUndoTsformlistEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="queryUndoTsformlist"/>
+    </request-map>
+
+    <request-map uri="queryUndoTsformlist">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="queryUndoTsformlist"/>
+      <response name="success" type="view" value="queryUndoTsformlist"/>
+      <response name="error" type="view" value="queryUndoTsformlist"/>
+    </request-map>
+
+    <request-map uri="queryPmformByLeader">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="pmRecordInfo"/>
+      <response name="manager" type="view" value="editPmFormByLeader"/>
+      <response name="error" type="view" value="intoQueryOverPmForm"/>
+    </request-map>
+
+    <request-map uri="updatePmPartsByLeader">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="updatePartsUse"/>
+      <response name="success" type="request" value="queryPmformByLeader"/>
+      <response name="error" type="request" value="queryPmformByLeader"/>
+    </request-map>
+
+    <request-map uri="deletePmPartsByLeader">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="delPartsUse"/>
+      <response name="success" type="request" value="queryPmformByLeader"/>
+      <response name="error" type="request" value="queryPmformByLeader"/>
+   </request-map>
+
+    <request-map uri="editPmFormByLeader">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="editPmFormByLeader"/>
+      <response name="success" type="request" value="queryPmformByLeader"/>
+      <response name="error" type="request" value="queryPmformByLeader"/>
+    </request-map>
+
+    <request-map uri="queryTsformByLeader">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="intoAbnormalFormManage"/>
+      <response name="manager" type="view" value="editTsFormByLeader"/>
+      <response name="error" type="view" value="intoQueryOverAbnormalForm"/>
+    </request-map>
+
+    <request-map uri="deleteTsPartsByLeader">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="delPartsUse"/>
+      <response name="success" type="request" value="queryTsformByLeader"/>
+      <response name="error" type="request" value="queryTsformByLeader"/>
+   </request-map>
+
+    <request-map uri="updateTsPartsByLeader">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="updatePartsUse"/>
+      <response name="success" type="request" value="queryTsformByLeader"/>
+      <response name="error" type="request" value="queryTsformByLeader"/>
+    </request-map>
+
+    <request-map uri="editTsFormByLeader">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="editTsFormByLeader"/>
+      <response name="success" type="request" value="queryTsformByLeader"/>
+      <response name="error" type="request" value="queryTsformByLeader"/>
+    </request-map>
+
+    <request-map uri="deleteFlowActionStatus">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="deleteFlowActionStatus"/>
+    </request-map>
+</site-conf>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chart PUBLIC "AppletConfig.dtd" "http://www.***.com/dtds/rule.dtd">
+<chart>
+	<graph>
+		<line  name="SPECIFICATION_LIMIT_LINE" color="BLUE" style="DASH" />
+		<line  name="PM_LINE" color="BLUE" style="DASH" />
+		<line  name="CONTROL_LIMIT_LINE" color="RED" style="DASH" />
+		<line  name="R_CONTROL_LIMIT_LINE" color="PINK" style="DASH" />
+		<line  name="TARGET_LINE" color="BLUE" style="DASH"/>
+		<line  name="CENTER_LINE" color="RED" style="DASH"/>
+		<line  name="CONNECT_LINE" color= "BLUE" style="SOLID" pattern="LINE"/>
+		<line  name="CONNECT_LINE" color= "MAGENTA" style="SOLID" pattern="LINE"/>
+		<line  name="BOX_OUTLINE"  color="RED"/>
+		<point name="NORMAL" color= "BLUE" style="CIRCLE"/>
+		<point name="RULEVIOLATED" color= "YELLOW" style="CIRCLE"/>
+		<point name="ANNOTATED" color= "RED" style="TRIANGLE"/>
+		<point name="OUTOFRANGE" color= "CYAN" style="CIRCLE"/>
+		<point name="EXCLUDED" color= "LIGHT_GRAY" style="CIRCLE"/>
+		<background color="WHITE"/>
+		<DividedPointCount>300</DividedPointCount>
+		<Formula>1</Formula>
+	</graph>
+	<graph name="HISTOGRAM">
+		<line  name="SPECIFICATION_LIMIT_LINE" color="BLUE" style="SOLID" />
+		<line  name="CONTROL_LIMIT_LINE" color="RED" style="SOLID" />
+		<line  name="R_CONTROL_LIMIT_LINE" color="PINK" style="DASH" />
+		<line  name="TARGET_LINE" color="BLUE" style="DASH"/>
+		<line  name="CENTER_LINE" color="RED" style="SOLID"/>
+		<line  name="DISTRIBUTION_CURVE" color="RED" style="DOT"/>
+		<background color="WHITE"/>
+		<bincount> 12 </bincount>
+	</graph>
+</chart>
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site View-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+	<view-map name="partsNoDefineEntry" type="region"/>
+	<view-map name="recylePartsDefineEntry" type="region"/>
+	<view-map name="partsUserDefineEntry" type="region"/>
+	<view-map name="pmPartsDefineEntry" type="region"/>
+	<view-map name="pmPartsUseDiffDefineEntry" type="region"/>
+	<view-map name="partsInfoDiffDefineEntry" type="region"/>
+	<view-map name="followJobDefineEntry" type="region"/>
+	<view-map name="addQuFollowDefineEntry" type="region"/>
+	<view-map name="addQuFollowByFormDefineEntry" type="region"/>
+	<view-map name="addQuFolloItemwDefineEntry" type="region"/>
+	<view-map name="editQuFolloDefineEntry" type="region"/>
+	<view-map name="fileUploadDefineEntry" type="region"/>
+	<view-map name="overFollowJobDefine" type="region"/>
+	<view-map name="overFollowJobDefineEntry" type="region"/>
+	<view-map name="tsInfoListEntry" type="region"/>
+	<view-map name="tsFormAddEntry" type="region"/>
+	<view-map name="patchTsFormEntry" type="region"/>
+	<view-map name="abnormalFormList" type="region"/>
+	<view-map name="abnormalFormManage" type="region"/>
+	<view-map name="abnormalFormStart" type="region"/>
+	<view-map name="abnormalFormPartsQueryEntry" type="region"/>
+	<view-map name="abnormalFormView" type="region"/>
+	<view-map name="DefaultStartAbnormalForm" type="region"/>
+	<view-map name="queryOverAbnormalForm" type="region"/>
+	<view-map name="viewOverAbnormalForm" type="region"/>
+	<view-map name="selectTsUnPmEntry" type="region"/>
+
+	<view-map name="filterPartsDefineEntry" type="region"/>
+	<view-map name="partsQueryEntry" type="region"/>
+	<view-map name="mcsStoMarginEntry" type="region"/>
+	<view-map name="mcsStoQueryEntry" type="region"/>
+	<view-map name="pmPartsUsedQueryEntry" type="region"/>
+	<view-map name="pmPartsUsedCostQueryEntry" type="region"/>
+</site-conf>

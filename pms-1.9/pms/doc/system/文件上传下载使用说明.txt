@@ -1,0 +1,38 @@
+--1.页面打开文件上传下载共通页面
+	1.1.var url='<ofbiz:url>/fileUploadDefineEntry</ofbiz:url>?eventIndex=&eventType=&uploadItem=&uploadIndex=';
+	参数说明:eventIndex: 表'documentUpload'中的eventIndex栏位值
+		    eventType: 表'documentUpload'中的eventType栏位值
+			uploadItem: 页面用于接受已上传文件的uploadIndex值的隐藏项
+			uploadIndex: 表'documentUpload'中的uploadIndex栏位值
+			
+	//打开文件上传下载的页面,完成文件的上传功能
+	//1.url:访问的URL；2.'文件上传下载'页面名称；3.页面宽；4.页面高
+	1.2.调用方法：windowOpen(url,'文件上传下载',685,400);
+	
+--2.文件的相关操作
+	2.1.新增相关信息时，若需要上传文件的,需在相关信息作保存后，调用如下方法,用于更新与其关联的文件表相关信息
+		/**
+		 * 通过uploadIndex更新文档信息
+		 * @param delegator
+		 * @param uploadIndex
+		 * @param eventIndex
+		 * @param eventType
+		 * @throws Exception
+		 */
+		FileUploadHelper.updateFile(delegator,uploadIndex,eventIndex,eventType);
+	    参考qufollow/service/QuFollowService.java中saveFollowItem()方法
+	    
+	2.2.删除信息时，需要删除相关的文件信息，调用如下方法：
+	delUploadFileByEventIndex(GenericDelegator delegator,String eventIndex,String eventType)
+    参考qufollow/service/QuFollowService.java中deleteFollowItem()方法
+    
+    2.3 文件下载调用方法：直接调用即可
+    	com.fa.pms.webapp.common.event.FileUploadEvent中的fileLoad方法
+    	
+--3.页面效果，参考问题追踪管理-未结案问题追踪画面
+
+3.注意事项
+	需要将ofbiz中的commons-fileupload.jar，和classPath中的引入删除
+	或用工程中的jar包替换ofbiz中的jar包.
+	
+   

@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE entitymodel PUBLIC "-//OFBiz//DTD Entity Model//EN" "http://www.ofbiz.org/dtds/entitymodel.dtd">
+<!--
+/**
+ *  Title: Entity Generator Definitions for the General Data Model
+ *  Description: None
+ *  Copyright (c) 2001, 2002 The Open For Business Project - www.ofbiz.org
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *  copy of this software and associated documentation files (the "Software"),
+ *  to deal in the Software without restriction, including without limitation
+ *  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ *  and/or sell copies of the Software, and to permit persons to whom the
+ *  Software is furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included
+ *  in all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ *  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ *  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ *  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ *  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+ *  OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+ *  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * @author     David E. Jones (jonesde@ofbiz.org)
+ * @author     Andy Zeneski (jaz@ofbiz.org)
+ */
+-->
+
+<entitymodel>
+  <!-- ========================================================= -->
+  <!-- ======================== Defaults ======================= -->
+  <!-- ========================================================= -->
+    <title>Entity of an Open For Business Project Component</title>
+    <description>None</description>
+    <copyright>Copyright (c) 2002 The Open For Business Project - www.ofbiz.org</copyright>
+    <author>None</author>
+    <version>1.0</version>
+
+    <!-- ========================================================= -->
+    <!-- ============= package-name="org.ofbiz.gui" ============== -->
+    <!-- ========================================================= -->
+	<entity entity-name="EqpQcStatus"
+   					package-name="org.ofbiz.gui"
+   					never-cache="true"
+   					title="EQP QC Stauts">
+		<field name="qcId" type="id-long-ne"></field>
+		<field name="qcType" type="id-long"></field>
+		<field name="qcName" type="id-long-ne"></field>
+		<field name="dcopId" type="id-long"></field>
+		<field name="equipmentId" type="id-long"></field>
+		<field name="oocFlag" type="indicator"></field>
+		<field name="menugroup" type="very-long-varchar"></field>
+		<field name="enableFlag" type="indicator"></field>
+		<field name="qcFactor" type="id-long-ne"></field>
+		<field name="qcStatus" type="id-long"></field>
+		<field name="invervalType" type="id-long"></field>
+		<field name="invervalQty" type="numeric"></field>
+		<field name="qcLastFinishDate" type="date-time"></field>
+		<field name="runTimeLimit" type="numeric"></field>
+		<field name="idleTimeLimit" type="double-numeric"></field>
+		<field name="lotQtyLimit" type="numeric"></field>
+		<field name="waferQtyLimit" type="numeric"></field>
+		<field name="lastMenugroup" type="very-long-varchar"></field>
+		<field name="currMenugroup" type="id-long"></field>
+		<field name="menugroupUnusedLimit" type="numeric"></field>
+		<field name="menugroupLotQtyLimit" type="numeric"></field>
+		<field name="menugroupLotQtyCurr" type="numeric"></field>
+		<field name="menugroupLastUseDate" type="date-time"></field>
+		<field name="lastEqpStatus" type="id-long"></field>
+		<field name="currEqpStatus" type="id-long"></field>
+		<field name="eqpMaintainTime" type="date-time"></field>
+
+		<prim-key field="qcId"/>
+		<prim-key field="equipmentId"/>
+		<prim-key field="qcFactor"/>
+   </entity>
+
+   <entity entity-name="EqpQcHist"
+   					package-name="org.ofbiz.gui"
+   					never-cache="true"
+   					title="EQP QC Hist">
+		<field name="qcId" type="id-long-ne"></field>
+		<field name="qcType" type="id-long"></field>
+		<field name="qcName" type="id-long-ne"></field>
+		<field name="dcopId" type="id-long"></field>
+		<field name="equipmentId" type="id-long"></field>
+		<field name="qcFactor" type="id-long-ne"></field>
+		<field name="qcStatus" type="id-long"></field>
+		<field name="qcTransDate" type="date-time"></field>
+		<field name="qcTransBy" type="id-long"></field>
+		<prim-key field="qcId"/>
+		<prim-key field="equipmentId"/>
+		<prim-key field="qcTransDate"/>
+   </entity>
+
+   <entity entity-name="ViolateRulePoint"
+                    package-name="org.ofbiz.gui"
+	                never-cache="true"
+	                title="Violate Rule Point">
+		<field name="testOpno" type="id-long"></field>
+		<field name="chartId" type="id-long"></field>
+		<field name="dcopDate" type="date-time"></field>
+		<field name="lotId" type="id-long"></field>
+		<field name="waferId" type="id-long"></field>
+		<field name="siteName" type="id-long"></field>
+		<field name="collectionLevel" type="id-long"></field>
+		<field name="graphType" type="id-long"></field>
+		<field name="alarmOcapId" type="id-long"></field>
+		<field name="violateRules" type="description"></field>
+		<field name="violateDate" type="date-time"></field>
+		<prim-key field="testOpno" />
+		<prim-key field="chartId" />
+		<prim-key field="dcopDate" />
+		<prim-key field="lotId" />
+		<prim-key field="waferId" />
+		<prim-key field="siteName" />
+		<prim-key field="collectionLevel" />
+		<prim-key field="graphType" />
+    </entity>
+
+    <entity entity-name="Alarm"
+                package-name="org.ofbiz.gui"
+	            never-cache="true"
+	            title="Alarm">
+		<field name="alarmId" type="id-long"></field>
+		<field name="alarmDesc" type="description"></field>
+		<field name="objectType" type="id-long"></field>
+		<field name="enableFlag" type="indicator"></field>
+		<field name="severity" type="numeric"></field>
+		<field name="priority" type="numeric"></field>
+		<field name="defaultAlarmText" type="description"></field>
+		<prim-key field="alarmId" />
+    </entity>
+
+	<entity entity-name="AlarmHist"
+	           package-name="org.ofbiz.gui"
+		       never-cache="true"
+		       title="Alarm History">
+		<field name="ocapId" type="id-long"></field>
+		<field name="alarmId" type="id-long"></field>
+		<field name="alarmDesc" type="description"></field>
+		<field name="histSeq" type="numeric"></field>
+		<field name="alarmOwner" type="id-long"></field>
+		<field name="objectType" type="id-long"></field>
+		<field name="objectId" type="id-long"></field>
+		<field name="objectDept" type="id-long"></field>
+		<field name="dcopId" type="id-long"></field>
+		<field name="dcopEntDate" type="date-time"></field>
+		<field name="lotId" type="id-long"></field>
+		<field name="severity" type="numeric"></field>
+		<field name="priority" type="numeric"></field>
+		<field name="triggerDate" type="date-time"></field>
+		<field name="eapAlarmId" type="numeric"></field>
+		<field name="alarmCode" type="id-long"></field>
+		<field name="alarmText" type="description"></field>
+		<field name="alarmStatus" type="id-long"></field>
+		<field name="transDate" type="date-time"></field>
+		<field name="transComment" type="description"></field>
+		<field name="transBy" type="id-long"></field>
+		<field name="oos" type="id-long"></field>
+		<field name="eqpId" type="id-long"></field>
+		<field name="stageId" type="id-long"></field>
+		<field name="recpid" type="id-long"></field>
+		<field name="tresRowdata" type="description"></field>
+		<field name="abnormalFlag" type="id-long"></field>
+		<field name="locationId" type="id-long"></field>
+		<field name="alarmSource" type="id-long"></field>
+		<field name="ooc" type="id-long"></field>
+		<prim-key field="ocapId" />
+		<prim-key field="histSeq" />
+	</entity>
+
+	<entity entity-name="AlarmAction" package-name="org.ofbiz.gui"
+		never-cache="true" title="Alarm Action">
+		<field name="alarmId" type="id-long"></field>
+		<field name="alarmDesc" type="description"></field>
+		<field name="actionId" type="id-long"></field>
+		<field name="addDate" type="date"></field>
+		<field name="programId" type="description"></field>
+		<field name="programPara1" type="description"></field>
+		<field name="programPara2" type="description"></field>
+		<field name="programPara3" type="description"></field>
+		<field name="programPara4" type="description"></field>
+		<field name="programPara5" type="description"></field>
+		<prim-key field="alarmId" />
+		<prim-key field="actionId" />
+	</entity>
+
+	<entity entity-name="ReduceRatioQty" package-name="org.ofbiz.gui"
+		never-cache="true" title="Reduce Ratio Qty">
+		<field name="frequencyId" type="numeric"></field>
+		<field name="attributeId" type="numeric"></field>
+		<field name="frequencyType" type="numeric"></field>
+		<field name="frequencyTotQty" type="numeric"></field>
+		<field name="frequencyTestQty" type="numeric"></field>
+		<field name="frequencyQty" type="numeric"></field>
+		<field name="frequencyTime" type="floating-point"></field>
+		<field name="lastTestTime" type="date-time"></field>
+		<prim-key field="frequencyId" />
+		<prim-key field="attributeId" />
+	</entity>
+
+	<entity entity-name="EqpMaintainHoldList"
+           package-name="org.ofbiz.gui"
+           never-cache="true"
+           title="Eqp Maintain Hold List">
+        <field name="listId" type="numeric"></field>
+        <field name="basicId" type="numeric"></field>
+        <field name="isCycle" type="id-long"></field>
+        <field name="eqpId" type="id-long"></field>
+        <field name="triggerDate" type="date-time"></field>
+        <field name="holdLotNum" type="numeric"></field>
+        <field name="immediateHold" type="id-long"></field>
+        <field name="triggerStage" type="id-long"></field>
+        <field name="triggerNum" type="numeric"></field>
+        <field name="holdCode" type="id-long"></field>
+        <field name="holdReason" type="id-long"></field>
+        <field name="holdDesc" type="id-long"></field>
+        <prim-key field="listId"/>
+    </entity>
+
+    <entity entity-name="EqpMaintainHoldHist"
+       package-name="org.ofbiz.gui"
+       never-cache="true"
+       title="Eqp Maintain Hold Hist">
+        <field name="listId" type="numeric"></field>
+        <field name="basicId" type="numeric"></field>
+        <field name="isCycle" type="id-long"></field>
+        <field name="eqpId" type="id-long"></field>
+        <field name="triggerDate" type="date-time"></field>
+        <field name="holdLotNum" type="numeric"></field>
+        <field name="immediateHold" type="id-long"></field>
+        <field name="triggerStage" type="id-long"></field>
+        <field name="triggerNum" type="numeric"></field>
+        <field name="holdCode" type="id-long"></field>
+        <field name="holdReason" type="id-long"></field>
+        <field name="holdDesc" type="id-long"></field>
+        <prim-key field="listId"/>
+    </entity>
+    <!-- ============= end package-name="org.ofbiz.gui" ============== -->
+
+
+    <!--
+
+    <entity entity-name="EntitySyncRemove"
+            package-name="org.ofbiz"
+            title="Entity Synchronization Remove Entity">
+      <field name="entitySyncRemoveId" type="id-ne"></field>
+      <field name="primaryKeyRemoved" type="very-long"></field>
+      <prim-key field="entitySyncRemoveId"/>
+    </entity>
+
+      <entity entity-name="SequenceValueItem"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="SequenceValueItem">
+		<field name="seqName" type="id-long"></field>
+		<field name="seqId" type="numeric"></field>
+		<prim-key field="seqName"/>
+	</entity>
+
+	-->
+
+	<entity entity-name="AccountPrivs"
+				package-name="org.ofbiz"
+				never-cache="true"
+				title="User GUI Privs">
+		<field name="accountId" type="id-long-ne"></field>
+		<field name="accountDesc" type="description"></field>
+		<field name="accountType" type="id-long"></field>
+		<field name="localPriv" type="id-long-ne"></field>
+		<field name="localPrivDesc" type="description"></field>
+		<prim-key field="accountId"/>
+		<prim-key field="localPriv"/>
+    </entity>
+
+    <entity entity-name="MenuHierarchy"
+				package-name="org.ofbiz"
+				never-cache="true"
+				title="Menu Hierarchy">
+		<field name="menuId" type="id-long-ne"></field>
+		<field name="menuDesc" type="description"></field>
+		<field name="parentMenuId" type="id-long-ne"></field>
+		<field name="menuType" type="id-long"></field>
+		<field name="functionType" type="id-long"></field>
+		<field name="actionTag" type="description"></field>
+		<prim-key field="menuId"/>
+    </entity>
+
+	<entity entity-name="PcStyle"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="pc style">
+		<field name="styleIndex" type="numeric"></field>
+		<field name="name" type="id-long-ne"></field>
+		<field name="description" type="id-long-ne"></field>
+		<prim-key field="styleIndex"/>
+	</entity>
+
+	<entity entity-name="Equipment"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="equipment">
+		<field name="equipmentId" type="id-long-ne"></field>
+		<field name="equipmentDesc" type="id-long-ne"></field>
+		<field name="equipmentType" type="id-long-ne"></field>
+		<field name="location" type="id-long-ne"></field>
+		<field name="ownDept" type="id-long-ne"></field>
+		<field name="useDept" type="id-long-ne"></field>
+		<field name="maintDept" type="id-long-ne"></field>
+		<field name="section" type="id-long-ne"></field>
+		<field name="model" type="id-long-ne"></field>
+		<field name="style" type="id-long-ne"></field>
+		<field name="assetNo" type="id-long-ne"></field>
+		<field name="vendor" type="id-long-ne"></field>
+		<field name="vendorEqpNo" type="id-long-ne"></field>
+		<field name="vendorEngineer" type="id-long-ne"></field>
+		<field name="vendorPhone" type="id-long-ne"></field>
+		<field name="equipmentEngineer" type="id-long-ne"></field>
+		<field name="backupEngineer" type="id-long-ne"></field>
+		<field name="equipmentLeader" type="id-long-ne"></field>
+		<field name="processEngineer" type="id-long-ne"></field>
+		<field name="projectCode" type="id-long-ne"></field>
+		<field name="length" type="id-long-ne"></field>
+		<field name="width" type="id-long-ne"></field>
+		<field name="height" type="id-long-ne"></field>
+		<field name="weight" type="id-long-ne"></field>
+		<field name="exhaust" type="id-long-ne"></field>
+		<field name="meter" type="id-long-ne"></field>
+		<field name="voltage" type="id-long-ne"></field>
+		<field name="power" type="id-long-ne"></field>
+		<field name="parentEqpid" type="id-long-ne"></field>
+		<field name="keyEqp" type="id-long-ne"></field>
+		<field name="adjustEqp" type="id-long-ne"></field>
+		<field name="measureEqp" type="id-long-ne"></field>
+		<field name="note" type="id-long-ne"></field>
+		<field name="equipmentGroup" type="id-ne"></field>
+		<field name="transBy" type="id-long-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="deptIndex" type="id-long-ne"></field>
+		<field name="msa" type="id-long-ne"></field>
+		<field name="msaEmail" type="email"></field>
+		<field name="toolType" type="id-long-ne"></field>
+		<field name="toolGroup" type="id-long-ne"></field>
+		<field name="recipeBackupEmail" type="email"></field>
+
+		<prim-key field="equipmentId"/>
+	</entity>
+
+	<entity entity-name="EquipmentDept"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="equipment dept">
+		<field name="deptIndex" type="numeric"></field>
+		<field name="equipmentDept" type="id-ne"></field>
+		<field name="description" type="id-long-ne"></field>
+		<field name="equipmentChar" type="id-ne"></field>
+		<field name="deptLeader" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="deptIndex"/>
+	</entity>
+
+	<entity entity-name="EquipmentType"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="equipment type">
+		<field name="equipmentType" type="id-ne"></field>
+		<field name="description" type="id-long-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="equipmentType"/>
+	</entity>
+
+	<entity entity-name="EquipmentVendor"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="equipment vendor">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="vendor" type="id-ne"></field>
+		<field name="address" type="id-ne"></field>
+		<field name="contactName" type="id-ne"></field>
+		<field name="phoneNo" type="id-ne"></field>
+		<field name="type" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+	<entity entity-name="PromisEqpStatus"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="promis eqp status">
+		<field name="eqpStatus" type="id-ne"></field>
+		<field name="description" type="id-long-ne"></field>
+		<field name="type" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="eqpStatus"/>
+		<prim-key field="type"/>
+	</entity>
+
+	<entity entity-name="PmsReason"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Pms Reason">
+		<field name="reasonIndex" type="numeric"></field>
+		<field name="equipmentType" type="id-ne"></field>
+		<field name="reasonType" type="id-ne"></field>
+		<field name="reason" type="long-varchar"></field>
+		<field name="updateTime" type="date-time"></field>
+		
+		<field name="holdLotNum" type="numeric"></field>
+        <field name="immediateHold" type="id-long"></field>
+        <field name="triggerStage" type="id-long"></field>
+        <field name="holdCode" type="id-long"></field>
+        <field name="holdReason" type="id-long"></field>
+        <field name="holdDesc" type="id-long"></field>
+		<prim-key field="reasonIndex"/>
+	</entity>
+
+	<entity entity-name="EquipmentBasicData"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="Equipment Basic Data">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="type" type="id-ne"></field>
+		<field name="name" type="id-ne"></field>
+		<field name="description" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+	<entity entity-name="EventCategory"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Event Category">
+		<field name="eventIndex" type="numeric"></field>
+		<field name="category" type="id-ne"></field>
+		<field name="description" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="eventIndex"/>
+	</entity>
+
+	<entity entity-name="EventSubcategory"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Event Sub Category">
+		<field name="eventSubIndex" type="numeric"></field>
+		<field name="eventIndex" type="numeric"></field>
+		<field name="subCategory" type="id-ne"></field>
+		<field name="description" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="eventSubIndex"/>
+	</entity>
+
+	<entity entity-name="UnscheduleParameter"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Unschedule Parameter">
+		<field name="paramIndex" type="numeric"></field>
+		<field name="paramName" type="id-ne"></field>
+		<field name="description" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="paramIndex"/>
+	</entity>
+
+	<entity entity-name="UnscheduleEqpParam"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Unschedule Equipment Parameter">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="paramName" type="id-ne"></field>
+		<field name="eqpStatus" type="id-ne"></field>
+		<field name="maxValue" type="id-ne"></field>
+		<field name="minValue" type="id-ne"></field>
+		<field name="value" type="id-ne"></field>
+		<field name="manualValue" type="id-ne"></field>
+		<field name="guiValue" type="id-ne"></field>
+		<field name="stdFlag" type="id-ne"></field>
+		<field name="guiCode" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="sort" type="numeric"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+	<entity entity-name="UnscheduleEqpParamHist"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Unschedule Equipment Parameter History">
+		<field name="histIndex" type="numeric"></field>
+		<field name="seqIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="paramName" type="id-ne"></field>
+		<field name="eqpStatus" type="id-ne"></field>
+		<field name="maxValue" type="id-ne"></field>
+		<field name="minValue" type="id-ne"></field>
+		<field name="value" type="id-ne"></field>
+		<field name="manualValue" type="id-ne"></field>
+		<field name="guiValue" type="id-ne"></field>
+		<field name="stdFlag" type="id-ne"></field>
+		<field name="guiCode" type="id-ne"></field>
+		<field name="event" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="sort" type="numeric"></field>
+		<prim-key field="histIndex"/>
+	</entity>
+
+	<entity entity-name="EquipmentLocation"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="equipment location">
+		<field name="location" type="id-ne"></field>
+		<field name="description" type="id-long-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="location"/>
+	</entity>
+
+	<entity entity-name="EquipmentSection"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="equipment section">
+		<field name="sectionIndex" type="numeric"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="section" type="id-long-ne"></field>
+		<field name="sectionLeader" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="sectionIndex"/>
+	</entity>
+
+	<entity entity-name="Account"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Account">
+		<field name="accountNo" type="id-ne"></field>
+		<field name="accountName" type="id-ne"></field>
+		<field name="mailAddress" type="id-long-ne"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="accountDept" type="id-long-ne"></field>
+		<field name="accountSection" type="id-long-ne"></field>
+		<field name="accountPos" type="id-ne"></field>
+		<field name="password" type="id-ne"></field>
+		<field name="roles" type="id-long-ne"></field>
+		<field name="isCheckLogin" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="accountNo"/>
+	</entity>
+
+	<entity entity-name="PmsRoles"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="Pms Role">
+		<field name="role" type="id-ne"></field>
+		<field name="description" type="id-ne"></field>
+		<prim-key field="role"/>
+	</entity>
+
+	<entity entity-name="DefaultPeriod"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="period base">
+		<field name="periodIndex" type="numeric"></field>
+		<field name="periodName" type="id-ne"></field>
+		<field name="periodDesc" type="id-ne"></field>
+		<field name="eqpType" type="id-ne"></field>
+		<field name="event" type="id-ne"></field>
+		<field name="defaultDays" type="numeric"></field>
+		<field name="standardHour" type="double-numeric"></field>
+		<field name="eqpStatus" type="id-ne"></field>
+		<field name="warningDays" type="numeric"></field>
+		<field name="isUpdatePromis" type="indicator"></field>
+		<field name="timeRangeIndex" type="numeric"></field>
+		<field name="enabled" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+
+		<field name="isContainSmallPm" type="indicator"></field>
+
+		<field name="holdLotNum" type="numeric"></field>
+        <field name="immediateHold" type="id-long"></field>
+        <field name="triggerStage" type="id-long"></field>
+        <field name="holdCode" type="id-long"></field>
+        <field name="holdReason" type="id-long"></field>
+        <field name="holdDesc" type="id-long"></field>
+
+		<prim-key field="periodIndex"/>
+	</entity>
+
+	<entity entity-name="PcPeriod"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="pc base">
+		<field name="periodIndex" type="numeric"></field>
+		<field name="periodName" type="id-ne"></field>
+		<field name="periodDesc" type="id-ne"></field>
+		<field name="styleIndex" type="id-ne"></field>
+		<field name="event" type="id-ne"></field>
+		<field name="defaultDays" type="numeric"></field>
+		<field name="standardHour" type="double-numeric"></field>
+		<field name="enabled" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="periodIndex"/>
+	</entity>
+
+	<entity entity-name="TimeRange"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="time range">
+		<field name="rangeIndex" type="numeric"></field>
+		<field name="timeRange" type="id-ne"></field>
+		<prim-key field="rangeIndex"/>
+	</entity>
+
+	<entity entity-name="EquipmentSchedule"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="equipment schedule">
+		<field name="scheduleIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="periodIndex" type="numeric"></field>
+		<field name="scheduleEvent" type="id-ne"></field>
+		<field name="scheduleDate" type="date"></field>
+		<field name="scheduleNote" type="id-ne"></field>
+		<field name="eventIndex" type="numeric"></field>
+		<field name="timeRangeIndex" type="numeric"></field>
+		<field name="creator" type="id-ne"></field>
+		<field name="createDate" type="date-time"></field>
+		<prim-key field="scheduleIndex"/>
+	</entity>
+
+	<entity entity-name="EquipmentScheduleDel"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="equipment schedule del">
+		<field name="scheduleIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="periodIndex" type="numeric"></field>
+		<field name="scheduleEvent" type="id-ne"></field>
+		<field name="scheduleDate" type="date-time"></field>
+		<field name="scheduleNote" type="id-ne"></field>
+		<field name="eventIndex" type="numeric"></field>
+		<field name="timeRangeIndex" type="numeric"></field>
+		<field name="creator" type="id-ne"></field>
+		<field name="createDate" type="date-time"></field>
+        <field name="deleteBy" type="id-ne"></field>
+		<field name="deleteDate" type="date-time"></field>
+	</entity>
+
+	<entity entity-name="PeriodSchedule"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Period Schedule">
+		<field name="scheduleIndex" type="numeric"></field>
+		<field name="periodIndex" type="numeric"></field>
+		<field name="pcStyleIndex" type="numeric"></field>
+		<field name="scheduleEvent" type="id-ne"></field>
+		<field name="scheduleDate" type="date-time"></field>
+		<field name="scheduleNote" type="id-ne"></field>
+		<field name="eventIndex" type="numeric"></field>
+		<field name="creator" type="id-ne"></field>
+		<field name="createDate" type="date-time"></field>
+		<prim-key field="scheduleIndex"/>
+	</entity>
+
+	<entity entity-name="PartsData"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Parts Data">
+		<field name="partNo" type="id-ne"></field>
+		<field name="partName" type="id-ne"></field>
+		<field name="category" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="partNo"/>
+	</entity>
+    <!--
+	<entity entity-name="Parts"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Parts">
+		<field name="partNo" type="id-ne"></field>
+		<field name="partName" type="id-ne"></field>
+		<field name="partStyle" type="id-ne"></field>
+		<field name="region" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="partNo"/>
+	</entity>
+
+	<entity entity-name="PartsPm"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Parts Pm">
+		<field name="partPmIndex" type="numeric"></field>
+		<field name="eqpId" type="id-ne"></field>
+		<field name="periodIndex" type="id-ne"></field>
+		<field name="partNo" type="id-ne"></field>
+		<field name="partName" type="id-ne"></field>
+		<field name="partCount" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="partPmIndex"/>
+	</entity>
+
+	<entity entity-name="PartsUse"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Parts Use">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="partNo" type="id-ne"></field>
+		<field name="partName" type="id-ne"></field>
+		<field name="partType" type="id-ne"></field>
+		<field name="partCount" type="id-ne"></field>
+		<field name="eventIndex" type="numeric"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="partsRequireIndex" type="numeric"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+    -->
+	<entity entity-name="PartsRequire"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Parts Require">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="partNo" type="id-ne"></field>
+		<field name="partName" type="id-ne"></field>
+		<field name="partCount" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="requireTime" type="date-time"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="charg" type="id-ne"></field>
+		<field name="indate" type="date-time"></field>
+		<field name="mtrGrp" type="id-ne"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+	<entity entity-name="PmForm"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Pm Form">
+		<field name="pmIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="pmName" type="id-ne"></field>
+		<field name="periodIndex" type="numeric"></field>
+		<field name="status" type="id-ne"></field>
+		<field name="overtimeReasonIndex" type="numeric"></field>
+		<field name="overtimeReason" type="long-varchar"></field>
+		<field name="propTime" type="date-time"></field>
+		<field name="owner" type="id-ne"></field>
+		<field name="jobText" type="id-long"></field>
+		<field name="formType" type="id-ne"></field>
+		<field name="isChangeStatus" type="id-ne"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="createUser" type="id-ne"></field>
+		<field name="startTime" type="date-time"></field>
+		<field name="startUser" type="id-ne"></field>
+		<field name="endTime" type="date-time"></field>
+		<field name="endUser" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="overtimeComment" type="long-varchar"></field>
+		<field name="pmQcTime" type="date-time"></field>
+		<field name="pmReworkQcTime" type="date-time"></field>
+		<field name="pmReworkTime" type="date-time"></field>
+		<field name="qcResultConfirmTime" type="date-time"></field>
+		<field name="isRework" type="id-ne"></field>
+		<field name="isReworkQc" type="id-ne"></field>
+		<field name="remark" type="id-ne"></field>
+		<field name="lockStatus" type="id-ne"></field>
+		<field name="lockUser" type="id-ne"></field>
+		<prim-key field="pmIndex"/>
+	</entity>
+
+	<entity entity-name="AbnormalForm"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Abnormal Form">
+		<field name="abnormalIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="abnormalName" type="id-ne"></field>
+		<field name="status" type="id-ne"></field>
+		<field name="overTimeReasonIndex" type="numeric"></field>
+		<field name="overtimeReason" type="id-ne"></field>
+		<field name="member" type="id-long"></field>
+		<field name="returnTime" type="date-time"></field>
+		<field name="subeventIndex" type="id-ne"></field>
+		<field name="subeventCategory" type="id-long"></field>
+		<field name="eventIndex" type="id-ne"></field>
+		<field name="eventCategory" type="id-long"></field>
+		<field name="abnormalReasonIndex" type="numeric"></field>
+		<field name="abnormalReason" type="id-long"></field>
+		<field name="relAbnormalReason" type="id-long"></field>
+		<field name="abnormalText" type="id-long"></field>
+		<field name="errorCode" type="id-long"></field>
+		<field name="reworkNote" type="id-long"></field>
+		<field name="formType" type="id-ne"></field>
+		<field name="note" type="description"></field>
+		<field name="jobText" type="id-long"></field>
+		<field name="abnormalTime" type="date-time"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="createUser" type="id-ne"></field>
+		<field name="createName" type="id-ne"></field>
+		<field name="startTime" type="date-time"></field>
+		<field name="startUser" type="id-ne"></field>
+		<field name="endTime" type="date-time"></field>
+		<field name="endUser" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="lockStatus" type="id-ne"></field>
+		<field name="lockUser" type="id-ne"></field>
+		<prim-key field="abnormalIndex"/>
+	</entity>
+
+	<entity entity-name="AbnormalDocument"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="abnormal document">
+		<field name="abnormalDocIndex" type="numeric"></field>
+		<field name="abnormalDocName" type="id-ne"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="owner" type="id-ne"></field>
+		<field name="member" type="id-long"></field>
+		<field name="abnormalEffect" type="description"></field>
+		<field name="preventMethod" type="description"></field>
+		<field name="issueTech" type="description"></field>
+		<field name="abnormalEvent" type="id-long"></field>
+		<field name="abnormalReason" type="id-long"></field>
+		<field name="returnTime" type="date-time"></field>
+		<field name="status" type="numeric"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="createUser" type="id-ne"></field>
+		<field name="endTime" type="date-time"></field>
+		<field name="endUser" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="type" type="id-ne"></field>
+		<prim-key field="abnormalDocIndex"/>
+	</entity>
+
+	<entity entity-name="AbnormalDocFormRelation"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="abnormal document form relation">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="abnormalDocIndex" type="numeric"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="eventIndex" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+	<entity entity-name="DocumentUpload"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="document upload">
+		<field name="uploadIndex" type="numeric"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="eventIndex" type="numeric"></field>
+		<field name="fileUrl" type="id-long"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="contentType" type="id-ne"></field>
+		<field name="fileDescription" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="uploadIndex"/>
+	</entity>
+
+	<entity entity-name="FlowAction"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="flow action">
+		<field name="actionIndex" type="numeric"></field>
+		<field name="actionName" type="id-vlong-ne"></field>
+		<field name="actionDescription" type="id-vlong-ne"></field>
+		<field name="actionType" type="id-ne"></field>
+		<field name="eventName" type="id-ne"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="frozen" type="indicator"></field>
+		<field name="enabled" type="indicator"></field>
+		<field name="empty" type="indicator"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="actionIndex"/>
+	</entity>
+
+	<entity entity-name="FlowActionHist"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="flow action hist">
+		<field name="histIndex" type="numeric"></field>
+		<field name="actionIndex" type="numeric"></field>
+		<field name="actionName" type="id-vlong-ne"></field>
+		<field name="actionDescription" type="id-vlong-ne"></field>
+		<field name="actionType" type="id-ne"></field>
+		<field name="eventName" type="id-ne"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="frozen" type="indicator"></field>
+		<field name="enabled" type="indicator"></field>
+		<field name="empty" type="indicator"></field>
+		<field name="evt" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="histIndex"/>
+	</entity>
+
+	<entity entity-name="FlowActionStatus"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="flow action status">
+		<field name="statusIndex" type="numeric"></field>
+		<field name="statusName" type="id-ne"></field>
+		<field name="actionIndex" type="numeric"></field>
+		<field name="statusOrder" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="statusIndex"/>
+	</entity>
+
+	<entity entity-name="FlowActionItem"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="flow action item">
+		<field name="itemIndex" type="numeric"></field>
+		<field name="itemName" type="id-ne"></field>
+		<field name="itemDescription" type="id-long"></field>
+		<field name="actionIndex" type="numeric"></field>
+		<field name="itemOrder" type="short-numeric"></field>
+		<field name="itemType" type="short-numeric"></field>
+		<field name="defaultValue" type="name"></field>
+		<field name="itemOption" type="name"></field>
+		<field name="itemUnit" type="id-ne"></field>
+		<field name="itemUpperSpec" type="double-numeric"></field>
+		<field name="itemLowerSpec" type="double-numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="itemIndex"/>
+	</entity>
+
+	<entity entity-name="FlowActionItemTemp"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="flow action item temp">
+		<field name="flowActionItemTempIndex" type="numeric"></field>
+		<field name="status" type="short-numeric"></field>
+		<field name="itemIndex" type="numeric"></field>
+		<field name="itemName" type="id-ne"></field>
+		<field name="itemDescription" type="id-long"></field>
+		<field name="actionIndex" type="numeric"></field>
+		<field name="itemOrder" type="short-numeric"></field>
+		<field name="itemType" type="short-numeric"></field>
+		<field name="defaultValue" type="name"></field>
+		<field name="itemOption" type="name"></field>
+		<field name="itemUnit" type="id-ne"></field>
+		<field name="itemUpperSpec" type="double-numeric"></field>
+		<field name="itemLowerSpec" type="double-numeric"></field>
+		<field name="evt" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+
+		<prim-key field="flowActionItemTempIndex"/>
+	</entity>
+
+	<entity entity-name="FlowActionItemHist"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="flow action item hist">
+		<field name="histIndex" type="numeric"></field>
+		<field name="itemIndex" type="numeric"></field>
+		<field name="itemName" type="id-ne"></field>
+		<field name="itemDescription" type="id-long"></field>
+		<field name="actionIndex" type="numeric"></field>
+		<field name="itemOrder" type="short-numeric"></field>
+		<field name="itemType" type="short-numeric"></field>
+		<field name="defaultValue" type="name"></field>
+		<field name="itemOption" type="name"></field>
+		<field name="itemUnit" type="id-ne"></field>
+		<field name="itemUpperSpec" type="double-numeric"></field>
+		<field name="itemLowerSpec" type="double-numeric"></field>
+		<field name="evt" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="flowActionItemTempIndex" type="numeric"></field>
+
+		<prim-key field="histIndex"/>
+	</entity>
+
+	<entity entity-name="FlowJob"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="flow job">
+		<field name="jobIndex" type="numeric"></field>
+		<field name="jobName" type="id-long-ne"></field>
+		<field name="jobDescription" type="id-long"></field>
+		<field name="eventObject" type="id-ne"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="jobContent" type="very-long"></field>
+		<field name="status" type="short-numeric"></field>
+		<field name="owner" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="jobIndex"/>
+	</entity>
+
+	<entity entity-name="FlowJobHist"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="flow job hist">
+		<field name="histIndex" type="numeric"></field>
+		<field name="jobIndex" type="numeric"></field>
+		<field name="jobName" type="id-ne"></field>
+		<field name="jobDescription" type="id-long"></field>
+		<field name="eventObject" type="id-ne"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="jobContent" type="very-long"></field>
+		<field name="status" type="short-numeric"></field>
+		<field name="evt" type="id-ne"></field>
+		<field name="owner" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="histIndex"/>
+	</entity>
+
+	<entity entity-name="FlowJobTemp"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="flow job temp">
+		<field name="tempIndex" type="numeric"></field>
+		<field name="jobIndex" type="numeric"></field>
+		<field name="jobName" type="id-ne"></field>
+		<field name="jobDescription" type="id-long"></field>
+		<field name="eventObject" type="id-ne"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="jobContent" type="very-long"></field>
+		<field name="submitType" type="id-ne"></field>
+		<field name="status" type="short-numeric"></field>
+		<field name="owner" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="tempIndex"/>
+	</entity>
+
+	<entity entity-name="FollowJob"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="follow Job">
+		<field name="followIndex" type="numeric"></field>
+		<field name="followName" type="id-ne"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="sectionIndex" type="numeric"></field>
+		<field name="objectType" type="id-ne"></field>
+		<field name="object" type="id-ne"></field>
+		<field name="purpose" type="id-long"></field>
+		<field name="status" type="numeric"></field>
+		<field name="creator" type="id-ne"></field>
+		<field name="owner" type="id-ne"></field>
+		<field name="type" type="id-ne"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="followIndex"/>
+	</entity>
+
+	<entity entity-name="FollowItem"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="follow Item">
+		<field name="itemIndex" type="numeric"></field>
+		<field name="itemContent" type="id-ne"></field>
+		<field name="followIndex" type="numeric"></field>
+		<field name="itemOrder" type="numeric"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="itemIndex"/>
+	</entity>
+
+	<entity entity-name="FollowFormRelation"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="follow form relation">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="followIndex" type="id-ne"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="eventIndex" type="numeric"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+	<entity entity-name="PcForm"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Pc Form">
+		<field name="pcIndex" type="numeric"></field>
+		<field name="styleIndex" type="numeric"></field>
+		<field name="pcName" type="id-ne"></field>
+		<field name="periodIndex" type="numeric"></field>
+		<field name="status" type="id-ne"></field>
+		<field name="scheduleDate" type="date-time"></field>
+		<field name="jobText" type="id-long"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="createUser" type="id-ne"></field>
+		<field name="startTime" type="date-time"></field>
+		<field name="startUser" type="id-ne"></field>
+		<field name="endTime" type="date-time"></field>
+		<field name="endUser" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="note" type="id-long-ne"></field>
+		<prim-key field="pcIndex"/>
+	</entity>
+
+	<entity entity-name="ImproveDocument"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Improve Document">
+		<field name="impDocIndex" type="numeric"></field>
+		<field name="docName" type="id-ne"></field>
+		<field name="type" type="id-ne"></field>
+		<field name="content" type="id-long"></field>
+		<field name="owner" type="id-ne"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="impDocIndex"/>
+	</entity>
+
+	<entity entity-name="PmAbnormalRecord"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Pm Abnormal Record">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="equipmentStatus" type="id-ne"></field>
+		<field name="startTime" type="date-time"></field>
+		<field name="endTime" type="date-time"></field>
+		<field name="status" type="numeric"></field>
+		<field name="formIndex" type="numeric"></field>
+		<field name="parentEqpId" type="id-ne"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+	<entity entity-name="AbnormalBinding"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Abnormal Binding">
+		<field name="parentIndex" type="numeric"></field>
+		<field name="sonIndex" type="numeric"></field>
+		<prim-key field="parentIndex"/>
+		<prim-key field="sonIndex"/>
+	</entity>
+
+	<entity entity-name="FormJobRelation"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Form Job Relation">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="jobIndex" type="numeric"></field>
+		<field name="eventType" type="id-ne"></field>
+		<field name="eventIndex" type="numeric"></field>
+		<field name="jobContent" type="very-long"></field>
+		<field name="creator" type="id-ne"></field>
+		<field name="jobStartTime" type="date-time"></field>
+		<field name="jobOverTime" type="date-time"></field>
+		<field name="jobStatus" type="short-numeric"></field>
+		<field name="nextActionId" type="short-numeric"></field>
+		<field name="jobName" type="id-long-ne"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+	<entity entity-name="FlowActionRecord"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Flow Action Record">
+		<field name="actionRecordIndex" type="numeric"></field>
+		<field name="formJobIndex" type="numeric"></field>
+		<field name="formType" type="id-ne"></field>
+		<field name="formIndex" type="numeric"></field>
+		<field name="actionIndex" type="numeric"></field>
+		<field name="actionName" type="id-vlong-ne"></field>
+		<field name="actionType" type="id-ne"></field>
+		<field name="stepOrder" type="short-numeric"></field>
+		<field name="stepComment" type="id-long"></field>
+		<field name="isEmpty" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="actionRecordIndex"/>
+	</entity>
+
+	<entity entity-name="FlowItemPoints"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Flow Item Points">
+		<field name="pointIndex" type="numeric"></field>
+		<field name="actionRecordIndex" type="numeric"></field>
+		<field name="formType" type="id-ne"></field>
+		<field name="formIndex" type="numeric"></field>
+		<field name="itemIndex" type="numeric"></field>
+		<field name="itemType" type="short-numeric"></field>
+		<field name="itemName" type="id-ne"></field>
+		<field name="itemValue" type="id-ne"></field>
+		<field name="itemNote" type="id-long"></field>
+		<field name="itemOrder" type="short-numeric"></field>
+		<field name="itemUpperSpec" type="double-numeric"></field>
+		<field name="itemLowerSpec" type="double-numeric"></field>
+		<field name="itemOption" type="name"></field>
+		<field name="itemUnit" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="pointIndex"/>
+	</entity>
+
+	<entity entity-name="EqpChgstatusHist"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Equipment Change Status Hist">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="newStatus" type="id-ne"></field>
+		<field name="formType" type="id-ne"></field>
+		<field name="formIndex" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+	<entity entity-name="WfSubmit"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="WorkFlow Submit">
+		<field name="submitIndex" type="numeric"></field>
+		<field name="object" type="id-ne"></field>
+		<field name="objectIndex" type="numeric"></field>
+		<field name="objectName" type="long-varchar"></field>
+		<field name="type" type="id-ne"></field>
+		<field name="status" type="id-ne"></field>
+		<field name="creator" type="id-ne"></field>
+		<field name="creatorName" type="id-ne"></field>
+		<field name="owner" type="id-ne"></field>
+		<field name="submitList" type="id-ne"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="flowJobHistIndex" type="numeric"></field>
+		<field name="ownerProcess" type="id-ne"></field>
+		<field name="statusProcess" type="id-ne"></field>
+
+		<prim-key field="submitIndex"/>
+	</entity>
+
+	<entity entity-name="WfSubmitObject"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="WorkFlow Submit Object">
+		<field name="object" type="id-ne"></field>
+		<field name="objectDescription" type="id-ne"></field>
+		<field name="rule" type="id-ne"></field>
+		<field name="condition" type="id-ne"></field>
+		<prim-key field="object"/>
+	</entity>
+
+	<entity entity-name="WfSubmitControl"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="WorkFlow Submit Control">
+		<field name="controlIndex" type="numeric"></field>
+		<field name="submitIndex" type="numeric"></field>
+		<field name="status" type="id-ne"></field>
+		<field name="approver" type="id-ne"></field>
+		<field name="submitComment" type="id-ne"></field>
+		<field name="approveTime" type="date-time"></field>
+		<prim-key field="controlIndex"/>
+	</entity>
+
+	<entity entity-name="PmNextStarttime"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Pm Next StartTime">
+		<field name="periodIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="lastPmDate" type="date-time"></field>
+		<field name="nextPmDate" type="date-time"></field>
+		<field name="transBy" type="id-ne"></field>
+		<prim-key field="periodIndex"/>
+		<prim-key field="equipmentId"/>
+	</entity>
+
+	<entity entity-name="EquipmentSchedulePmDelete"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="equipment schedule">
+		<field name="scheduleIndex" type="numeric"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="periodIndex" type="numeric"></field>
+		<field name="scheduleEvent" type="id-ne"></field>
+		<field name="scheduleDate" type="date-time"></field>
+		<field name="deletor" type="id-ne"></field>
+		<prim-key field="scheduleIndex"/>
+	</entity>
+
+	<entity entity-name="PmNextYearDetail"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="pm next year detail">
+		<field name="seqIndex" type="numeric"></field>
+		<field name="section" type="id-ne"></field>
+		<field name="year" type="numeric"></field>
+		<field name="status" type="short-numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="seqIndex"/>
+	</entity>
+
+    <!-- 线边仓-->
+    <entity entity-name="PartsFilter"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Parts Data">
+		<field name="partNo" type="id-ne"></field>
+		<field name="partName" type="id-ne"></field>
+		<field name="costCenter" type="id-ne"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="price" type="numeric"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="transBy" type="id-ne"></field>
+		<prim-key field="partNo"/>
+	</entity>
+
+    <entity entity-name="Parts"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Parts">
+		<field name="partNo" type="id-ne"></field>
+		<field name="partName" type="id-ne"></field>
+		<field name="partStyle" type="id-ne"></field>
+		<field name="region" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="partNo"/>
+	</entity>
+
+	<entity entity-name="PartsPm"
+                package-name="org.ofbiz"
+                never-cache="true"
+                no-auto-stamp="true"
+                title="Parts Pm">
+        <field name="partPmIndex" type="numeric"></field>
+        <field name="eqpId" type="id-ne"></field>
+        <field name="eqpType" type="id-ne"></field>
+        <field name="periodIndex" type="id-ne"></field>
+        <field name="flowIndex" type="id-ne"></field>
+        <field name="partNo" type="id-ne"></field>
+        <field name="partName" type="id-ne"></field>
+        <field name="partCount" type="id-ne"></field>
+        <field name="templateCount" type="id-ne"></field>
+        <field name="mtrGrp" type="id-ne"></field>
+        <field name="partType" type="id-ne"></field>
+        <field name="remark" type="id-ne"></field>
+        <field name="transBy" type="id-ne"></field>
+        <field name="updateTime" type="date-time"></field>
+        <prim-key field="partPmIndex"/>
+    </entity>
+
+	<entity entity-name="PartsUse"
+                package-name="org.ofbiz"
+                never-cache="true"
+                no-auto-stamp="true"
+                title="Parts Use">
+        <field name="seqIndex" type="numeric"></field>
+        <field name="mtrGrp" type="id-ne"></field>
+        <field name="partNo" type="id-ne"></field>
+        <field name="partName" type="id-ne"></field>
+        <field name="partType" type="id-ne"></field>
+        <field name="partCount" type="id-ne"></field>
+        <field name="eventIndex" type="numeric"></field>
+        <field name="periodIndex" type="numeric"></field>
+        <field name="flowIndex" type="numeric"></field>
+        <field name="eventType" type="id-ne"></field>
+        <field name="deptIndex" type="numeric"></field>
+        <field name="transBy" type="id-ne"></field>
+        <field name="updateTime" type="date-time"></field>
+        <field name="remark" type="id-ne"></field>
+		<field name="partsRequireIndex" type="numeric"></field>
+        <prim-key field="seqIndex"/>
+    </entity>
+
+    <entity entity-name="PartPlant"
+                package-name="org.ofbiz"
+                never-cache="true"
+                no-auto-stamp="true"
+                title="PartPlant">
+        <field name="plant" type="id-ne"></field>
+        <field name="type" type="id-ne"></field>
+        <prim-key field="plant"/>
+    </entity>
+    <!-- end 线边仓 -->
+
+    <entity entity-name="EqpMaintainHold"
+           package-name="org.ofbiz"
+           never-cache="true"
+           no-auto-stamp="true"
+           title="Eqp Maintain Hold">
+        <field name="periodIndex" type="numeric"></field>
+        <field name="eqpId" type="id-long"></field>
+        <field name="holdLotNum" type="numeric"></field>
+        <field name="immediateHold" type="id-long"></field>
+        <field name="triggerStage" type="id-long"></field>
+        <field name="holdCode" type="id-long"></field>
+        <field name="holdReason" type="id-long"></field>
+        <field name="updateTime" type="date-time"></field>
+        <field name="basicId" type="numeric"></field>
+
+        <prim-key field="periodIndex"/>
+        <prim-key field="eqpId"/>
+    </entity>
+
+	<!-- start 关键备件管理 -->
+	<entity entity-name="EquipmentModel"
+			package-name="org.ofbiz"
+			never-cache="true"
+			no-auto-stamp="true"
+			title="equipment Model">
+		<field name="id" type="numeric"></field>
+		<field name="vendor" type="id-ne"></field>
+		<field name="model" type="id-ne"></field>
+		<field name="maintDept" type="id-ne"></field>
+		<prim-key field="id"/>
+	</entity>
+
+	<entity entity-name="KeyPartsUse"
+			package-name="org.ofbiz"
+			never-cache="true"
+			no-auto-stamp="true"
+			title="Key Parts Use">
+		<field name="keyUseId" type="numeric"></field>
+		<field name="keyPartsId" type="numeric"></field>
+		<field name="eqpId" type="id-ne"></field>
+		<field name="vendor" type="id-ne"></field>
+		<field name="seriesNo" type="id-ne"></field>
+		<field name="baseSn" type="id-ne"></field>
+		<field name="station" type="id-ne"></field>
+		<field name="status" type="id-ne"></field>
+		<field name="partsType" type="id-ne"></field>
+		<field name="remark" type="id-long-ne"></field>
+		<field name="partsUseId" type="numeric"></field>
+		<field name="createTime" type="date-time"></field>
+		<field name="createUser" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<field name="updateUser" type="id-ne"></field>
+		<field name="initLife" type="numeric"></field>
+		<field name="offLine" type="id-ne"></field>
+		<field name="delaytime" type="numeric"></field>
+		<field name="eqpModel" type="id-ne"></field>
+		<field name="keyPartsCleanId" type="numeric"></field>
+		<prim-key field="keyUseId"/>
+    </entity> 
+    
+    <entity entity-name="KeyEqpParts"
+			package-name="org.ofbiz"
+			never-cache="true"
+			no-auto-stamp="true"
+			title="Key Eqp Parts">
+        <field name="keyPartsId" type="numeric"></field>
+        <field name="partsId" type="id-ne"></field>
+        <field name="partsName" type="id-long-ne"></field>
+        <field name="eqpType" type="id-ne"></field>
+        <field name="errorSpec" type="numeric"></field>
+        <field name="warnSpec" type="numeric"></field>
+        <field name="isAlarm" type="id-ne"></field>
+        <field name="limitType" type="id-ne"></field>
+        <field name="maintDept" type="id-ne"></field>
+        <field name="notify" type="id-ne"></field>
+        <field name="createTime" type="date-time"></field>
+        <field name="createUser" type="id-ne"></field>
+        <field name="updateTime" type="date-time"></field>
+        <field name="updateUser" type="id-ne"></field>
+		<field name="remark" type="id-long-ne"></field>
+		<field name="enable" type="id-ne"></field>
+		<field name="keydesc" type="id-long-ne"></field>
+		<field name="useNumber" type="numeric"></field>
+		<field name="mustchange" type="id-ne"></field>
+        <prim-key field="keyPartsId"/>
+    </entity>
+    
+    <entity entity-name="KeyEqpPartsHist"
+			package-name="org.ofbiz"
+			never-cache="true"
+			no-auto-stamp="true"
+			title="Key Eqp Parts">
+		<field name="histId" type="numeric"></field>
+        <field name="keyPartsId" type="numeric"></field>
+        <field name="partsId" type="id-ne"></field>
+        <field name="partsName" type="id-long-ne"></field>
+        <field name="eqpType" type="id-ne"></field>
+        <field name="errorSpec" type="numeric"></field>
+        <field name="warnSpec" type="numeric"></field>
+        <field name="isAlarm" type="id-ne"></field>
+        <field name="limitType" type="id-ne"></field>
+        <field name="maintDept" type="id-ne"></field>
+        <field name="notify" type="id-ne"></field>
+        <field name="updateTime" type="date-time"></field>
+        <field name="updateUser" type="id-ne"></field>
+		<field name="remark" type="id-long-ne"></field>
+		<field name="enable" type="id-ne"></field>
+		<field name="keydesc" type="id-long-ne"></field>
+		<field name="useNumber" type="numeric"></field>
+		<field name="mustchange" type="id-ne"></field>
+		<field name="action" type="id-ne"></field>
+		<prim-key field="histId"/>
+    </entity>
+
+	<entity entity-name="KeyPartsDelay"
+			package-name="org.ofbiz"
+			never-cache="true"
+			no-auto-stamp="true"
+			title="KeyPartsDelay">
+        <field name="keydesc" type="id-long-ne"></field>
+        <field name="keyPartsId" type="numeric"></field>
+        <field name="partsId" type="id-ne"></field>
+        <field name="keyPartsDelayId" type="numeric"></field>
+        <field name="delayItem" type="id-ne"></field>
+        <field name="delaySpec" type="id-ne"></field>
+        <field name="delayRule" type="id-ne"></field>
+        <prim-key field="keyPartsDelayId"/>
+    </entity>
+    
+    <entity entity-name="KeypartsdelayResult"
+			package-name="org.ofbiz"
+			never-cache="true"
+			no-auto-stamp="true"
+			title="KeypartsdelayResult">
+		<field name="resultId" type="numeric"></field>
+        <field name="keyPartsId" type="numeric"></field>
+        <field name="eventIndex" type="numeric"></field>
+        <field name="keydesc" type="id-long-ne"></field>
+        <field name="delayTableId" type="numeric"></field>
+        <field name="delayItem" type="id-ne"></field>
+        <field name="delaySpec" type="id-ne"></field>
+        <field name="delayRule" type="id-ne"></field>
+        <field name="delayResult" type="id-ne"></field>
+		<prim-key field="resultId"/>
+    </entity>
+    
+    <entity entity-name="KeyPartsDelayInfo"
+			package-name="org.ofbiz"
+			never-cache="true"
+			no-auto-stamp="true"
+			title="KeyPartsDelayInfo">
+		<field name="infoId" type="numeric"></field>
+        <field name="keyUseId" type="numeric"></field>        
+        <field name="keydesc" type="id-long-ne"></field>
+        <field name="keyPartsId" type="numeric"></field>
+        <field name="partsId" type="id-ne"></field>
+        <field name="delayItems" type="id-ne"></field>
+        <field name="limitType" type="id-ne"></field>
+        <field name="delayLife" type="id-ne"></field>
+        <field name="delayTableId" type="numeric"></field>
+        <field name="eventIndex" type="numeric"></field>
+        <field name="updateUser" type="id-ne"></field>
+        <field name="updateTime" type="date-time"></field>
+		<prim-key field="infoId"/>
+    </entity>
+
+	<entity entity-name="KeyPartsMustchangeComm"
+			package-name="org.ofbiz"
+			never-cache="true"
+			no-auto-stamp="true"
+			title="KeyPartsMustchangeComm">
+        <field name="keyPartsMustchangeCommId" type="numeric"></field>
+        <field name="keyUseId" type="numeric"></field>
+        <field name="keyPartsId" type="numeric"></field>
+        <field name="partsId" type="id-ne"></field>
+        <field name="partsName" type="id-long-ne"></field>
+        <field name="keydesc" type="id-long-ne"></field>
+        <field name="eqpId" type="id-ne"></field>
+        <field name="reason" type="id-long-ne"></field>
+        <field name="remark" type="id-long-ne"></field>
+        <field name="updateTime" type="date-time"></field>
+        <field name="updateUser" type="id-ne"></field>
+        <field name="eventIndex" type="numeric"></field>
+        <field name="formType" type="id-ne"></field>
+       	<prim-key field="keyPartsMustchangeCommId"/>
+    </entity>
+
+	<entity entity-name="KeyEqpPartsClean"
+                package-name="org.ofbiz"
+                never-cache="true"
+                no-auto-stamp="true"
+                title="KeyEqpPartsClean">
+    	<field name="keyPartsCleanId" type="numeric"></field>
+    	<field name="keyPartsId" type="numeric"></field>
+    	<field name="seriesNo" type="id-ne"></field>
+    	<field name="lifeType" type="id-ne"></field>
+    	<field name="limitLife" type="id-ne"></field>
+    	<field name="remark" type="id-long-ne"></field>
+    	<field name="updateUser" type="id-ne"></field>
+    	<field name="updateTime" type="date-time"></field>
+    	<field name="enable" type="id-ne"></field>
+    	<prim-key field="keyPartsCleanId"/>
+	</entity>	
+	
+    <entity entity-name="KeyEqpPartsCleanHist"
+                package-name="org.ofbiz"
+                never-cache="true"
+                no-auto-stamp="true"
+                title="KeyEqpPartsCleanHist">
+    	<field name="keyPartsCleanHistId" type="numeric"></field>
+    	<field name="keyPartsCleanId" type="numeric"></field>
+    	<field name="keyPartsId" type="numeric"></field>
+    	<field name="seriesNo" type="id-ne"></field>
+    	<field name="lifeType" type="id-ne"></field>
+    	<field name="limitLife" type="id-ne"></field>
+    	<field name="remark" type="id-long-ne"></field>
+    	<field name="updateUser" type="id-ne"></field>
+    	<field name="updateTime" type="date-time"></field>
+    	<field name="enable" type="id-ne"></field>
+    	<field name="action" type="id-ne"></field>
+    	<prim-key field="keyPartsCleanHistId"/>
+	</entity>
+
+	<entity entity-name="PartsVendors"
+                package-name="org.ofbiz"
+                never-cache="true"
+                no-auto-stamp="true"
+                title="PartsVendors">
+        <field name="partsVendorsId" type="numeric"></field>
+        <field name="partsId" type="id-ne"></field>
+        <field name="vendors" type="id-ne"></field>
+        <field name="updateUser" type="id-ne"></field>
+        <field name="updateTime" type="date-time"></field>
+       <prim-key field="partsVendorsId"/>
+    </entity>
+
+	<entity entity-name="HighValueParts"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="High Value Parts">
+		<field name="partNo" type="id-ne"></field>
+		<field name="partName" type="name"></field>
+		<field name="dept" type="name"></field>
+		<field name="averagePrice" type="currency-amount"></field>
+		<field name="enable" type="indicator"></field>
+		<prim-key field="partNo"/>
+	</entity>
+	
+</entitymodel>

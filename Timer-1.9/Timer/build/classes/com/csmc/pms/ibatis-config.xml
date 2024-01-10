@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+ 	<bean id="dataSourceCache" class="com.csmc.db.DataSourceFactory" init-method="init" singleton="true"/>
+	
+	<bean id="pmsDataSource" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+  		<property name="targetObject"><ref local="dataSourceCache"/></property>
+  		<property name="targetMethod"><value>getDataSource</value></property>
+  		<property name="arguments">
+    		<list>
+      			<value>pms</value>
+    		</list>
+  		</property>
+	</bean>
+ 	
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+    	<property name="configLocation" value="classpath:com/csmc/pms/persistence/sql/sql-map-config.xml"/>
+    </bean>
+    
+  	<bean id="periodScheduleDao" class="com.csmc.pms.persistence.dao.PeriodScheduleDaoImpl">
+    	<property name="sqlMapClient" ref="sqlMapClient"/>
+    	<property name="dataSource" ref="pmsDataSource"/>
+  	</bean>
+  	
+  	<bean id="equipmentScheduleDao" class="com.csmc.pms.persistence.dao.EquipmentScheduleDaoImpl">
+    	<property name="sqlMapClient" ref="sqlMapClient"/>
+    	<property name="dataSource" ref="pmsDataSource"/>
+  	</bean>
+  	
+  	<bean id="accountDao" class="com.csmc.pms.persistence.dao.AccountDaoImpl">
+    	<property name="sqlMapClient" ref="sqlMapClient"/>
+    	<property name="dataSource" ref="pmsDataSource"/>
+  	</bean>
+  	
+  	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  		<property name="dataSource" ref="pmsDataSource"/>
+  	</bean>
+  	
+  	<bean id="baseTransactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		  abstract="true">
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="invoke*">PROPAGATION_REQUIRED</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="pms" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.csmc.pms.service.PmsImpl">
+				<property name="periodScheduleDao" ref="periodScheduleDao"/>
+				<property name="equipmentScheduleDao" ref="equipmentScheduleDao"/>
+				<property name="accountDao" ref="accountDao"/>
+			</bean>
+		</property>
+  	</bean>
+
+</beans>

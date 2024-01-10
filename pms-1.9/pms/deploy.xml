@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<project name="Deploy PMS Project" default="deploy" basedir=".">
+
+    <target name="init">
+        <property environment="env"/>
+        <property name="desc" value="Pms Component"/>
+        <property name="name" value="ofbiz-pms"/>
+        <property name="deploy.dir" value="D:/ofbiz3.0/components"/>
+        <property name="backup.dir" value="D:/pms-backup"/>
+
+        <property name="component.name" value="pms"/>
+    </target>
+
+    <tstamp>
+      <format property="backup.time" pattern="yyyyMMddhh"
+              locale="us" />
+  	</tstamp>
+
+    <!-- ================================================================== -->
+    <!-- Backup Project ex. 20060412csmcgui.jar                             -->
+    <!-- ================================================================== -->
+
+    <target name="backup" depends="init">
+        <echo>Backup Time:${backup.time}</echo>
+    	<zip destfile="${backup.dir}/${backup.time}${component.name}.zip"
+      	basedir="${deploy.dir}/${component.name}"
+      	update="true" />
+
+        <delete	dir="${deploy.dir}/${component.name}"/>
+    </target>
+
+    <target name="prepare" depends="backup">
+        <mkdir dir="${deploy.dir}/${component.name}"/>
+	</target>
+
+    <!-- ================================================================== -->
+    <!-- Copy Resource to Deploy Dist                                       -->
+    <!-- ================================================================== -->
+
+    <target name="deploy" depends="prepare">
+        <copy todir="${deploy.dir}/${component.name}">
+            <fileset dir="${basedir}" includes="**/*.properties,**/*.xml,
+            							**/*.jar,**/*.jsp,**/*.js,**/*.html,**/*.ini,
+            							**/*.gif,**/*.css,**/*.jpg,**/*.tld,**/*.htm" />
+        </copy>
+        <delete	dir="${deploy.dir}/${component.name}/src"/>
+    </target>
+
+    <target name="all" depends="deploy"/>
+</project>

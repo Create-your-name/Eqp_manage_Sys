@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="crmail.crc.com.cn"/>
+		<property name="port" value="25"/>
+		<property name="username" value="crmic_nc_PMS_zy@rxgz.crmicro.com"/>
+		<property name="password" value="Rxpms@2024"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">25000</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="crmic_nc_PMS_zy@rxgz.crmicro.com"/>
+		<property name="subject" value="RXGZ-pms-alarm"/>
+	</bean>
+
+	<bean id="mailManager" class="com.csmc.util.mail.MailManagerImpl">
+  		<property name="mailSender" ref="mailSender"/>
+  		<property name="message" ref="mailMessage"/>
+	</bean>
+
+	<!--<bean id="mimeMailManager" class="com.csmc.syncpcmdata.mail.MimeMailManagerImpl">
+  		<property name="mailSender" ref="mailSender"/>
+  		<property name="message" ref="mailMessage"/>
+	</bean>-->
+
+	<bean id="mailTemplateEngine" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/templates/"/>
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">0</prop>
+				<prop key="default_encoding">UTF-8</prop>
+				<prop key="locale">zh_CN</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="mimeMailManager" class="com.csmc.util.mail.MimeMailManagerImpl">
+  		<property name="mailSender" ref="mailSender"/>
+  		<property name="message" ref="mailMessage"/>
+  		<property name="mailTemplateEngine" ref="mailTemplateEngine"/>
+	</bean>
+
+</beans>

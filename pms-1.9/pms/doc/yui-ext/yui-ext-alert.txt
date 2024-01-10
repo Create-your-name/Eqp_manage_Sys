@@ -1,0 +1,2 @@
+一：在页面中引入yui的相应JS页面中加入下面代码：
+Ext.MessageBox.alert('Status', '请选择设备大类!');

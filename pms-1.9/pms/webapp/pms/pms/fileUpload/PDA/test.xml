@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GB2312"?>
+
+<sheet>
+   <sheet_info>
+      <event desc="Event">PM</event>
+      <job_index desc="Job_Index">10000</job_index>
+      <record_name desc="Record_Name">PM05-001TEST-00004</record_name>
+      <equipment_id desc="Equipment_Id">1147</equipment_id>
+      <equipment_no desc="Equipment_No">001TEST</equipment_no>
+      <status desc="status">1</status>
+      <job_name desc="Job_Name">7DAILY</job_name>
+      <createor desc="Createor"></createor>
+      <create_date desc="create_date">2005-09-06</create_date>
+      <operator desc="operator"></operator>
+      <error_code desc="error_code"></error_code>
+      <error_event desc="error_event"></error_event>
+      <error_reason desc="error_reason"></error_reason>
+      <next_action_id desc="next_action_id">1</next_action_id>
+   </sheet_info>
+   <actions>
+      <action action_id="0" action_name="start" action_desc="开始流程" action_value="" operator="" finish_date="">
+         <action_item/>
+      </action>
+      <action action_index="407" action_id="1" action_name="CLP测量" action_desc="测量CLP标样的值" action_value="" operator="" finish_date="">
+         <action_item>
+            <item item_index="1001" item_name="CLP测量" item_desc="测CLP标样的10条10间距" upper_spec="2.42" lower_spec="2.38" spec_unit="um" item_option="CLP|CIP" item_type="3" item_value="CLP" item_remak=""/>
+            <item item_index="1002" item_name="CP测量" item_desc="测CLP标样的11条12间距" upper_spec="4" lower_spec="3" spec_unit="um" item_option="CLP" item_type="2" item_value="3.42" item_remak=""/>
+         </action_item>
+      </action>
+   </actions>
+</sheet>

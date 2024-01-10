@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+    <view-map name="keyPartsMaintain" type="region"/>
+    <view-map name="queryKeyParts" type="region"/>
+    <view-map name="queryKeyPartsDelayList" type="region"/>
+    <view-map name="technicalSparePartsSet" type="region"/>
+    <view-map name="keyPartsUnuse" type="region"/>
+    <view-map name="pmFormPartsQueryEntry" type="region"/>
+    <view-map name="partBatchNumList" type="region"/>
+    <view-map name="keyEqpPartsCleanMaintain" type="region"/>
+    <view-map name="keyPartsUsedQueryEntry" type="region"/>
+    <view-map name="keyPartsEqpQueryEntry" type="region"/>
+    <view-map name="keyPartsUpdateQueryEntry" type="region"/>
+	<view-map name="partsVendorsMaintain" type="region"/>
+	<view-map name="vendorsPartsQueryEntry" type="region"/>
+	<view-map name="keyPartsMustchangeCommQueryEntry" type="region"/>
+	<view-map name="keyPartsCleanUpdateReport" type="region"/>
+	<view-map name="keyPartsCleanUseReport" type="region"/>
+	<view-map name="highValuePartsDefine" type="region"/>
+
+</site-conf>

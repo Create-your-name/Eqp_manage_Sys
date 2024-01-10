@@ -1,0 +1,32 @@
+2024-01-08 18:17:39,306 DEBUG PmDayJob       : pms-Pm start[2024-01-08 18:17:39.128]
+2024-01-08 18:17:39,666 INFO  PmDayJob       : Start Service--------------
+2024-01-08 18:17:39,920 INFO  PmsImpl        : invokePmDayService--------------
+2024-01-08 18:17:40,034 INFO  PromisSupport  : ???¨°???υτ?????[{HTTP_POST=http://10.163.76.8:8080/http-gateway/json/mbx/FwCheckStatusTxn}],?υτ[AOIC01] 
+2024-01-08 18:17:40,034 FATAL PromisSupport  : post?????????[no protocol: {HTTP_POST=http://10.163.76.8:8080/http-gateway/json/mbx/FwCheckStatusTxn}]
+2024-01-08 18:17:40,035 INFO  PromisSupport  : ????υτ???????????,??????: null
+2024-01-08 18:17:40,109 FATAL PmDayJob       : pms-Pm error[null]
+2024-01-08 18:17:40,109 DEBUG PmDayJob       : pms-Pm end[2024-01-08 18:17:40.109]
+2024-01-08 18:23:19,133 DEBUG PmDayJob       : pms-Pm start[2024-01-08 18:23:19.05]
+2024-01-08 18:23:19,441 INFO  PmDayJob       : Start Service--------------
+2024-01-08 18:23:19,644 INFO  PmsImpl        : invokePmDayService--------------
+2024-01-08 18:23:19,725 INFO  PromisSupport  : call http check start[{HTTP_POST=http://10.163.76.8:8080/http-gateway/json/mbx/FwCheckStatusTxn}],eqpId[AOIC01] 
+2024-01-08 18:23:19,725 FATAL PromisSupport  : post?????????[no protocol: {HTTP_POST=http://10.163.76.8:8080/http-gateway/json/mbx/FwCheckStatusTxn}]
+2024-01-08 18:23:19,726 INFO  PromisSupport  : call http check end : null
+2024-01-08 18:23:19,780 FATAL PmDayJob       : pms-Pm error[null]
+2024-01-08 18:23:19,780 DEBUG PmDayJob       : pms-Pm end[2024-01-08 18:23:19.78]
+2024-01-08 18:50:28,174 DEBUG PmDayJob       : pms-Pm start[2024-01-08 18:50:28.087]
+2024-01-08 18:50:28,477 INFO  PmDayJob       : Start Service--------------
+2024-01-08 18:50:28,676 INFO  PmsImpl        : invokePmDayService--------------
+2024-01-08 18:50:28,747 INFO  PromisSupport  : call http check start[http://10.163.76.8:8080/http-gateway/json/mbx/FwCheckStatusTxn],eqpId[AOIC01] 
+2024-01-08 18:50:28,789 INFO  PromisSupport  : call http check end : {"class":"FwEqpInterchange","name":"AOIC01","eqpType":"EAGLE","state":"03_DOWN","capability":"FULL","capacity":50,"unitOfCapacity":"Component","status":false,"lotName":"","attributes":[{"class":"AnyAssoc","key":"Bay","value":"112"},{"class":"AnyAssoc","key":"ContaminationLevel","value":""},{"class":"AnyAssoc","key":"CurrentLots","value":""},{"class":"AnyAssoc","key":"CurrentRecipe","value":""},{"class":"AnyAssoc","key":"EQPTrue","value":"TRUE"},{"class":"AnyAssoc","key":"ERPWorkCenter","value":""},{"class":"AnyAssoc","key":"MeasurePoint","value":""},{"class":"AnyAssoc","key":"Mode","value":""},{"class":"AnyAssoc","key":"RecipeId","value":""},{"class":"AnyAssoc","key":"Resolution","value":1},{"class":"AnyAssoc","key":"ReticleId","value":""},{"class":"AnyAssoc","key":"StockerPort","value":""},{"class":"AnyAssoc","key":"eqpLoadPortCurrCapa","value":0},{"class":"AnyAssoc","key":"eqpLoadPortMaxCapa","value":2},{"class":"AnyAssoc","key":"eqpOccuCapa","value":0}],"eqpTimeStamp":8,"time":{"class":"FwDateTime","date":"20240104","time":"175041000"},"eventName":"","stepId":"","reasonCode":"","activeVersion":0,"previousVersion":-1,"commentCode":"","briefDescription":"","detailDescription":"","eqpStateStatus":false,"userName":"PMSSYS","reserved":false,"shift":"","schedule":"","scheduleVersion":-1,"qty":0,"groupHistKey":"","nickname":"","previousState":"04_PM"}
+2024-01-08 18:50:28,848 INFO  PromisSupport  : eqpId[ AOIC01 ],status[ 03_DOWN ]
+2024-01-08 18:50:28,849 INFO  PmDayJob       : End Service--------------
+2024-01-08 18:50:28,849 DEBUG PmDayJob       : pms-Pm end[2024-01-08 18:50:28.849]
+2024-01-08 18:51:17,557 DEBUG PmDayJob       : pms-Pm start[2024-01-08 18:51:17.46]
+2024-01-08 18:51:17,864 INFO  PmDayJob       : Start Service--------------
+2024-01-08 18:51:18,065 INFO  PmsImpl        : invokePmDayService--------------
+2024-01-08 18:51:18,138 INFO  PromisSupport  : call http change start[http://10.163.76.8:8080/http-gateway/json/mbx/FwChangeStateTxn],change eqpId [AOIC01] newStatus[ 04_PM ]
+2024-01-08 18:51:18,192 INFO  PromisSupport  : call http change end : 
+2024-01-08 18:51:18,254 INFO  PromisSupport  : eqpId[ AOIC01 ]change status success,status[ 04_PM ]
+2024-01-08 18:51:18,255 INFO  PmDayJob       : End Service--------------
+2024-01-08 18:51:18,255 DEBUG PmDayJob       : pms-Pm end[2024-01-08 18:51:18.255]

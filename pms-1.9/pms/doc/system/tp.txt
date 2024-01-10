@@ -1,0 +1,44 @@
+1. 修改设备状态
+Map statusMap = new HashMap();
+		statusMap.put("eqpid", eqpId);
+		statusMap.put("newstatus", newStatus);
+		statusMap.put("comment", "PMS");
+		ret = TPServiceHandle.runTPService(delegator, userLogin,
+				statusMap, Constants.EQP_STATUS_CHANGE);
+				
+2. 查询设备状态
+Map ret = TPServiceHandle.runTPService(delegator, userLogin,
+		UtilMisc.toMap("eqpid", eqpId), Constants.EQP_INFO_QUERY);
+String eqpStatus = (String)ret.get("status");
+
+
+3.页面的异常获取,以修改设备状态为例
+
+	//修改设备状态
+	function updateEqpStatus(){
+		var eqpId='DFGOXC2';
+		var eqpState=Ext.get('eqpState').dom.value;
+		if(eqpState==''){
+			Ext.MessageBox.alert('警告', "请选择设备状态!");
+   			return;
+		}
+		var actionURL='<ofbiz:url>/abnormalFormEqpStatusUpdateEntry</ofbiz:url>?eqpId='+eqpId+'&eqpState='+eqpState;
+		Ext.lib.Ajax.formRequest('abnorForm',actionURL,{success: commentSuccess, failure: commentFailure});
+	}
+	
+	//远程调用成功
+	function commentSuccess(o){
+		 var result = eval('(' + o.responseText + ')');
+		 if (result!=null & result!=""){
+		 	//获取方法运的状态
+			var status=result.status;
+			var message=result.message;
+			//更新成功，设置成功信息
+			if("success"==status){
+				setSuccessMsg(message);
+			//更新失败，设置异常信息
+			}else if("error"==status){
+				setErrorMsg(message);
+			}
+		}
+	}

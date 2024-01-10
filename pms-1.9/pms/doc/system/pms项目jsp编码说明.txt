@@ -1,0 +1,38 @@
+ofbiz标签运用参加：\tag-lib\ofbiz标签说明.txt
+
+-1.界面上的Button
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr height="30">
+   	<td width="20">&nbsp;</td>
+    <td><ul class="button">
+			<li><a class="button-text" href="equipmentDefine.htm"><span>&nbsp;显示&nbsp;</span></a></li>
+	</ul></td>
+    <td><ul class="button">
+			<li><a class="button-text" href="#"><span>&nbsp;重置&nbsp;</span></a></li>
+	</ul></td>
+  </tr>
+</table>
+- 界面的alert,confirm统一使用yui样式！
+
+-2.表单
+<form method="POST" action="<ofbiz:url>login</ofbiz:url>">
+
+-3.Select
+pageContext.setAttribute("roleTypes", roleTypes);
+<select name="roleTypeId">
+	<ofbiz:iterator name="roleType" property="roleTypes">
+    	<option value='<ofbiz:entityfield attribute="roleType" field="roleTypeId"/>'>
+    	    <ofbiz:entityfield attribute="roleType" field="description"/>
+    	    <%--[<ofbiz:entityfield attribute="roleType" field="roleTypeId"/>]--%>
+    	</option>
+    </ofbiz:iterator>
+</select>
+
+-4.获得登录工号和部门
+//GenericValue userLogin = (GenericValue) session.getAttribute("userLogin");
+//String user = userLogin.getString("userLoginId");
+String userNo = CommonUtil.getUserNo(request);
+// 得到用户部门
+GenericValue user = CommonHelper.getUserInfo(request, delegator);
+String userDeptIndex = user.getString("deptIndex");
+

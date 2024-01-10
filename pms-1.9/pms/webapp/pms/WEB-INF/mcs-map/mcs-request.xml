@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>MCS Site Request-Map Configuration File</description>
+    <owner>CSMC (c) 2009 </owner>
+
+    <!-- ************************* Module Common ************************* -->
+
+    <!-- ================ McsCommonEvent Requests ================= -->
+    <!-- applet init callServlet: get material group -->
+    <request-map uri="getJsonCommonMtrGrp">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.common.event.McsCommonEvent" invoke="getJsonCommonMtrGrp"/>
+    </request-map>
+
+     <!-- applet init callServlet: get material Number -->
+    <request-map uri="getJsonCommonMtrNum">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.common.event.McsCommonEvent" invoke="getJsonCommonMtrNum"/>
+    </request-map>
+
+    <!-- applet init callServlet: get suit info -->
+    <request-map uri="getJsonCommonSuit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.common.event.McsCommonEvent" invoke="getJsonCommonSuit"/>
+    </request-map>
+
+    <!-- applet init callServlet: queryEquipmentByDeptIndex -->
+    <request-map uri="queryEquipmentByDeptIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.common.event.McsCommonEvent" invoke="queryEquipmentByDeptIndex"/>
+    </request-map>
+
+    <!-- applet init callServlet: get Equipment Dept -->
+    <request-map uri="getJsonCommonEquipmentDept">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.common.event.McsCommonEvent" invoke="getJsonCommonEquipmentDept"/>
+    </request-map>
+
+    <!-- applet init callServlet: get Equipment ToolGroup -->
+    <request-map uri="getJsonToolGroup">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.common.event.McsCommonEvent" invoke="getJsonToolGroup"/>
+    </request-map>
+    <!-- end CommonEvent Requests -->
+
+
+    <!-- ************************* Module Basic ************************* -->
+
+ 	<!-- ================ 物料基本资料维护Requests  ================= -->
+    <request-map uri="defineMaterialEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="queryMaterialListByMtrGrp"/>
+      <response name="success" type="view" value="defineMaterialEntry"/>
+      <response name="error" type="view" value="defineMaterialEntry"/>
+    </request-map>
+
+    <request-map uri="defineMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="getMaterialByMtrIndex"/>
+      <response name="success" type="view" value="defineMaterial"/>
+      <response name="error" type="view" value="defineMaterial"/>
+    </request-map>
+
+    <request-map uri="saveMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="saveMaterial"/>
+      <response name="success" type="request" value="defineMaterial"/>
+      <response name="error" type="request" value="defineMaterial"/>
+	</request-map>
+
+    <request-map uri="getSapMtrNum">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="getSapMtrNum"/>
+      <response name="success" type="view" value="getSapMtrNum"/>
+      <response name="error" type="view" value="getSapMtrNum"/>
+    </request-map>
+
+    <request-map uri="getMtrObject">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="getMtrObject"/>
+      <response name="success" type="view" value="getMtrObject"/>
+      <response name="error" type="view" value="getMtrObject"/>
+    </request-map>
+
+     <!-- applet init callServlet: getJsonMtrObjectByIndex -->
+    <request-map uri="getJsonMtrObjectByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="getJsonMtrObjectByIndex"/>
+    </request-map>
+
+    <request-map uri="saveMtrObject">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="saveMtrObject"/>
+      <response name="success" type="request" value="getMtrObject"/>
+      <response name="error" type="request" value="getMtrObject"/>
+    </request-map>
+
+    <request-map uri="delMtrObjectByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="delMtrObjectByIndex"/>
+      <response name="success" type="request" value="getMtrObject"/>
+      <response name="error" type="request" value="getMtrObject"/>
+    </request-map>
+	<!-- end 物料基本资料设定 Requests -->
+
+    <!-- ================ 套件料号设定 Requests ================= -->
+    <request-map uri="defineSuitMaterialEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="defineSuitMaterialEntry"/>
+      <response name="success" type="view" value="defineSuitMaterialEntry"/>
+      <response name="error" type="view" value="defineSuitMaterialEntry"/>
+    </request-map>
+
+    <request-map uri="addSuit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="addSuit"/>
+      <response name="success" type="request" value="defineSuitMaterialEntry"/>
+      <response name="error" type="request" value="defineSuitMaterialEntry"/>
+    </request-map>
+
+    <request-map uri="delSuitByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="delSuitByIndex"/>
+      <response name="success" type="request" value="defineSuitMaterialEntry"/>
+    </request-map>
+
+    <request-map uri="defineSuitMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="defineSuitMaterial"/>
+      <response name="success" type="view" value="defineSuitMaterial"/>
+      <response name="error" type="view" value="defineSuitMaterial"/>
+    </request-map>
+
+    <request-map uri="manageSuitMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="manageSuitMaterial"/>
+      <response name="success" type="request" value="defineSuitMaterial"/>
+      <response name="error" type="request" value="defineSuitMaterial"/>
+    </request-map>
+
+    <request-map uri="getJsonSuitMaterialByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="getJsonSuitMaterialByIndex"/>
+    </request-map>
+
+    <request-map uri="delSuitMaterialByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="delSuitMaterialByIndex"/>
+      <response name="success" type="request" value="defineSuitMaterial"/>
+    </request-map>
+    <!-- end 套件料号设定 Requests -->
+
+    <!-- ================ 厂商料号设定 Requests ================= -->
+    <request-map uri="defineVendorMaterialEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="defineVendorMaterialEntry"/>
+      <response name="success" type="view" value="defineVendorMaterialEntry"/>
+      <response name="error" type="view" value="defineVendorMaterialEntry"/>
+    </request-map>
+
+    <request-map uri="manageVendorMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="manageVendorMaterial"/>
+      <response name="success" type="view" value="defineVendorMaterialEntry"/>
+      <response name="error" type="view" value="defineVendorMaterialEntry"/>
+    </request-map>
+
+    <request-map uri="getJsonVendorMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="getJsonVendorMaterial"/>
+    </request-map>
+
+    <request-map uri="delVendorMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="delVendorMaterial"/>
+      <response name="success" type="request" value="defineVendorMaterialEntry"/>
+    </request-map>
+    <!-- end 厂商料号设定 Requests -->
+
+
+    <!-- ************************* Module Cabinet ************************* -->
+
+    <!-- ================ 领料暂存(按数量) Requests ================= -->
+    <request-map uri="intoCabinetQtyEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="intoCabinetQtyEntry"/>
+      <response name="success" type="view" value="intoCabinetQtyEntry"/>
+      <response name="error" type="view" value="intoCabinetQtyEntry"/>
+    </request-map>
+
+    <request-map uri="intoCabinetQty">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="intoCabinetQty"/>
+      <response name="success" type="request" value="intoCabinetQtyEntry"/>
+      <response name="error" type="request" value="intoCabinetQtyEntry"/>
+    </request-map>
+
+    <request-map uri="useMaterialCabinetQty">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="useMaterialCabinetQty"/>
+      <response name="success" type="request" value="intoCabinetQtyEntry"/>
+      <response name="error" type="request" value="intoCabinetQtyEntry"/>
+    </request-map>
+    <!-- end 领料暂存(按数量) Requests -->
+
+    <!-- ================ 领料暂存(按Barcode) Requests ================= -->
+    <request-map uri="intoCabinetBarcodeEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="intoCabinetBarcodeEntry"/>
+      <response name="success" type="view" value="intoCabinetBarcodeEntry"/>
+      <response name="error" type="view" value="intoCabinetBarcodeEntry"/>
+    </request-map>
+
+    <request-map uri="intoCabinetBarcode">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="intoCabinetBarcode"/>
+      <response name="success" type="request" value="intoCabinetBarcodeEntry"/>
+      <response name="error" type="request" value="intoCabinetBarcodeEntry"/>
+    </request-map>
+    <!-- end 领料暂存(按Barcode) Requests -->
+
+    <!-- ================ 录入条码 Requests ================= -->
+    <request-map uri="inputBarcodeEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="inputBarcodeEntry"/>
+      <response name="success" type="view" value="inputBarcodeEntry"/>
+      <response name="error" type="view" value="inputBarcodeEntry"/>
+    </request-map>
+
+    <request-map uri="inputBarcode">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="inputBarcode"/>
+      <response name="success" type="request" value="inputBarcodeEntry"/>
+      <response name="error" type="request" value="inputBarcodeEntry"/>
+    </request-map>
+    <!-- end 录入条码 Requests -->
+
+    <!-- ================ 修改重名条码 Requests ================= -->
+    <request-map uri="inputBarcodeErrorEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="inputBarcodeErrorEntry"/>
+      <response name="success" type="view" value="inputBarcodeErrorEntry"/>
+      <response name="error" type="view" value="inputBarcodeErrorEntry"/>
+    </request-map>
+
+    <request-map uri="inputBarcodeError">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="inputBarcodeError"/>
+      <response name="success" type="request" value="inputBarcodeErrorEntry"/>
+      <response name="error" type="request" value="inputBarcodeErrorEntry"/>
+    </request-map>
+    <!-- end 录入条码 Requests -->
+
+    <!-- ================ 放回冰箱/恒温 Requests ================= -->
+    <request-map uri="frozenOrUnfrozenEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="frozenOrUnfrozenEntry"/>
+      <response name="success" type="view" value="frozenOrUnfrozenEntry"/>
+      <response name="error" type="view" value="frozenOrUnfrozenEntry"/>
+    </request-map>
+
+    <request-map uri="frozenOrUnfrozen">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="frozenOrUnfrozen"/>
+      <response name="success" type="request" value="frozenOrUnfrozenEntry"/>
+      <response name="error" type="request" value="frozenOrUnfrozenEntry"/>
+    </request-map>
+    <!-- end 放回冰箱/重新恒温 Requests -->
+
+    <!-- ================ 库房发货数据修改 Requests ================= -->
+    <request-map uri="modifyVendorInfoEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="modifyVendorInfoEntry"/>
+      <response name="success" type="view" value="modifyVendorInfoEntry"/>
+      <response name="error" type="view" value="modifyVendorInfoEntry"/>
+    </request-map>
+
+    <request-map uri="modifyVendorInfo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="modifyVendorInfo"/>
+      <response name="success" type="request" value="modifyVendorInfoEntry"/>
+      <response name="error" type="request" value="modifyVendorInfoEntry"/>
+    </request-map>
+    <!-- end 库房发货数据修改 Requests -->
+
+    <!-- ================ 库房发货撤销 Requests ================= -->
+    <request-map uri="cancelVendorInfoEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="cancelVendorInfoEntry"/>
+      <response name="success" type="view" value="cancelVendorInfoEntry"/>
+      <response name="error" type="view" value="cancelVendorInfoEntry"/>
+    </request-map>
+
+    <request-map uri="cancelVendorQty">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="cancelVendorQty"/>
+      <response name="success" type="request" value="cancelVendorInfoEntry"/>
+      <response name="error" type="request" value="cancelVendorInfoEntry"/>
+    </request-map>
+    <!-- end 库房发货撤销 Requests -->
+
+    <!-- ================ 修改暂存物料 Requests ================= -->
+    <request-map uri="modifyCabinetMaterialEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="modifyCabinetMaterialEntry"/>
+      <response name="success" type="view" value="modifyCabinetMaterialEntry"/>
+      <response name="error" type="view" value="modifyCabinetMaterialEntry"/>
+    </request-map>
+
+    <request-map uri="modifyCabinetMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="modifyCabinetMaterial"/>
+      <response name="success" type="request" value="modifyCabinetMaterialEntry"/>
+      <response name="error" type="request" value="modifyCabinetMaterialEntry"/>
+    </request-map>
+    <!-- end 修改暂存物料 Requests -->
+
+    <!-- ================ 光刻胶领用查询 Requests ================= -->
+    <request-map uri="queryPhotoResistPickupEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="queryPhotoResistPickupEntry"/>
+      <response name="success" type="view" value="queryPhotoResistPickupEntry"/>
+      <response name="error" type="view" value="queryPhotoResistPickupEntry"/>
+    </request-map>
+
+    <request-map uri="getJsonPrSafeQty">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="getJsonPrSafeQty"/>
+    </request-map>
+
+    <request-map uri="managePrSafeQty">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="managePrSafeQty"/>
+      <response name="success" type="request" value="queryPhotoResistPickupEntry"/>
+      <response name="error" type="request" value="queryPhotoResistPickupEntry"/>
+    </request-map>
+    <!-- end 光刻胶领用查询 Requests -->
+
+    <!-- ================ 线边仓数量盘点 Requests ================= -->
+    <request-map uri="modifyStoReqEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="modifyStoReqEntry"/>
+      <response name="success" type="view" value="modifyStoReqEntry"/>
+      <response name="error" type="view" value="modifyStoReqEntry"/>
+    </request-map>
+
+    <request-map uri="modifyStoReq">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="modifyStoReq"/>
+      <response name="success" type="request" value="modifyStoReqEntry"/>
+      <response name="error" type="request" value="modifyStoReqEntry"/>
+    </request-map>
+    <!-- end 线边仓数量盘点 Requests -->
+
+    <!-- ================ 更换备耗件 Requests ================= -->
+    <request-map uri="useSparePartEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="useSparePartEntry"/>
+      <response name="success" type="view" value="useSparePartEntry"/>
+      <response name="error" type="view" value="useSparePartEntry"/>
+    </request-map>
+
+    <request-map uri="useSparePart">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="useSparePart"/>
+      <response name="success" type="request" value="useSparePartEntry"/>
+      <response name="error" type="request" value="useSparePartEntry"/>
+    </request-map>
+    <!-- end 更换备耗件 Requests -->
+
+    <!-- ************************* Module Use ************************* -->
+
+    <!-- ================ 暂存退库 按数量 Requests ================= -->
+    <request-map uri="cabinetBackStockEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="cabinetBackStockEntry"/>
+      <response name="success" type="view" value="cabinetBackStockEntry"/>
+      <response name="error" type="view" value="cabinetBackStockEntry"/>
+    </request-map>
+
+    <request-map uri="cabinetBackStock">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="cabinetBackStock"/>
+      <response name="success" type="request" value="cabinetBackStockEntry"/>
+      <response name="error" type="request" value="cabinetBackStockEntry"/>
+    </request-map>
+    <!-- end 暂存退库 按数量 Requests -->
+
+     <!-- ================ 暂存退库 按BARCODE Requests ================= -->
+    <request-map uri="cabinetBackStockBarcodeEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="cabinetBackStockBarcodeEntry"/>
+      <response name="success" type="view" value="cabinetBackStockBarcodeEntry"/>
+      <response name="error" type="view" value="cabinetBackStockBarcodeEntry"/>
+    </request-map>
+
+    <request-map uri="cabinetBackStockBarcode">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="backStockAndFabRepairById"/>
+      <response name="success" type="request" value="cabinetBackStockBarcodeEntry"/>
+      <response name="error" type="request" value="cabinetBackStockBarcodeEntry"/>
+    </request-map>
+    <!-- end 暂存退库 按BARCODE Requests -->
+
+    <!-- applet init callServlet: get material Using Object -->
+    <request-map uri="getJsonMtrUsingObject">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="getJsonMtrUsingObject"/>
+    </request-map>
+
+    <!-- ================ 按片号使用 Requests ================= -->
+    <request-map uri="useMaterialByIdEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="useMaterialByIdEntry"/>
+      <response name="success" type="view" value="useMaterialByIdEntry"/>
+      <response name="error" type="view" value="useMaterialByIdEntry"/>
+    </request-map>
+
+    <request-map uri="useMaterialById">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="useMaterialById"/>
+      <response name="success" type="request" value="useMaterialByIdEntry"/>
+      <response name="error" type="request" value="useMaterialByIdEntry"/>
+    </request-map>
+    <!-- end 按片号使用 Requests -->
+
+    <!-- ================ 按数量使用 Requests ================= -->
+    <request-map uri="useMaterialByQtyEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="useMaterialByQtyEntry"/>
+      <response name="success" type="view" value="useMaterialByQtyEntry"/>
+      <response name="error" type="view" value="useMaterialByQtyEntry"/>
+    </request-map>
+
+    <request-map uri="useMaterialByQty">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="useMaterialByQty"/>
+      <response name="success" type="request" value="useMaterialByQtyEntry"/>
+      <response name="error" type="request" value="useMaterialByQtyEntry"/>
+    </request-map>
+    <!-- end 按数量使用 Requests -->
+
+    <!-- ================ 按套件使用 Requests ================= -->
+    <request-map uri="useMaterialBySuitEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="useMaterialByIdEntry"/>
+      <response name="success" type="view" value="useMaterialBySuitEntry"/>
+      <response name="error" type="view" value="useMaterialBySuitEntry"/>
+    </request-map>
+
+    <request-map uri="useMaterialBySuit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="useMaterialById"/>
+      <response name="success" type="request" value="useMaterialBySuitEntry"/>
+      <response name="error" type="request" value="useMaterialBySuitEntry"/>
+    </request-map>
+    <!-- end 按套件使用 Requests -->
+
+    <!-- ================ 按Barcode使用 Requests ================= -->
+    <request-map uri="useMaterialByBarcodeEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="useMaterialByBarcodeEntry"/>
+      <response name="success" type="view" value="useMaterialByBarcodeEntry"/>
+      <response name="error" type="view" value="useMaterialByBarcodeEntry"/>
+    </request-map>
+
+    <request-map uri="useMaterialByBarcode">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="useMaterialByBarcode"/>
+      <response name="success" type="request" value="useMaterialByBarcodeEntry"/>
+      <response name="error" type="request" value="useMaterialByBarcodeEntry"/>
+    </request-map>
+
+
+     <request-map uri="validSogOK">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="validSogOK"/>
+      <response name="success" type="request" value="useMaterialByBarcodeEntry"/>
+      <response name="error" type="request" value="useMaterialByBarcodeEntry"/>
+    </request-map>
+    <!-- end 按Barcode使用 Requests -->
+
+    <!-- ================ 内部维修管理 Requests ================= -->
+    <request-map uri="fabRepairEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="fabRepairEntry"/>
+      <response name="success" type="view" value="fabRepairEntry"/>
+      <response name="error" type="view" value="fabRepairEntry"/>
+    </request-map>
+
+    <request-map uri="fabRepairById">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="backStockAndFabRepairById"/>
+      <response name="success" type="request" value="fabRepairEntry"/>
+      <response name="error" type="request" value="fabRepairEntry"/>
+    </request-map>
+    <!-- end 内部维修管理  Requests -->
+
+    <!-- ================ 补填石英历史使用 Requests ================= -->
+    <request-map uri="supplementaryCompleteEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="supplementaryCompleteEntry"/>
+      <response name="success" type="view" value="supplementaryCompleteEntry"/>
+      <response name="error" type="view" value="supplementaryCompleteEntry"/>
+    </request-map>
+
+    <request-map uri="manageUsingHistory">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="manageUsingHistory"/>
+      <response name="success" type="view" value="supplementaryCompleteEntry"/>
+      <response name="error" type="view" value="supplementaryCompleteEntry"/>
+    </request-map>
+
+    <request-map uri="updateAliasName">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.use.event.UseEvent" invoke="updateAliasName"/>
+      <response name="success" type="view" value="supplementaryCompleteEntry"/>
+      <response name="error" type="view" value="supplementaryCompleteEntry"/>
+    </request-map>
+    <!-- end 补填石英历史使用 Requests -->
+
+
+    <!-- ************************* Module Ship ************************* -->
+
+    <!-- ================ 报废与出厂维修课长确认 Requests ================= -->
+    <request-map uri="leadConfirmEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.ship.event.ShipEvent" invoke="leadConfirmEntry"/>
+      <response name="success" type="view" value="leadConfirmEntry"/>
+      <response name="error" type="view" value="leadConfirmEntry"/>
+    </request-map>
+
+    <request-map uri="leadConfirmById">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.ship.event.ShipEvent" invoke="leadConfirmById"/>
+      <response name="success" type="request" value="leadConfirmEntry"/>
+      <response name="error" type="request" value="leadConfirmEntry"/>
+    </request-map>
+    <!-- end 报废与出厂维修课长确认  Requests -->
+
+    <!-- ================ 报废与出厂维修仓库确认 Requests ================= -->
+    <request-map uri="shipConfirmEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.ship.event.ShipEvent" invoke="shipConfirmEntry"/>
+      <response name="success" type="view" value="shipConfirmEntry"/>
+      <response name="error" type="view" value="shipConfirmEntry"/>
+    </request-map>
+
+    <request-map uri="shipConfirmById">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.ship.event.ShipEvent" invoke="shipConfirmById"/>
+      <response name="success" type="request" value="shipConfirmEntry"/>
+      <response name="error" type="request" value="shipConfirmEntry"/>
+    </request-map>
+    <!-- end 报废与出厂维修仓库确认 Requests -->
+
+
+    <!-- ************************* Module Expiration Date ************************* -->
+
+    <!-- ================ 有效期管理 Requests ================= -->
+    <request-map uri="expirationDateEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="expirationDateEntry"/>
+    </request-map>
+
+    <request-map uri="queryMaterialByVendorBatchNum">
+      <security https="false" auth="true"/>
+	  <event type="java" path="com.csmc.mcs.webapp.expiration.event.ExpirationEvent" invoke="queryMaterialByVendorBatchNum"/>
+      <response name="success" type="view" value="expirationDateEntry"/>
+    </request-map>
+
+   <request-map uri="saveExpirationDate">
+      <security https="false" auth="true"/>
+	  <event type="java" path="com.csmc.mcs.webapp.expiration.event.ExpirationEvent" invoke="saveExpirationDate"/>
+      <response name="success" type="request" value="expirationDateEntry"/>
+    </request-map>
+    <!-- end 有效期管理 Requests -->
+
+    <!-- ================ 超有效期材料查询 Requests ================= -->
+    <request-map uri="queryOverExpirationEntry">
+      <security https="false" auth="true"/>
+	  <event type="java" path="com.csmc.mcs.webapp.expiration.event.ExpirationEvent" invoke="queryOverExpirationEntry"/>
+      <response name="success" type="view" value="queryOverExpirationEntry"/>
+    </request-map>
+    <!-- end 超有效期材料查询 Requests -->
+
+
+
+    <!-- ************************* Module Report ************************* -->
+
+    <!-- ================ 物料基本资料查询 Requests ================= -->
+    <request-map uri="getJsonObjectIdList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="getJsonObjectIdList"/>
+    </request-map>
+
+    <request-map uri="queryMaterialEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryMaterialInfo"/>
+      <response name="success" type="view" value="queryMaterialEntry"/>
+      <response name="error" type="view" value="queryMaterialEntry"/>
+    </request-map>
+
+    <request-map uri="queryMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryMaterialDetail"/>
+      <response name="success" type="view" value="queryMaterial"/>
+      <response name="error" type="view" value="queryMaterial"/>
+    </request-map>
+    <!-- end 物料基本资料查询  Requests -->
+
+    <!-- ================ 物料状态汇总 Requests ================= -->
+    <request-map uri="queryMaterialStatusBoardEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryMaterialStatus"/>
+      <response name="success" type="view" value="queryMaterialStatusBoardEntry"/>
+      <response name="error" type="view" value="queryMaterialStatusBoardEntry"/>
+    </request-map>
+
+    <request-map uri="queryMaterialStatusDetail">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryMaterialStatusDetail"/>
+      <response name="success" type="view" value="queryMaterialStatusDetail"/>
+      <response name="error" type="view" value="queryMaterialStatusDetail"/>
+    </request-map>
+
+    <request-map uri="queryMaterialStatusHist">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryMaterialStatusHist"/>
+      <response name="success" type="view" value="queryMaterialStatusHist"/>
+      <response name="error" type="view" value="queryMaterialStatusHist"/>
+    </request-map>
+
+    <request-map uri="getJsonEquipmentList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="getJsonEquipmentList"/>
+    </request-map>
+
+    <request-map uri="getJsonStatusList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="getJsonStatusList"/>
+    </request-map>
+    <!-- end 物料状态汇总  Requests -->
+
+    <!-- ================ 领料单查询 Requests ================= -->
+    <!--领用明细-->
+    <request-map uri="queryStoReqEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryStoReqEntry"/>
+      <response name="success" type="view" value="queryStoReqEntry"/>
+      <response name="error" type="view" value="queryStoReqEntry"/>
+    </request-map>
+    <!-- end 领料单查询  Requests -->
+
+    <!-- ================ 套件料号查询 Requests ================= -->
+    <request-map uri="querySuitMaterialEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="defineSuitMaterialEntry"/>
+      <response name="success" type="view" value="querySuitMaterialEntry"/>
+      <response name="error" type="view" value="querySuitMaterialEntry"/>
+    </request-map>
+
+    <request-map uri="querySuitMaterial">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="defineSuitMaterial"/>
+      <response name="success" type="view" value="querySuitMaterial"/>
+      <response name="error" type="view" value="querySuitMaterial"/>
+    </request-map>
+    <!-- end 套件料号查询 Requests -->
+
+    <!-- ================ 厂商料号查询 Requests ================= -->
+    <request-map uri="queryVendorMaterialEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.basic.event.BasicEvent" invoke="defineVendorMaterialEntry"/>
+      <response name="success" type="view" value="queryVendorMaterialEntry"/>
+      <response name="error" type="view" value="queryVendorMaterialEntry"/>
+    </request-map>
+    <!-- end 厂商料号查询 Requests -->
+
+    <!-- ================ 按设备查询历史使用 Requests ================= -->
+     <request-map uri="queryUsingHistoryByEqptEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryUsingHistoryByEqpt"/>
+      <response name="success" type="view" value="queryUsingHistoryByEqptEntry"/>
+      <response name="error" type="view" value="queryUsingHistoryByEqptEntry"/>
+    </request-map>
+    <!-- end 按设备查询历史使用 Requests -->
+
+    <!-- ================ 物料追踪 Requests ================= -->
+     <request-map uri="materialTraceEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="materialTraceEntry"/>
+      <response name="success" type="view" value="materialTraceEntry"/>
+      <response name="error" type="view" value="materialTraceEntry"/>
+    </request-map>
+    <!-- end 物料追踪 Requests -->
+
+    <!-- ================ 季度异常用量分析 Requests ================= -->
+    <request-map uri="materialQuaterAnalysisEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="materialQuaterAnalysisEntry"/>
+      <response name="success" type="view" value="materialQuaterAnalysisEntry"/>
+      <response name="error" type="view" value="materialQuaterAnalysisEntry"/>
+    </request-map>
+
+    <request-map uri="materialQuaterAnalysisUsing">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="materialQuaterAnalysisUsing"/>
+      <response name="success" type="view" value="materialQuaterAnalysisUsing"/>
+      <response name="error" type="view" value="materialQuaterAnalysisEntry"/>
+    </request-map>
+    <!-- end 季度异常用量分析 Requests -->
+
+    <!-- ================ 设备使用金额汇总 Requests ================= -->
+    <request-map uri="queryEqpMaterialPriceEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryEqpMaterialPriceEntry"/>
+      <response name="success" type="view" value="queryEqpMaterialPriceEntry"/>
+      <response name="error" type="view" value="queryEqpMaterialPriceEntry"/>
+    </request-map>
+
+    <request-map uri="queryEqpMaterialPrice">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryEqpMaterialPrice"/>
+      <response name="success" type="view" value="queryEqpMaterialPrice"/>
+      <response name="error" type="view" value="queryEqpMaterialPriceEntry"/>
+    </request-map>
+    <!-- end 设备使用金额汇总 Requests -->
+
+    <!-- ================ 备耗件领用金额汇总 Requests ================= -->
+    <request-map uri="queryHaojianLingMaterialPriceEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryHaojianLingMaterialPriceEntry"/>
+      <response name="success" type="view" value="queryHaojianLingMaterialPriceEntry"/>
+      <response name="error" type="view" value="queryHaojianLingMaterialPriceEntry"/>
+    </request-map>
+    <!-- end 备耗件领用金额汇总 Requests -->
+
+    <!-- ================ 备耗件使用金额汇总 Requests ================= -->
+    <request-map uri="queryHaojianUseMaterialPriceEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryHaojianUseMaterialPriceEntry"/>
+      <response name="success" type="view" value="queryHaojianUseMaterialPriceEntry"/>
+      <response name="error" type="view" value="queryHaojianUseMaterialPriceEntry"/>
+    </request-map>
+    <!-- end 备耗件使用金额汇总 Requests -->
+
+    <!-- ================ 备耗件使用金额明细 Requests ================= -->
+    <request-map uri="queryHaojianUseDetailPriceEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryHaojianUseDetailPriceEntry"/>
+      <response name="success" type="view" value="queryHaojianUseDetailPriceEntry"/>
+      <response name="error" type="view" value="queryHaojianUseDetailPriceEntry"/>
+    </request-map>
+    <!-- end 备耗件使用金额明细 Requests -->
+
+    <!-- ================ 线边仓查询 Requests ================= -->
+    <request-map uri="queryStoCabinetEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryStoCabinetEntry"/>
+      <response name="success" type="view" value="queryStoCabinetEntry"/>
+      <response name="error" type="view" value="queryStoCabinetEntry"/>
+    </request-map>
+
+    <!-- ================ 备件寿命查询 Requests ================= -->
+    <request-map uri="queryUsePeriodEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryUsePeriodEntry"/>
+      <response name="success" type="view" value="queryUsePeriodEntry"/>
+      <response name="error" type="view" value="queryUsePeriodEntry"/>
+    </request-map>
+
+    <!-- ================ 特殊寿命规范查询 Requests ================= -->
+    <request-map uri="querySpecialUsableTimeEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="querySpecialUsableTimeEntry"/>
+      <response name="success" type="view" value="querySpecialUsableTimeEntry"/>
+      <response name="error" type="view" value="querySpecialUsableTimeEntry"/>
+    </request-map>
+
+    <!-- ================ 延期使用 Requests ================= -->
+    <request-map uri="expandUseDays">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="expandUseDays"/>
+      <response name="success" type="request" value="queryUsePeriodEntry"/>
+      <response name="error" type="request" value="queryUsePeriodEntry"/>
+    </request-map>
+
+    <!-- ================ 维修与清洗查询 Requests ================= -->
+    <request-map uri="queryRepairWashEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryRepairWashEntry"/>
+      <response name="success" type="view" value="queryRepairWashEntry"/>
+      <response name="error" type="view" value="queryRepairWashEntry"/>
+    </request-map>
+
+    <!-- ================ 使用备件(关联表单) Requests ================= -->
+    <request-map uri="intoRelateForm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="intoRelateForm"/>
+      <response name="success" type="view" value="partsUseEntry"/>
+      <response name="error" type="view" value="intoCabinetQtyEntry"/>
+    </request-map>
+
+    <request-map uri="queryOverFormByEqpId">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="queryOverFormByEqpId"/>
+      <response name="success" type="view" value="partsUseEntry"/>
+      <response name="error" type="view" value="partsUseEntry"/>
+    </request-map>
+
+    <request-map uri="savePartsUse">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.cabinet.event.CabinetEvent" invoke="savePartsUse"/>
+      <response name="success" type="view" value="intoCabinetQtyEntry"/>
+      <response name="error" type="request" value="intoRelateForm"/>
+    </request-map>
+
+    <!-- ================ FAB5 备耗件石英库存金额查询 ================= -->
+    <request-map uri="queryCabinetStockEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryCabinetStockEntry"/>
+      <response name="success" type="view" value="queryCabinetStock"/>
+      <response name="error" type="view" value="queryCabinetStock"/>
+    </request-map>
+
+    <!-- ================ 关键备件寿命管控报表 ================= -->
+    <request-map uri="keyPartsOverdueHistEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="keyPartsOverdueHistEntry"/>
+      <response name="success" type="view" value="keyPartDelayHist"/>
+      <response name="error" type="view" value="keyPartDelayHist"/>
+    </request-map>
+
+    <request-map uri="queryKeyPartUseOverdueHist">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.mcs.webapp.report.event.ReportEvent" invoke="queryKeyPartUseOverdueHist"/>
+      <response name="success" type="view" value="keyPartDelayHist"/>
+      <response name="error" type="view" value="keyPartDelayHist"/>
+    </request-map>
+
+</site-conf>

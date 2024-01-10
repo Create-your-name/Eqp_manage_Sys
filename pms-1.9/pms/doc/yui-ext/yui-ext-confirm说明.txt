@@ -1,0 +1,10 @@
+一：在页面中引入yui的相应JS页面中加入下面代码：
+	Ext.MessageBox.confirm('删除确认', '您确信要删除此记录吗？',function result(value){
+		if(value=='yes'){
+			alert("您选择了yes");
+		}else{
+			alert("您选择了no");
+		}
+	});
+	
+ 详细见页面：csmcgui/pms/basic/reasonAndOverTimeEntry.jsp

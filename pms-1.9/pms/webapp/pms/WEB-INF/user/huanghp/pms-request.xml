@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+    
+    <!--新查询保养表单-->
+    <request-map uri="newQueryOverPmFormByCondition">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="newQueryPmFormByCondition"/>
+      <response name="success" type="view" value="newQueryOverPmForm"/>
+	  <!-- <response name="error" type="request" value="intoQueryOverPmForm"/> -->
+    </request-map>
+    
+    <request-map uri="newOverPmFormView">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="newPmRecordInfo"/>
+      <response name="formview" type="view" value="newViewOverPmForm"/>
+      <!-- <response name="error" type="request" value="intoQueryOverPmForm"/> -->
+   </request-map>   
+   
+   <!--每日检查表单-->
+    <request-map uri="newQueryDailyOverPmFormByCondition">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PmFormEvent" invoke="newQueryDailyPmFormByCondition"/>
+      <response name="success" type="view" value="newQueryDailyOverPmForm"/>
+	</request-map>
+
+   
+   
+   <!--新查询巡检表单-->
+    <request-map uri="newQueryPcFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PcFormEvent" invoke="queryPcFormEntry"/>
+      <response name="success" type="view" value="newQueryPcFormEntry"/>
+      <!-- <response name="error" type="view" value="queryPcFormEntry"/> -->
+    </request-map>
+    
+    <request-map uri="newInputPcFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PcFormEvent" invoke="newInputPcFormEntry"/>
+      <response name="success" type="view" value="newInputPcFormEntry"/>
+      <!-- <response name="error" type="request" value="setupPcFormEntry"/> -->
+    </request-map>
+   
+   <!--新查询异常表单-->
+   <request-map uri="newQueryOverAbnormalFormByCondition">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="queryAbnormalFormByCondition"/>
+      <response name="success" type="view" value="newQueryOverAbnormalForm"/>
+      <!-- <response name="error" type="request" value="intoQueryOverAbnormalForm"/> -->
+   </request-map>
+   
+   <request-map uri="newOverAbnormalFormView">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="newIntoAbnormalFormManage"/>
+      <response name="formview" type="view" value="newViewOverAbnormalForm"/>
+      <!-- <response name="error" type="request" value="intoQueryOverAbnormalForm"/> -->
+   </request-map>
+     
+</site-conf>

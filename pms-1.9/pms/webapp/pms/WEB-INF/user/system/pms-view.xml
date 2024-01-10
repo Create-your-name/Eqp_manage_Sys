@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site View-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+	
+	<view-map name="login" page="/login.jsp" />
+	<view-map name="main" page="/main.jsp" />
+	
+	<view-map name="setupUserEntry"  type="region" />
+    <view-map name="setupUserPriv"  type="region" />
+	<view-map name="setupGroupPriv"  type="region" />
+    <view-map name="queryUsers"  type="region" />
+
+    <view-map name="viewUserInfo"  type="region" />
+    
+    <view-map name="changePwd" type="region" />
+    <view-map name="loginChangePwd" page="/sys/loginChangePwd.jsp" />
+</site-conf>

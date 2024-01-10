@@ -1,0 +1,7 @@
+-json格式
+	1. Array: 
+		1.1 ["abc",123,122.22,true]
+		1.2 JsonArray
+	2. Key/Value:
+		2.1 {"description":"保证课巡检","name":"保证课巡检"}
+		2.2 JsonObject

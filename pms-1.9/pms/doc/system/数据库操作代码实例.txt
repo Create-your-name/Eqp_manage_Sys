@@ -1,0 +1,168 @@
+@file name: 数据库操作代码实例.txt
+@version:  1.0  2009-7-6
+@author:   dinghh
+******************************************************************************
+
+1.新建记录
+---exp1.1 create getNextSeqId:---
+    Long id = delegator.getNextSeqId("pmFormSeqIndex");
+    pmFormMap.put("pmIndex", id);
+    GenericValue gv = delegator.makeValidValue("PmForm", pmFormMap);
+    delegator.create(gv);
+
+---exp1.2 createOrStore new HashMap:---
+    Map nextStartTimeMap = new HashMap();
+    nextStartTimeMap.put("periodIndex", periodIndex);
+    nextStartTimeMap.put("equipmentId", eqpId);
+    nextStartTimeMap.put("lastPmDate", nowTime);
+    nextStartTimeMap.put("transBy", user);
+    nextStartTimeMap.put("nextPmDate", new java.sql.Date(nextPmTime.getTime()));
+
+    GenericValue nextTime = delegator.makeValidValue("PmNextStarttime", nextStartTimeMap);
+    delegator.createOrStore(nextTime);
+
+---exp1.3 storeAll:---
+    // invoice status object
+    GenericValue invStatus = delegator.makeValue("InvoiceStatus",
+        UtilMisc.toMap("invoiceId", invoiceId, "statusId", "INVOICE_IN_PROCESS", "statusDate", UtilDateTime.nowTimestamp()));
+    toStore.add(invStatus);
+
+    // check for previous order payments
+    List orderPaymentPrefs = null;
+    try {
+        orderPaymentPrefs = delegator.findByAnd("OrderPaymentPreference", UtilMisc.toMap("orderId", orderId));
+    } catch (GenericEntityException e) {
+        Debug.logError(e, "Problem getting order payment preference records", module);
+        return ServiceUtil.returnError("Problem getting order payment preference records");
+    }
+    if (orderPaymentPrefs != null) {
+        List currentPayments = new ArrayList();
+        Iterator opi = orderPaymentPrefs.iterator();
+        while (opi.hasNext()) {
+            GenericValue paymentPref = (GenericValue) opi.next();
+            try {
+                List payments = paymentPref.getRelated("Payment");
+                currentPayments.addAll(payments);
+            } catch (GenericEntityException e) {
+                Debug.logError(e, "Problem getting payments from preference", module);
+                return ServiceUtil.returnError("Problem getting payments from preference");
+            }
+        }
+        if (currentPayments.size() > 0) {
+            // apply these payments to the invoice; only if they haven't already been applied
+            Iterator cpi = currentPayments.iterator();
+            while (cpi.hasNext()) {
+                GenericValue payment = (GenericValue) cpi.next();
+                List currentApplications = null;
+                try {
+                    currentApplications = payment.getRelated("PaymentApplication");
+                } catch (GenericEntityException e) {
+                    Debug.logError(e, "Problem getting application(s) for payment", module);
+                    return ServiceUtil.returnError("Problem getting application(s) for payment");
+                }
+                if (currentApplications == null || currentApplications.size() == 0) {
+                    // no applications; okay to apply
+                    String applId = delegator.getNextSeqId("PaymentApplication").toString();
+                    GenericValue appl = delegator.makeValue("PaymentApplication", UtilMisc.toMap("paymentApplicationId", applId));
+                    appl.set("paymentId", payment.get("paymentId"));
+                    appl.set("invoiceId", invoice.get("invoiceId"));
+                    appl.set("billingAccountId", invoice.get("billingAccountId"));
+                    appl.set("amountApplied", payment.get("amount"));
+                    toStore.add(appl);
+                }
+            }
+        }
+    }
+
+    // store value objects
+    try {
+        //Debug.log("Storing : " + toStore, module);
+        delegator.storeAll(toStore);
+    } catch (GenericEntityException e) {
+        Debug.logError(e, "Problems storing invoice items", module);
+        return ServiceUtil.returnError("Cannot create invoice; problem storing items");
+    }
+
+
+2.按条件查询Entity
+---exp2.1 EntityWhereString findByCondition:---
+    EntityWhereString con = new EntityWhereString("schedule_Date = to_date('" + scheduleDate + "','yyyy-MM-dd') and equipment_Id ='" + eqpId + "' and  event_index is  null and period_Index = '" + periodIndex + "'");
+    List equipmentScheduleList = delegator.findByCondition("EquipmentSchedule", con, null, null);
+    return equipmentScheduleList;
+
+---exp2.2 EntityCondition(EntityExpr EntityOperator.IN) findByCondition:---
+    // get all promo codes entered, do a query with an IN condition to see if any of those are related
+    EntityCondition codeCondition = new EntityExpr(new EntityExpr("productPromoId", EntityOperator.EQUALS, productPromoId), EntityOperator.AND, new EntityExpr("productPromoCodeId", EntityOperator.IN, enteredCodes));
+    // may want to sort by something else to decide which code to use if there is more than one candidate
+    List productPromoCodeList = delegator.findByCondition("ProductPromoCode", codeCondition, null, UtilMisc.toList("productPromoCodeId"));
+
+---exp2.3 EntityCondition(EntityConditionList) findByCondition:---
+    // get the valid payment prefs
+    List othExpr = UtilMisc.toList(new EntityExpr("paymentMethodTypeId", EntityOperator.EQUALS, "EFT_ACCOUNT"));
+    othExpr.add(new EntityExpr("paymentMethodTypeId", EntityOperator.EQUALS, "GIFT_CARD"));
+    EntityCondition con1 = new EntityConditionList(othExpr, EntityJoinOperator.OR);
+
+    EntityCondition statExpr = new EntityExpr("statusId", EntityOperator.EQUALS, "PAYMENT_SETTLED");
+    EntityCondition con2 = new EntityConditionList(UtilMisc.toList(con1, statExpr), EntityOperator.AND);
+
+    EntityCondition authExpr = new EntityExpr("statusId", EntityOperator.EQUALS, "PAYMENT_AUTHORIZED");
+    EntityCondition con3 = new EntityConditionList(UtilMisc.toList(con2, authExpr), EntityOperator.OR);
+
+    EntityExpr orderExpr = new EntityExpr("orderId", EntityOperator.EQUALS, orderId);
+    EntityCondition con4 = new EntityConditionList(UtilMisc.toList(con3, orderExpr), EntityOperator.AND);
+
+    paymentPrefs = delegator.findByCondition("OrderPaymentPreference", con4, null, null);
+
+---exp2.4 EntityCondition buildQueryCondition---
+    List entityExprList = new ArrayList();
+	if (eqpId != null && !"".equals(eqpId)) {
+		EntityExpr expr =
+			new EntityExpr("equipmentId", EntityOperator.LIKE, eqpId + "%");
+		entityExprList.add(expr);
+	}
+    if (measureEqp != null && !"".equals(measureEqp)) {
+		EntityExpr expr =
+			new EntityExpr("measureEqp", EntityOperator.EQUALS, measureEqp);
+		entityExprList.add(expr);
+	}
+	if (equipmentType != null && !"".equals(equipmentType)) {
+		EntityExpr expr =
+			new EntityExpr("equipmentType", EntityOperator.EQUALS, equipmentType);
+		entityExprList.add(expr);
+	}
+
+	EntityCondition con =
+		new EntityConditionList(entityExprList, EntityOperator.AND);
+	return con;
+
+---exp2.5 findListIteratorByCondition EntityFindOptions.setDistinct---
+	// get Shipment tracking info
+    EntityCondition osisCond = new EntityFieldMap(UtilMisc.toMap("orderId", orderId), EntityOperator.AND);
+    List osisOrder = UtilMisc.toList("shipmentId", "shipmentRouteSegmentId", "shipmentPackageSeqId");
+    List osisFields = UtilMisc.toList("shipmentId", "shipmentRouteSegmentId", "carrierPartyId", "shipmentMethodTypeId");
+    osisFields.add("shipmentPackageSeqId");
+    osisFields.add("trackingCode");
+    osisFields.add("boxNumber");
+
+    EntityFindOptions osisFindOptions = new EntityFindOptions();
+    osisFindOptions.setDistinct(true);
+
+    List orderShipmentInfoSummaryList = null;
+    EntityListIterator osisEli = delegator.findListIteratorByCondition("OrderShipmentInfoSummary", osisCond, null, osisFields, osisOrder, osisFindOptions);
+    if (osisEli != null) {
+        orderShipmentInfoSummaryList = osisEli.getCompleteList();
+        osisEli.close();
+    }
+    result.put("orderShipmentInfoSummaryList", orderShipmentInfoSummaryList);
+
+---exp2.5 order by ASC/DESC, UtilMisc.toList("fromDate DESC") ---
+    partyContactMechList = EntityUtil.orderBy(partyContactMechList, UtilMisc.toList("fromDate DESC"));
+
+
+3.使用sql查询或更新
+---exp3.1 SQLProcess.excuteSQLQuery查询
+	List list = SQLProcess.excuteSQLQuery(sql, delegator);
+
+---exp3.2 SQLProcess.excuteSQLUpdateForQc更新
+	sql = "update asp@dbredev set username='d011' where username='d01'";
+	int i = SQLProcess.excuteSQLUpdateForQc(sql, delegator);

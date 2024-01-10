@@ -1,0 +1,68 @@
+/*
+ * Ext JS Library 1.0.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ * licensing@extjs.com
+ * 
+ * http://www.extjs.com/license
+ */
+
+body{
+	font: normal 9pt verdana,tahoma,arial,helvetica;
+}
+.post{
+	padding:15px;
+}
+.post h2{
+	font:normal 22px times;
+	margin-bottom:10px;
+}
+.post p{
+	margin-bottom:10px;
+	line-height:18px;
+}
+
+
+/** Posting messages */
+.x-dlg-ft{
+	position:relative;
+}
+
+#dlg-msg {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:40%;
+}
+.posting-msg{
+	display:none;
+	font:normal 8pt tahoma, arial;
+	color:black;
+}
+#post-error-msg{
+	color:red;
+}
+.active-msg{
+	display:block;
+}
+
+
+
+#post-tab .inner-tab{
+	margin:10px;
+	margin-top:5px;
+}
+#x-form label {
+	margin:4px;
+	margin-left:0px;
+	display:block;
+	color:#333333;
+	font:normal 10px arial,helvetica;
+	line-height:14px;
+}
+#x-form .textinput{
+	border:1px solid #6593cf;
+	width:98%;
+	padding:1px;
+	margin-bottom:2px;
+	font:normal 11px tahoma, arial;
+}

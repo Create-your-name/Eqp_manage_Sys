@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="SYNC_DEBUGLOG"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="./log/syncdebuglog.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %-15c{1}: %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="APC_DEBUGLOG"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="./log/apcdebuglog.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %-15c{1}: %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="PMS_DEBUGLOG"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="./log/pmsdebuglog.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %-15c{1}: %m%n" />
+		</layout>
+	</appender>
+
+	<category name="com.csmc.syncpcmdata">
+		<priority value="DEBUG" />
+		<appender-ref ref="SYNC_DEBUGLOG" />
+	</category>
+
+	<category name="com.csmc.apc">
+		<priority value="DEBUG" />
+		<appender-ref ref="APC_DEBUGLOG" />
+	</category>
+	
+	<category name="com.csmc.pms">
+		<priority value="DEBUG" />
+		<appender-ref ref="PMS_DEBUGLOG" />
+	</category>
+</log4j:configuration>

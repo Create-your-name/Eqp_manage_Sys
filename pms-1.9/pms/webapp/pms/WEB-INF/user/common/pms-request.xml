@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+	<request-map uri="queryEquipmentTypeByCommon">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryEquipmentType"/>
+    </request-map>
+
+    <request-map uri="queryPcStyleByCommon">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryPcStyle"/>
+    </request-map>
+
+    <request-map uri="queryPCPeriodByPcStyle">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryPCPeriodByPcStyle"/>
+    </request-map>
+
+    <request-map uri="queryPMPeriodByEqpType">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryPMPeriodByEqpType"/>
+    </request-map>
+
+    <request-map uri="queryEqpIdByEqpTypeByCommon">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryEquipmentByAnd"/>
+    </request-map>
+
+    <request-map uri="querySection">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="querySection"/>
+    </request-map>
+
+    <request-map uri="querySectionByDept">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="querySectionByDept"/>
+    </request-map>
+
+    <request-map uri="queryEquipmentBySection">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryEquipmentBySection"/>
+    </request-map>
+
+	<request-map uri="queryEquipmentDept">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryEquipmentDept"/>
+    </request-map>
+
+    <request-map uri="queryFlowActionByEqpType">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryFlowActionByEqpType"/>
+    </request-map>
+
+    <request-map uri="querySectionEquipmentList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="querySectionEquipmentList"/>
+    </request-map>
+
+    <request-map uri="queryEquipmentByAnd">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryEquipmentByAnd"/>
+    </request-map>
+
+    <request-map uri="getSystemTimestamp">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="getSystemTimestamp"/>
+    </request-map>
+
+    <request-map uri="queryModelByVendor">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryModelByVendor"/>
+    </request-map>
+
+    <request-map uri="queryVendor">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="queryVendor"/>
+    </request-map>
+
+    c 
+    <request-map uri="keyEqpPartsList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="keyEqpPartsList"/>
+      <response name="success" type="request" value="keyPartsMaintain"/>      
+      <response name="error" type="request" value="keyPartsMaintain"/>
+    </request-map>
+    
+    <request-map uri="keyPartsMaintain">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="keyPartsMaintain"/>
+      <response name="success" type="view" value="keyPartsMaintain"/>
+      <response name="error" type="view" value="keyPartsMaintain"/>
+    </request-map>
+
+    <request-map uri="queryKeyParts">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="queryKeyParts"/>
+    </request-map>
+
+    <request-map uri="queryPartsDataForKeyParts">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartsData"/>
+      <response name="success" type="view" value="queryKeyParts"/>
+    </request-map>
+
+    <request-map uri="keyPartsSaveEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="saveKeyParts"/>
+      <response name="success" type="request" value="queryPartsDataForKeyParts"/>
+      <response name="error" type="request" value="queryPartsDataForKeyParts"/>  
+    </request-map>
+
+    <request-map uri="updateKeyParts">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="updateKeyParts"/>
+      <response name="success" type="request" value="keyEqpPartsList"/>
+      <response name="error" type="request" value="keyEqpPartsList"/>
+    </request-map>
+
+    <request-map uri="deleteKeyParts">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="deleteKeyParts"/>
+      <response name="success" type="request" value="keyEqpPartsList"/>      
+      <response name="error" type="request" value="keyEqpPartsList"/>
+    </request-map>
+
+    <request-map uri="queryKeyPartsDelayList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryKeyPartsDelayList"/>
+      <response name="success" type="view" value="queryKeyPartsDelayList"/>
+    </request-map>
+
+    <request-map uri="saveKeyPartsDelay">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="saveKeyPartsDelay"/>
+      <response name="success" type="request" value="queryKeyPartsDelayList"/>
+      <response name="error" type="request" value="queryKeyPartsDelayList"/>  
+    </request-map>
+
+    <request-map uri="deleteKeyPartsDelayItem">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="deleteKeyPartsDelayItem"/>
+      <response name="success" type="request" value="queryKeyPartsDelayList"/>
+      <response name="error" type="request" value="queryKeyPartsDelayList"/>  
+    </request-map>
+
+    <request-map uri="technicalSparePartsSet">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="technicalSparePartsSet"/>
+      <response name="success" type="view" value="technicalSparePartsSet"/>
+      <response name="error" type="view" value="technicalSparePartsSet"/>
+    </request-map>
+    
+    <request-map uri="technicalSparePartsList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="technicalSparePartsList"/>
+      <response name="success" type="request" value="technicalSparePartsSet"/>
+      <response name="error" type="request" value="technicalSparePartsSet"/>
+    </request-map>
+    
+    <request-map uri="manageTechnicalSpareParts">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="manageTechnicalSpareParts"/>
+      <response name="success" type="request" value="technicalSparePartsList"/>      
+      <response name="error" type="request" value="technicalSparePartsSet"/>
+    </request-map> 
+    
+    <request-map uri="deleteTechnicalSpareParts">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="deleteTechnicalSpareParts"/>
+      <response name="success" type="request" value="technicalSparePartsList"/>      
+      <response name="error" type="request" value="technicalSparePartsSet"/>
+    </request-map>  
+     
+    <request-map uri="queryTechnicalSparePartsByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryTechnicalSparePartsByIndex"/>
+    </request-map>
+
+    <request-map uri="keyPartsUnuse">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="keyPartsUnuse"/>
+      <response name="success" type="view" value="keyPartsUnuse"/>
+      <response name="error" type="view" value="keyPartsUnuse"/>
+    </request-map>
+
+    <request-map uri="keyPartsUnuseList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryKeyPartsUnuseList"/>
+      <response name="success" type="request" value="keyPartsUnuse"/>
+      <response name="error" type="request" value="keyPartsUnuse"/>
+    </request-map>
+
+    <request-map uri="getEqpIdByModel">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="getEqpIdByModelList"/>
+    </request-map>
+
+    <request-map uri="pmFormPartsQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartsList"/>
+      <response name="success" type="view" value="pmFormPartsQueryEntry"/>
+    </request-map>
+   
+    <request-map uri="pmFormPartsSaveEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="savePartsUseInfo"/>
+      <response name="success" type="request" value="intoPmFormPartsQueryEntry"/>
+      <response name="error" type="request" value="intoPmFormPartsQueryEntry"/>
+    </request-map>  
+    
+    <request-map uri="pmFormPartsSaveEntryKEY">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="savePartsUseInfoKey"/>
+      <response name="success" type="request" value="pmRecordInfo"/>
+      <response name="error" type="request" value="pmRecordInfo"/>
+    </request-map>
+
+    <request-map uri="intoPmFormPartsQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="intoPartsQuery"/>
+      <response name="success" type="view" value="pmFormPartsQueryEntry"/>
+    </request-map>
+
+    <request-map uri="specifyPartBatch">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartBatchNum"/>
+      <response name="success" type="view" value="partBatchNumList"/>
+    </request-map>
+
+    <request-map uri="saveBatchNumForPartsUse">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="saveBatchNumForPartsUse"/>
+      <response name="success" type="view" value="partBatchNumList"/>
+    </request-map>
+
+    <request-map uri="keypartsdelayinfo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryKeyPartsDelayInfo"/>
+    </request-map>
+
+    <request-map uri="keyEqpPartsCleanMaintain">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="keyEqpPartsCleanMaintain"/>
+      <response name="success" type="view" value="keyEqpPartsCleanMaintain"/>
+      <response name="error" type="view" value="keyEqpPartsCleanMaintain"/>
+    </request-map>
+
+    <request-map uri="keyPartsCleanList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="keyPartsCleanList"/>
+      <response name="success" type="view" value="keyEqpPartsCleanMaintain"/>
+      <response name="error" type="view" value="keyEqpPartsCleanMaintain"/>
+    </request-map>  
+
+    <request-map uri="addKeyPartsClean">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="addKeyPartsClean"/>
+      <response name="success" type="request" value="keyPartsCleanList"/>
+      <response name="error" type="request" value="keyPartsCleanList"/>
+    </request-map>
+
+    <request-map uri="editKeyPartsClean">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="editKeyPartsClean"/>
+      <response name="success" type="request" value="keyPartsCleanList"/>
+      <response name="error" type="request" value="keyPartsCleanList"/>
+     </request-map>
+
+    <request-map uri="delKeyCleanParts">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="delKeyCleanParts"/>
+      <response name="success" type="request" value="keyPartsCleanList"/>
+      <response name="error" type="request" value="keyPartsCleanList"/>
+    </request-map>
+
+    <request-map uri="getKeydescByModel">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.help.PartsHelper" invoke="getKeydescByModel"/>
+    </request-map>
+
+    <request-map uri="getPartsIdByKeydesc">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.help.PartsHelper" invoke="getPartsIdByKeydesc"/>
+    </request-map>
+
+    <request-map uri="getSeriesNoByModelAndKeydesc">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.help.PartsHelper" invoke="getSeriesNoByModelAndKeydesc"/>
+    </request-map>
+
+    <request-map uri="getMustChangeErrorRemark">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.help.PmHelper" invoke="getMustChangeErrorRemark"/>
+    </request-map>
+
+    <request-map uri="sendPmFormSubmit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="sendSubmit"/>
+      <response name="success" type="request" value="overPmFormView"/>
+      <response name="error" type="request" value="overPmFormView"/>
+    </request-map>
+    
+    <request-map uri="sendTsFormSubmit">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.workflow.event.WorkflowEvent" invoke="sendSubmit"/>
+      <response name="success" type="request" value="intoQueryOverAbnormalForm"/>
+      <response name="error" type="request" value="intoQueryOverAbnormalForm"/>
+    </request-map>
+
+    <request-map uri="pmkeyPartsDelayInfoSaveEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="savekeypartsdelayinfo"/>
+    </request-map>
+
+    <request-map uri="mustchangeRemarkSaveEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="saveMustchangeRemark"/>
+    </request-map>
+
+    <request-map uri="unUseKeyParts">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="unUseKeyParts"/>
+      <response name="success" type="request" value="keyPartsUnuseList"/>
+      <response name="error" type="request" value="keyPartsUnuseList"/>
+    </request-map>
+
+    <request-map uri="keyPartsUsedQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoCleanRecordReport"/>
+      <response name="success" type="view" value="keyPartsUsedQueryEntry"/>
+    </request-map>
+
+    <request-map uri="queryKeyPartsUseByCondition">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryKeyPartsUseByCondition"/>
+      <response name="success" type="view" value="keyPartsUsedQueryEntry"/>
+    </request-map>
+
+    <request-map uri="getSectionAndModelByDeptIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getSectionAndModelByDeptIndex"/>
+    </request-map>
+
+    <request-map uri="keyPartsEqpQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoKeyPartsEqpQuery"/>
+      <response name="success" type="view" value="keyPartsEqpQueryEntry"/>
+    </request-map>
+
+    <request-map uri="queryKeyPartsEqpByCondition">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryKeyPartsEqpByCondition"/>
+      <response name="success" type="view" value="keyPartsEqpQueryEntry"/>
+    </request-map>
+
+    <request-map uri="keyPartsUpdateQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoCleanRecordReport"/>
+      <response name="success" type="view" value="keyPartsUpdateQueryEntry"/>
+    </request-map>
+
+    <request-map uri="queryKeyPartsUpdateByCondition">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryKeyPartsUpdateByCondition"/>
+      <response name="success" type="view" value="keyPartsUpdateQueryEntry"/>    
+    </request-map>
+
+    <request-map uri="partsVendorsMaintain">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="partsVendorsMaintain"/>
+      <response name="success" type="view" value="partsVendorsMaintain"/>
+      <response name="error" type="view" value="partsVendorsMaintain"/>
+    </request-map>
+
+    <request-map uri="partsVendorsList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartsVendorsList"/>
+      <response name="success" type="view" value="partsVendorsMaintain"/>
+      <response name="error" type="view" value="partsVendorsMaintain"/>
+    </request-map>  
+
+    <request-map uri="addPartsVendors">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="addPartsVendors"/>
+      <response name="success" type="request" value="partsVendorsList"/>
+      <response name="error" type="request" value="partsVendorsMaintain"/>
+    </request-map>      
+    
+    <request-map uri="delPartsVendors">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="delPartsVendors"/>
+      <response name="success" type="request" value="partsVendorsList"/>
+      <response name="error" type="request" value="partsVendorsMaintain"/>
+    </request-map>
+    
+    <request-map uri="editPartsVendors">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="editPartsVendors"/>
+      <response name="success" type="request" value="partsVendorsList"/>
+      <response name="error" type="request" value="partsVendorsMaintain"/>
+    </request-map>
+    
+    <request-map uri="queryVendorsPartsList">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryVendorsPartsList"/>
+      <response name="success" type="view" value="vendorsPartsQueryEntry"/>
+    </request-map>
+
+    <request-map uri="keyPartsMustchangeCommQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoCleanRecordReport"/>
+      <response name="success" type="view" value="keyPartsMustchangeCommQueryEntry"/>
+    </request-map>
+    
+    <request-map uri="queryKeyPartsMustchangeComm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryKeyPartsMustchangeComm"/>
+      <response name="success" type="view" value="keyPartsMustchangeCommQueryEntry"/>
+    </request-map>
+
+    <request-map uri="intoKeyPartsCleanUpdateReport">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoKeyEqpPartsCleanReport"/>
+      <response name="success" type="view" value="keyPartsCleanUpdateReport"/>
+      <response name="error" type="view" value="keyPartsCleanUpdateReport"/>
+    </request-map>
+   
+    <request-map uri="keyPartsCleanUpdateList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="keyPartsCleanUpdateList"/>
+      <response name="success" type="view" value="keyPartsCleanUpdateReport"/>
+      <response name="error" type="view" value="keyPartsCleanUpdateReport"/>
+    </request-map> 
+
+    <request-map uri="intoKeyPartsCleanUseReport">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoKeyEqpPartsCleanReport"/>
+      <response name="success" type="view" value="keyPartsCleanUseReport"/>
+      <response name="error" type="view" value="keyPartsCleanUseReport"/>
+    </request-map>
+
+    <request-map uri="keyPartsCleanUseList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="keyPartsCleanUseList"/>
+      <response name="success" type="view" value="keyPartsCleanUseReport"/>
+      <response name="error" type="view" value="keyPartsCleanUseReport"/>
+    </request-map>
+
+    <!-- 高价值物料设定 -->
+    <request-map uri="highValuePartsList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryHighValuePartList"/>
+      <response name="success" type="view" value="highValuePartsDefine"/>
+      <response name="error" type="view" value="highValuePartsDefine"/>
+    </request-map>
+
+    <request-map uri="manageHighValuePartDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="manageHighValuePartDefine"/>
+      <response name="success" type="request" value="highValuePartsList"/>
+      <response name="error" type="view" value="highValuePartsDefine"/>
+    </request-map>
+
+    <request-map uri="editHighValuePartDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryHighValuePartsByPartNo"/>
+    </request-map>
+
+    <request-map uri="delHighValuePartDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="delHighValuePartDefine"/>
+      <response name="success" type="request" value="highValuePartsList"/>
+      <response name="error" type="view" value="highValuePartsDefine"/>
+    </request-map>
+</site-conf>

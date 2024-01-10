@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>Party Manager Module Site Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+    <errorpage>/error/error.jsp</errorpage>
+
+    <handler name="java" type="request" class="org.ofbiz.content.webapp.event.JavaEventHandler"/>
+    <handler name="soap" type="request" class="org.ofbiz.content.webapp.event.SOAPEventHandler"/>
+    <handler name="service" type="request" class="org.ofbiz.content.webapp.event.ServiceEventHandler"/>
+    <handler name="simple" type="request" class="org.ofbiz.content.webapp.event.SimpleEventHandler"/>
+
+    <handler name="jpublish" type="view" class="org.ofbiz.content.webapp.view.JPublishViewHandler"/>
+    <handler name="region" type="view" class="org.ofbiz.content.webapp.view.RegionViewHandler"/>
+    <handler name="wsp" type="view" class="org.ofbiz.content.webapp.view.WspViewHandler"/>
+
+    <handler name="ftl" type="view" class="org.ofbiz.content.webapp.ftl.FreeMarkerViewHandler"/>
+    <handler name="velocity" type="view" class="org.ofbiz.content.webapp.view.VelocityViewHandler"/>
+    <handler name="jsp" type="view" class="org.ofbiz.content.webapp.view.JspViewHandler"/>
+    <handler name="http" type="view" class="org.ofbiz.content.webapp.view.HttpViewHandler"/>
+    <handler name="datavision" type="view" class="org.ofbiz.content.webapp.view.DataVisionViewHandler"/>
+    <handler name="jasperreportspdf" type="view" class="org.ofbiz.content.webapp.view.JasperReportsPdfViewHandler"/>
+    <handler name="jasperreportsxml" type="view" class="org.ofbiz.content.webapp.view.JasperReportsXmlViewHandler"/>
+
+    <preprocessor>
+        <!-- Events to run on every request before security (chains exempt) -->
+        <!-- <event type="java" path="org.ofbiz.content.webapp.event.TestEvent" invoke="test"/> -->
+        <event type="java" path="org.ofbiz.securityext.login.LoginEvents" invoke="checkExternalLoginKey"/>
+        <!-- <event type="java" path="com.fa.csmcgui.webapp.common.event.CommonEvent" invoke="saveRequestParameter"/> -->
+    </preprocessor>
+    <!--<postprocessor>
+       <event type="java" path="com.fa.csmcgui.webapp.common.event.CommonEvent" invoke="restoreRequestParameter"/>
+    </postprocessor> -->
+
+	<!-- pms Configuration -->
+	<include file="request-map/pms-request.xml"/>
+	<include file="view-map/pms-view.xml"/>
+
+	<!-- pms user Configuration -->
+	<include file="user/dinghh/pms-request.xml"/>
+	<include file="user/dinghh/pms-view.xml"/>
+
+	<include file="user/jiyw/pms-request.xml"/>
+	<include file="user/jiyw/pms-view.xml"/>
+
+	<include file="user/laol/pms-request.xml"/>
+	<include file="user/laol/pms-view.xml"/>
+
+	<include file="user/shaoaj/pms-request.xml"/>
+	<include file="user/shaoaj/pms-view.xml"/>
+
+	<include file="user/yangj/pms-request.xml"/>
+	<include file="user/yangj/pms-view.xml"/>
+
+	<include file="user/test/pms-request.xml"/>
+	<include file="user/test/pms-view.xml"/>
+
+	<include file="user/common/pms-request.xml"/>
+	<include file="user/common/pms-view.xml"/>
+
+	<include file="user/system/pms-request.xml"/>
+	<include file="user/system/pms-view.xml"/>
+
+	<include file="user/huanghp/pms-request.xml"/>
+	<include file="user/huanghp/pms-view.xml"/>
+	
+	<!-- MCS Configuration -->
+	<include file="mcs-map/mcs-request.xml"/>
+	<include file="mcs-map/mcs-view.xml"/>
+
+</site-conf>

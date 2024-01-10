@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site View-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+	<view-map name="queryEqpAvailUpTime" type="region"/>
+	<view-map name="showEqpAvailUpTimeChart" type="region"/>
+
+	<view-map name="pmForecastPlan" type="region"/>
+	<view-map name="pmForecastPlanByPeriod" type="region"/>
+
+	<view-map name="queryPmScheduleEntry" type="region"/>
+	<view-map name="queryPmSchedule" type="region"/>
+	<view-map name="queryPcScheduleEntry" type="region"/>
+	<view-map name="queryPcSchedule" type="region"/>
+
+	<view-map name="setupPcFormEntry" type="region"/>
+	<view-map name="inputPcFormEntry" type="region"/>
+	<view-map name="queryPcFormEntry" type="region"/>
+
+	<view-map name="queryEqpParamHist" type="region"/>
+	<view-map name="showEqpParamChart" type="region"/>
+
+	<view-map name="showPmParamAnalysisChartEntry" type="region"/>
+	<view-map name="showPmParamAnalysisChart" type="region"/>
+
+	<view-map name="showMsaPmEntry" type="region"/>
+	<view-map name="showMsaPm" type="region"/>
+
+	<view-map name="showPmFormChartEntry" type="region"/>
+	<view-map name="showPmFormChart" type="region"/>
+	<view-map name="showAbnormalFormChartEntry" type="region"/>
+	<view-map name="showAbnormalFormChart" type="region"/>
+
+	<view-map name="showPmEventChartEntry" type="region"/>
+	<view-map name="showPmEventChart" type="region"/>
+	<view-map name="showPmEventEqpChart" type="region"/>
+	<view-map name="showPmEventEqpDetail" type="region"/>
+</site-conf>

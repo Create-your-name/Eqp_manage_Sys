@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+    <!-- 巡检样式设定 -->
+    <request-map uri="pcStyleDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryPcStyle"/>
+      <response name="success" type="view" value="pcStyleDefineEntry"/>
+    </request-map>
+
+   <request-map uri="pcStyleDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="managePcStyle"/>
+      <response name="success" type="request" value="pcStyleDefineEntry"/>
+      <response name="error" type="view" value="pcStyleDefineEntry"/>
+    </request-map>
+
+    <request-map uri="queryPcStyleByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryPcStyleByIndex"/>
+    </request-map>
+
+    <request-map uri="delPcStyleByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="deletePcStyleByPk"/>
+      <response name="success" type="request" value="pcStyleDefineEntry"/>
+    </request-map>
+
+	<!-- 超时/异常分类码设定 -->
+	<request-map uri="reasonEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEquipMentList"/>
+      <response name="success" type="view" value="reasonEntry"/>
+      <response name="error" type="view" value="reasonEntry"/>
+    </request-map>
+
+    <request-map uri="reason">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="manageReason"/>
+      <response name="success" type="request" value="reasonList"/>
+      <response name="error" type="view" value="reasonEntry"/>
+    </request-map>
+
+    <request-map uri="reasonList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryReasonOrOverTimeList"/>
+      <response name="success" type="view" value="reasonEntry"/>
+      <response name="error" type="view" value="reasonEntry"/>
+    </request-map>
+    
+    <request-map uri="pmsReasonList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="pmsReasonList"/>
+      <response name="success" type="view" value="reasonEntry"/>
+      <response name="error" type="view" value="reasonEntry"/>
+    </request-map>
+
+	<request-map uri="pmsReasonHold">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="pmsReasonHold"/>
+      <response name="success" type="request" value="pmsReasonList"/>
+      <response name="error" type="request" value="reasonEntry"/>
+    </request-map>
+    
+     <request-map uri="queryReasonByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryReasonByIndex"/>
+    </request-map>
+
+     <request-map uri="delReasonByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="deleteReasonByPk"/>
+      <response name="success" type="request" value="reasonList"/>
+    </request-map>
+
+    <!-- 不定期保养参数设定 -->
+    <request-map uri="unscheduleParameterEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryUnscheduleParameterList"/>
+      <response name="success" type="view" value="unscheduleParameterEntry"/>
+    </request-map>
+
+   <request-map uri="unscheduleParameter">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="manageUnscheduleParameter"/>
+      <response name="success" type="request" value="unscheduleParameterEntry"/>
+      <response name="error" type="view" value="unscheduleParameterEntry"/>
+    </request-map>
+
+    <request-map uri="queryUnscheduleParameterByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryUnscheduleParameterByIndex"/>
+    </request-map>
+
+    <request-map uri="delUnscheduleParameterByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="deleteUnscheduleParameterByPk"/>
+      <response name="success" type="request" value="unscheduleParameterEntry"/>
+    </request-map>
+
+    <!-- 清洗备件厂商 -->
+    <request-map uri="equipmentVendorEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEquipmentVendorList"/>
+      <response name="success" type="view" value="equipmentVendorEntry"/>
+    </request-map>
+
+   <request-map uri="equipmentVendor">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="manageEquipmentVendor"/>
+      <response name="success" type="request" value="equipmentVendorEntry"/>
+      <response name="error" type="view" value="equipmentVendorEntry"/>
+    </request-map>
+
+    <request-map uri="queryEquipmentVendorByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEquipmentVendorByIndex"/>
+    </request-map>
+
+    <request-map uri="delEquipmentVendorByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="deleteEquipmentVendorByPk"/>
+      <response name="success" type="request" value="equipmentVendorEntry"/>
+    </request-map>
+
+    <!-- 设备型号维护 -->
+    <request-map uri="equipmentBasicEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEquipmentBasicList"/>
+      <response name="success" type="view" value="equipmentBasicEntry"/>
+    </request-map>
+
+   <request-map uri="equipmentBasic">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="manageEquipmentBasic"/>
+      <response name="success" type="request" value="equipmentBasicEntry"/>
+      <response name="error" type="view" value="equipmentBasicEntry"/>
+    </request-map>
+
+    <request-map uri="queryEquipmentBasicByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEquipmentBasicByIndex"/>
+    </request-map>
+
+    <request-map uri="delEquipmentBasicByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="deleteEquipmentBasicByPk"/>
+      <response name="success" type="request" value="equipmentBasicEntry"/>
+    </request-map>
+
+    <!-- 事件分类 -->
+    <request-map uri="eventCategoryDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="getEventCategoryList"/>
+      <response name="success" type="view" value="eventCategoryDefineEntry"/>
+    </request-map>
+
+   <request-map uri="eventCategoryDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="manageEventCategory"/>
+      <response name="success" type="request" value="eventCategoryDefineEntry"/>
+      <response name="error" type="view" value="eventCategoryDefineEntry"/>
+    </request-map>
+
+    <request-map uri="queryEventCategoryByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEventCategoryByIndex"/>
+    </request-map>
+
+    <request-map uri="delEventCategoryByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="deleteEventCategoryByPk"/>
+      <response name="success" type="request" value="eventCategoryDefineEntry"/>
+    </request-map>
+
+    <!-- 事件细项 -->
+    <request-map uri="eventSubCategoryDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="getEventCategoryList"/>
+      <response name="success" type="view" value="eventSubCategoryDefineEntry"/>
+    </request-map>
+
+   <request-map uri="eventSubCategoryDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="manageEventSubCategory"/>
+      <response name="success" type="request" value="eventSubCategoryList"/>
+      <response name="error" type="view" value="eventSubCategoryDefineEntry"/>
+    </request-map>
+
+    <request-map uri="queryEventSubCategoryByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEventSubCategoryByIndex"/>
+    </request-map>
+
+    <request-map uri="eventSubCategoryList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEventSubCategoryList"/>
+      <response name="success" type="view" value="eventSubCategoryDefineEntry"/>
+    </request-map>
+
+    <request-map uri="delEventSubCategoryByIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="deleteEventSubCategoryByIndex"/>
+      <response name="success" type="request" value="eventSubCategoryList"/>
+    </request-map>
+    <!-- end -->
+
+ 	<request-map uri="equipmentDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEquipmentListByDept"/>
+      <response name="success" type="view" value="equipmentDefineEntry"/>
+      <response name="error" type="view" value="equipmentDefineEntry"/>
+    </request-map>
+
+ 	<request-map uri="equipmentDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="getEquipment"/>
+      <response name="success" type="view" value="equipmentDefine"/>
+    </request-map>
+
+    <request-map uri="equipmentDefineQueryList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="queryEquipmentListByDept"/>
+      <response name="success" type="view" value="equipmentDefineEntry"/>
+      <response name="error" type="view" value="equipmentDefineEntry"/>
+    </request-map>
+
+   <request-map uri="equipmentDefineSave">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="saveEquipment"/>
+      <response name="success" type="request" value="equipmentDefineEntry"/>
+      <response name="error" type="view" value="equipmentDefineEntry"/>
+    </request-map>
+
+   <request-map uri="equipmentDefineDelete">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="deleteEquipment"/>
+      <response name="success" type="view" value="equipmentDefineEntry"/>
+    </request-map>
+
+    <!-- 机台基本资料报表 -->
+    <request-map uri="queryEqpBasicInfoEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryEqpBasicInfoEntry"/>
+      <response name="success" type="view" value="queryEqpBasicInfoEntry"/>
+    </request-map>
+
+    <request-map uri="queryEqpBasicInfo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryEqpBasicInfo"/>
+      <response name="success" type="view" value="queryEqpBasicInfo"/>
+      <response name="error" type="request" value="queryEqpBasicInfoEntry"/>
+    </request-map>
+
+    <!-- 设备参数定义 -->
+    <request-map uri="equipmentParamDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="equipmentSchedule"/>
+      <response name="success" type="view" value="equipmentParamDefine"/>
+    </request-map>
+
+	<request-map uri="equipmentParamList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.basic.event.BasicEvent" invoke="equipmentParamList"/>
+      <response name="success" type="view" value="equipmentParamDefine"/>
+      <response name="error" type="request" value="equipmentParamDefine"/>
+    </request-map>
+</site-conf>

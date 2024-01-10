@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site View-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+	<view-map name="defaultPeriodDefine" type="region"/>
+	<view-map name="equipmentScheduleDefine" type="region"/>
+	<view-map name="equipmentSchedule" type="region"/>	
+	<view-map name="pcPeriodDefine" type="region"/>
+	<view-map name="pcScheduleDefine" type="region"/>
+	<view-map name="pcSchedule" type="region"/>	
+	<view-map name="yearPeriodSchedule" type="region"/>
+	<view-map name="equipmentScheduleClear" type="region"/>	
+	<view-map name="equipmentParamEnter" type="region"/>	
+	<view-map name="pmRecordList" type="region"/>
+	<view-map name="pmFormAdd" type="region"/>	
+	<view-map name="pmFormPatchAdd" type="region"/>			
+	<view-map name="subPmForm" type="region"/>
+	<view-map name="enterPmRecord" type="region"/>
+	<view-map name="startPmRecord" type="region"/>
+	<view-map name="managePmRecord" type="region"/>	
+	<view-map name="pmFormPartsQueryEntry" type="region"/>	
+	<view-map name="smallPmDelete" type="region"/>
+	<view-map name="subSmallPmFormDelete" type="region"/>												
+	<view-map name="queryOverPmForm" type="region"/>	
+	<view-map name="viewOverPmForm" type="region"/>
+	<view-map name="unscheduleEqpParamManage" type="region"/>
+</site-conf>

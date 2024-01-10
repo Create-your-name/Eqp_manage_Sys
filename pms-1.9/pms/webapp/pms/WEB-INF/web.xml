@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<!--
+ *  Copyright (c) 2001 The Open For Business Project - www.ofbiz.org
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *  copy of this software and associated documentation files (the "Software"),
+ *  to deal in the Software without restriction, including without limitation
+ *  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ *  and/or sell copies of the Software, and to permit persons to whom the
+ *  Software is furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included
+ *  in all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ *  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ *  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ *  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ *  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+ *  OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+ *  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+<web-app>
+  <display-name>PMS</display-name>
+  <description>Preventative Maintenance</description>
+
+  <context-param>
+    <param-name>entityDelegatorName</param-name>
+    <param-value>default</param-value>
+    <description>The Name of the Entity Delegator to use, defined in entityengine.xml</description>
+  </context-param>
+  <context-param>
+    <param-name>localDispatcherName</param-name>
+    <param-value>pms</param-value>
+    <description>A unique name used to identify/recognize the local dispatcher for the Service Engine</description>
+  </context-param>
+  <context-param>
+    <param-name>serviceReaderUrls</param-name>
+    <param-value>/WEB-INF/services.xml</param-value>
+    <description>Configuration File(s) For The Service Dispatcher</description>
+  </context-param>
+  <context-param>
+    <param-name>scriptLocationPath</param-name>
+    <param-value>/WEB-INF/bsh</param-value>
+    <description>BeanShell Script Location</description>
+  </context-param>
+
+    <filter>
+        <filter-name>ContextFilter</filter-name>
+        <display-name>ContextFilter</display-name>
+        <filter-class>org.ofbiz.content.webapp.control.ContextFilter</filter-class>
+        <init-param>
+            <param-name>disableContextSecurity</param-name>
+            <param-value>Y</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowedPaths</param-name>
+            <param-value>/common:/status:/applet:/plugin:/control:/select:/index.html:/index.jsp:/images:/function:/includes:/includes:/treeimg:/testjsp.jsp:/opt/selectlotlist.jsp:/opt/avaliablelotlist.jsp:/opt/runinglotlist.jsp:/wip/splitLotOverQuery.jsp:/wip/mergeLotChildLotidQuery.jsp:/wip/mergeLotOverQuery.jsp:/opt/optmessagelist.jsp:/opt/filterlot.jsp:/opt/manualdispatchlotlist.jsp:/inventory/ztLotAvailableLot.jsp:/inventory/ztLotSelectedLot.jsp:/eap/selectlotlist.jsp:/eap/avaliablelotlist.jsp:/eap/runinglotlist.jsp:/eap/filterlot.jsp:/eap/optmessagelist.jsp:/eap:/inventory/cancelZtLotAvailableLot.jsp:/inventory/cancelZtLotSelectedLot.jsp:/includes/applet.jsp:/eap/status.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>errorCode</param-name>
+            <param-value>403</param-value>
+        </init-param>
+        <init-param>
+            <param-name>redirectPath</param-name>
+            <param-value>/control/main</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>ContextFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+  <listener><listener-class>org.ofbiz.content.webapp.control.ControlEventListener</listener-class></listener>
+  <listener><listener-class>org.ofbiz.securityext.login.LoginEventListener</listener-class></listener>
+  <!--<listener><listener-class>com.fa.csmcgui.webapp.util.listener.SessionListener</listener-class></listener> -->
+
+  <servlet>
+    <servlet-name>ControlServlet</servlet-name>
+    <display-name>ControlServlet</display-name>
+    <description>Main Control Servlet</description>
+    <servlet-class>org.ofbiz.content.webapp.control.ControlServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+   <servlet>
+    <servlet-name>initialServlet</servlet-name>
+    <display-name>initialServlet</display-name>
+    <description>Pms inital Servlet</description>
+    <servlet-class>com.csmc.pms.webapp.initial.InitialServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Status</servlet-name>
+    <servlet-class>org.apache.catalina.manager.StatusManagerServlet</servlet-class>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>3</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet>
+    <servlet-name>DisplayChart</servlet-name>
+    <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Status</servlet-name>
+    <url-pattern>/status/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ControlServlet</servlet-name>
+    <url-pattern>/control/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DisplayChart</servlet-name>
+    <url-pattern>/DisplayChart</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>60</session-timeout>    <!-- in minutes -->
+  </session-config>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <taglib>
+     <taglib-uri>ofbizTags</taglib-uri>
+     <taglib-location>/WEB-INF/tld/ofbiz.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+     <taglib-uri>input</taglib-uri>
+     <taglib-location>/WEB-INF/tld/input.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+     <taglib-uri>regions</taglib-uri>
+     <taglib-location>/WEB-INF/tld/regions.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+     <taglib-uri>i18n</taglib-uri>
+     <taglib-location>/WEB-INF/tld/i18n.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+     <taglib-uri>displaytag</taglib-uri>
+     <taglib-location>/WEB-INF/tld/displaytag-12.tld</taglib-location>
+  </taglib>
+
+<!-- HTTP Response Code definitions:
+| "400"   ; Bad Request
+| "401"   ; Unauthorized
+| "402"   ; Payment Required
+| "403"   ; Forbidden
+| "404"   ; Not Found
+| "405"   ; Method Not Allowed
+| "406"   ; Not Acceptable
+| "407"   ; Proxy Authentication Required
+| "408"   ; Request Time-out
+| "409"   ; Conflict
+| "410"   ; Gone
+| "411"   ; Length Required
+| "412"   ; Precondition Failed
+| "413"   ; Request Entity Too Large
+| "414"   ; Request-URI Too Large
+| "415"   ; Unsupported Media Type
+| "500"   ; Internal Server Error
+| "501"   ; Not Implemented
+| "502"   ; Bad Gateway
+| "503"   ; Service Unavailable
+| "504"   ; Gateway Time-out
+| "505"   ; HTTP Version not supported
+-->
+
+</web-app>

@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE entitymodel PUBLIC "-//OFBiz//DTD Entity Model//EN" "http://www.ofbiz.org/dtds/entitymodel.dtd">
+<!--
+/**
+ *  Title: Entity Generator Definitions for the General Data Model
+ *  Description: None
+ *  Copyright (c) 2001, 2002 The Open For Business Project - www.ofbiz.org
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *  copy of this software and associated documentation files (the "Software"),
+ *  to deal in the Software without restriction, including without limitation
+ *  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ *  and/or sell copies of the Software, and to permit persons to whom the
+ *  Software is furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included
+ *  in all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ *  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ *  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ *  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ *  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+ *  OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+ *  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * @author     dinghh
+ * @author
+ */
+-->
+
+<entitymodel>
+  <!-- ========================================================= -->
+  <!-- ======================== Defaults ======================= -->
+  <!-- ========================================================= -->
+    <title>Entity of a PMS/MCS Project Component</title>
+    <description>None</description>
+    <copyright>Copyright (c) 2009 The PMS/MCS Project - www.csmc.com.cn</copyright>
+    <author>dinghh</author>
+    <version>1.0</version>
+
+    <!-- pms reference table
+
+    <entity entity-name="Equipment"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="equipment">
+		<field name="equipmentId" type="id-long-ne"></field>
+		<field name="equipmentDesc" type="id-long-ne"></field>
+		<field name="equipmentType" type="id-long-ne"></field>
+		<field name="location" type="id-long-ne"></field>
+		<field name="ownDept" type="id-long-ne"></field>
+		<field name="useDept" type="id-long-ne"></field>
+		<field name="maintDept" type="id-long-ne"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="section" type="id-long-ne"></field>
+		<field name="model" type="id-long-ne"></field>
+		<field name="style" type="id-long-ne"></field>
+		<field name="assetNo" type="id-long-ne"></field>
+		<field name="vendor" type="id-long-ne"></field>
+		<field name="vendorEqpNo" type="id-long-ne"></field>
+		<field name="vendorEngineer" type="id-long-ne"></field>
+		<field name="vendorPhone" type="id-long-ne"></field>
+		<field name="equipmentEngineer" type="id-long-ne"></field>
+		<field name="backupEngineer" type="id-long-ne"></field>
+		<field name="equipmentLeader" type="id-long-ne"></field>
+		<field name="processEngineer" type="id-long-ne"></field>
+		<field name="projectCode" type="id-long-ne"></field>
+		<field name="length" type="id-long-ne"></field>
+		<field name="width" type="id-long-ne"></field>
+		<field name="height" type="id-long-ne"></field>
+		<field name="weight" type="id-long-ne"></field>
+		<field name="exhaust" type="id-long-ne"></field>
+		<field name="meter" type="id-long-ne"></field>
+		<field name="voltage" type="id-long-ne"></field>
+		<field name="power" type="id-long-ne"></field>
+		<field name="parentEqpid" type="id-long-ne"></field>
+		<field name="keyEqp" type="id-long-ne"></field>
+		<field name="adjustEqp" type="id-long-ne"></field>
+		<field name="measureEqp" type="id-long-ne"></field>
+		<field name="note" type="id-long-ne"></field>
+		<field name="equipmentGroup" type="id-ne"></field>
+		<field name="transBy" type="id-long-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+
+		<prim-key field="equipmentId"/>
+	</entity>
+
+	<entity entity-name="EquipmentDept"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="equipment dept">
+		<field name="deptIndex" type="numeric"></field>
+		<field name="equipmentDept" type="id-ne"></field>
+		<field name="description" type="id-long-ne"></field>
+		<field name="equipmentChar" type="id-ne"></field>
+		<field name="deptLeader" type="id-ne"></field>
+		<field name="updateTime" type="date-time"></field>
+		<prim-key field="deptIndex"/>
+	</entity>
+
+	-->
+
+	<entity entity-name="McsPartsUse"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="false"
+				title="Pms Parts Usae Interface">
+		<field name="partsUseSeqIndex" type="numeric"></field>
+		<field name="materialStatusIndex" type="numeric"></field>
+    </entity>
+
+    <entity entity-name="McsMaterialStatusCode"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="Material Status Code">
+		<field name="status" type="id-long-ne"></field>
+		<field name="description" type="id-long-ne"></field>
+	    <field name="seqNum" type="id-long-ne"></field>
+		<prim-key field="status"/>
+
+		<relation type="many" rel-entity-name="McsMaterialStatus">
+            <key-map field-name="status"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="McsMaterialGroup"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="Material Group Basic Info">
+		<field name="mtrGrp" type="id-ne"></field>
+		<field name="mtrGrpDesc" type="id-ne"></field>
+		<field name="enabled" type="short-numeric"></field>
+		<field name="needScrapStore" type="indicator"></field>
+		<field name="needVendorRecycle" type="indicator"></field>
+        <field name="useById" type="indicator"></field>
+        <field name="useByQty" type="indicator"></field>
+        <field name="useBySuit" type="indicator"></field>
+		<field name="useByBarcode" type="indicator"></field>
+		<field name="enableBackStock" type="indicator"></field>
+
+		<prim-key field="mtrGrp"/>
+
+		<relation type="many" rel-entity-name="McsMaterialInfo">
+            <key-map field-name="mtrGrp"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="McsVendorMaterial"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Material Bar Code Info">
+		<field name="mtrNum" type="id-long-ne"></field>
+		<field name="vendorMtrNum" type="id-long-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<prim-key field="mtrNum"/>
+    </entity>
+
+    <entity entity-name="McsMaterialInfo"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Material Basic Info">
+		<field name="materialIndex" type="numeric"></field>
+		<field name="mtrNum" type="id-long-ne"></field>
+		<field name="mtrDesc" type="id-long"></field>
+		<field name="mtrGrp" type="id-ne"></field>
+		<field name="plant" type="numeric"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="frozenTimeLimit" type="numeric"></field>
+		<field name="maxFrozenTimeLimit" type="numeric"></field>
+		<field name="usableTimeLimit" type="numeric"></field>
+		<field name="preStoNumber" type="numeric"></field>
+		<field name="preAlarmDays" type="numeric"></field>
+		<field name="needScrapStore" type="indicator"></field>
+		<field name="needVendorRecycle" type="indicator"></field>
+		<field name="enabled" type="short-numeric"></field>
+		<field name="inControl" type="short-numeric"></field>
+
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<prim-key field="materialIndex"/>
+
+		<index name="MAT_UK" unique="true">
+            <index-field name="mtrNum"/>
+            <index-field name="deptIndex"/>
+        </index>
+
+		<relation type="one" fk-name="MAT_MTRGRP" rel-entity-name="McsMaterialGroup">
+            <key-map field-name="mtrGrp"/>
+        </relation>
+
+        <relation type="many" rel-entity-name="McsMaterialStatus">
+            <key-map field-name="materialIndex"/>
+        </relation>
+
+        <relation type="many" rel-entity-name="McsMaterialSuitItem">
+            <key-map field-name="materialIndex"/>
+        </relation>
+
+        <relation type="many" rel-entity-name="McsMtrObject">
+            <key-map field-name="materialIndex"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="McsMaterialInfoHist"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Material Basic Info Hist">
+		<field name="materialHistIndex" type="numeric"></field>
+
+		<field name="materialIndex" type="numeric"></field>
+		<field name="mtrNum" type="id-long-ne"></field>
+		<field name="mtrDesc" type="id-long"></field>
+		<field name="mtrGrp" type="id-ne"></field>
+		<field name="plant" type="numeric"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="frozenTimeLimit" type="numeric"></field>
+		<field name="maxFrozenTimeLimit" type="numeric"></field>
+		<field name="usableTimeLimit" type="numeric"></field>
+		<field name="preStoNumber" type="numeric"></field>
+		<field name="preAlarmDays" type="numeric"></field>
+		<field name="needScrapStore" type="indicator"></field>
+		<field name="needVendorRecycle" type="indicator"></field>
+		<field name="enabled" type="short-numeric"></field>
+		<field name="inControl" type="short-numeric"></field>
+
+        <field name="evt" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<prim-key field="materialHistIndex"/>
+    </entity>
+
+    <entity entity-name="McsMtrObject"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Material Using Object">
+		<field name="mtrObjectIndex" type="numeric"></field>
+		<field name="materialIndex" type="numeric"></field>
+		<field name="mtrNum" type="id-long-ne"></field>
+		<field name="deptIndex" type="numeric"></field>
+
+        <field name="usingObjectId" type="id-long-ne"></field>
+        <field name="usableTimeLimit" type="numeric"></field>
+        <field name="objMaxUseAmount" type="numeric"></field>
+        <field name="stdUseAmount" type="numeric"></field>
+
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<prim-key field="mtrObjectIndex"/>
+
+		<index name="MTRObJ_UK" unique="true">
+            <index-field name="mtrNum"/>
+            <index-field name="deptIndex"/>
+            <index-field name="usingObjectId"/>
+        </index>
+
+		<relation type="one" fk-name="MTRObJ_MTRINDEX" rel-entity-name="McsMaterialInfo">
+            <key-map field-name="materialIndex"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="McsMtrObjectHist"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Material Using Object Hist">
+		<field name="mtrObjectHistIndex" type="numeric"></field>
+
+		<field name="mtrObjectIndex" type="numeric"></field>
+		<field name="materialIndex" type="numeric"></field>
+		<field name="mtrNum" type="id-long-ne"></field>
+		<field name="deptIndex" type="numeric"></field>
+
+        <field name="usingObjectId" type="id-long-ne"></field>
+        <field name="usableTimeLimit" type="numeric"></field>
+        <field name="objMaxUseAmount" type="numeric"></field>
+        <field name="stdUseAmount" type="numeric"></field>
+
+        <field name="evt" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<prim-key field="mtrObjectHistIndex"/>
+    </entity>
+
+    <entity entity-name="McsMaterialSuit"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="false"
+				title="Material Suit">
+		<field name="materialSuitIndex" type="numeric"></field>
+		<field name="suitName" type="id-long-ne"></field>
+		<field name="suitDesc" type="id-long-ne"></field>
+		<field name="mtrGrp" type="id-ne"></field>
+        <field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<prim-key field="materialSuitIndex"/>
+
+		<index name="MATSUIT_SUITNAME" unique="true">
+            <index-field name="suitName"/>
+        </index>
+
+        <relation type="many" rel-entity-name="McsMaterialSuitItem">
+            <key-map field-name="materialSuitIndex"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="McsMaterialSuitItem"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="false"
+				title="Material Suit Item">
+		<field name="materialSuitItemIndex" type="numeric"></field>
+        <field name="materialSuitIndex" type="numeric"></field>
+        <field name="materialIndex" type="numeric"></field>
+        <field name="mtrQty" type="numeric"></field>
+        <field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<prim-key field="materialSuitItemIndex"/>
+
+		<relation type="one" fk-name="MATSUITITEM_SUITINDEX" rel-entity-name="McsMaterialSuit">
+            <key-map field-name="materialSuitIndex"/>
+        </relation>
+
+        <relation type="one" fk-name="MATSUITITEM_MTRINDEX" rel-entity-name="McsMaterialInfo">
+            <key-map field-name="materialIndex"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="McsMaterialStoReq"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Material Stock Request">
+		<field name="materialStoReqIndex" type="numeric"></field>
+		<field name="plant" type="numeric"></field>
+		<field name="mtrNum" type="id-long-ne"></field>
+		<field name="mtrDesc" type="id-long"></field>
+		<field name="mtrGrp" type="id-ne"></field>
+		<field name="batchNum" type="id-long"></field>
+		<field name="vendorBatchNum" type="id-long"></field>
+		<field name="qty" type="numeric"></field>
+		<field name="shelfLifeExpirationDate" type="date-timestamp"></field>
+		<field name="docTime" type="date-timestamp"></field>
+		<field name="costCenter" type="id-long-ne"></field>
+		<field name="equipmentId" type="id-ne"></field>
+		<field name="reasonForMovement" type="id-long-ne"></field>
+		<field name="deptIndex" type="numeric"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<field name="activeFlag" type="indicator"></field>
+		<field name="activeQty" type="numeric"></field>
+		<field name="activeTime" type="date-timestamp"></field>
+		<field name="backStockFlag" type="indicator"></field>
+        <field name="backStockTime" type="date-timestamp"></field>
+        <field name="recipient" type="id-ne"></field>
+        <field name="eventIndex" type="numeric"></field>
+		<prim-key field="materialStoReqIndex"/>
+
+		<relation type="many" rel-entity-name="McsMaterialStatus">
+            <key-map field-name="materialStoReqIndex"/>
+        </relation>
+
+        <index name="MATSR_UPDATETIME" unique="false">
+            <index-field name="updateTime"/>
+        </index>
+    </entity>
+
+    <entity entity-name="McsMaterialStatus"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="false"
+				title="Material Status">
+		<field name="materialStatusIndex" type="numeric"></field>
+
+		<field name="materialStoReqIndex" type="numeric"></field>
+		<field name="vendorBatchNum" type="id-long"></field>
+		<field name="shelfLifeExpirationDate" type="date-timestamp"></field>
+        <field name="docTime" type="date-timestamp"></field>
+        <field name="deptIndex" type="numeric"></field>
+        <field name="mtrNum" type="id-long-ne"></field>
+		<field name="mtrDesc" type="id-long"></field>
+		<field name="mtrGrp" type="id-ne"></field>
+
+        <field name="materialIndex" type="numeric"></field>
+		<field name="aliasName" type="id-long-ne"></field>
+        <field name="status" type="id-long-ne"></field>
+        <field name="usingObjectId" type="id-long-ne"></field>
+        <field name="transactionId" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<field name="mrbId" type="id-long-ne"></field>
+		<field name="mrbDate" type="date-timestamp"></field>
+		<field name="mrbTransBy" type="id-ne"></field>
+		<field name="mrbTransTime" type="date-timestamp"></field>
+
+        <field name="stockAddress" type="id-long-ne"></field>
+		<field name="unfrozenTransBy" type="id-ne"></field>
+		<field name="unfrozenTransTime" type="date-timestamp"></field>
+		<field name="remark" type="id-long-ne"></field>
+
+		<prim-key field="materialStatusIndex"/>
+
+		<relation type="one" fk-name="MATST_STOREQ" rel-entity-name="McsMaterialStoReq">
+            <key-map field-name="materialStoReqIndex"/>
+        </relation>
+
+        <relation type="one" fk-name="MATST_MTRINDEX" rel-entity-name="McsMaterialInfo">
+            <key-map field-name="materialIndex"/>
+        </relation>
+
+        <relation type="one" fk-name="MATST_STATUS" rel-entity-name="McsMaterialStatusCode">
+            <key-map field-name="status"/>
+        </relation>
+
+        <relation type="many" rel-entity-name="McsMaterialStatusHist">
+            <key-map field-name="materialStatusIndex"/>
+        </relation>
+
+        <index name="MATST_ALIASNAME" unique="true">
+            <index-field name="aliasName"/>
+        </index>
+
+        <index name="MATST_UPDATETIME" unique="false">
+            <index-field name="updateTime"/>
+        </index>
+    </entity>
+
+    <entity entity-name="McsMaterialStatusHist"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Material Status Hist">
+		<field name="materialStatusHistIndex" type="numeric"></field>
+		<field name="materialStatusIndex" type="numeric"></field>
+
+        <field name="status" type="id-long-ne"></field>
+        <field name="usingObjectId" type="id-long-ne"></field>
+
+        <field name="transactionId" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+		<field name="note" type="id-long-ne"></field>
+
+		<prim-key field="materialStatusHistIndex"/>
+
+        <relation type="one" fk-name="MATSTHIST_STINDEX" rel-entity-name="McsMaterialStatus">
+            <key-map field-name="materialStatusIndex"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="McsMaterialStatusError"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Material Status Error">
+	    <field name="materialStatusIndex" type="numeric"></field>
+		<field name="aliasName" type="id-long-ne"></field>
+		<field name="isChanged" type="id-ne"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<prim-key field="materialStatusIndex"/>
+    </entity>
+
+    <entity entity-name="McsSapMtrTable"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Sap Material View's Table">
+		<field name="mtrNum" type="id-long-ne"></field>
+		<field name="mtrDesc" type="id-long"></field>
+		<field name="mtrGrp" type="id-ne"></field>
+
+		<field name="plant" type="numeric"></field>
+		<field name="movingAveragePrice" type="floating-point"></field>
+
+		<prim-key field="mtrNum"/>
+    </entity>
+
+    <entity entity-name="EquipmentToolgroup"
+				package-name="org.ofbiz"
+				never-cache="false"
+				no-auto-stamp="true"
+				title="equipment toolgroup">
+		<field name="toolGroup" type="id-long-ne"></field>
+		<prim-key field="toolGroup"/>
+	</entity>
+
+	<entity entity-name="McsPrSafeQty"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Photo Resist Safe Qty">
+		<field name="mtrNum" type="id-long-ne"></field>
+		<field name="mtrDesc" type="id-long"></field>
+		<field name="refDaily500k" type="floating-point"></field>
+		<field name="refDaily600k" type="floating-point"></field>
+		<field name="refDaily700k" type="floating-point"></field>
+		<field name="refDaily800k" type="floating-point"></field>
+		<field name="refStock500k" type="numeric"></field>
+		<field name="refStock600k" type="numeric"></field>
+		<field name="refStock700k" type="numeric"></field>
+		<field name="refStock800k" type="numeric"></field>
+		<field name="safeQty" type="numeric"></field>
+		<field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+
+		<prim-key field="mtrNum"/>
+    </entity>
+
+    <entity entity-name="McsSpecialUsableTime"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Mcs Special Usable Time">
+		<field name="mtrNum" type="id-long-ne"></field>
+        <field name="usingObjectId" type="id-long-ne"></field>
+		<field name="usableTimeLimit" type="numeric"></field>
+
+		<prim-key field="mtrNum"/>
+		<prim-key field="usingObjectId"/>
+    </entity>
+
+    <entity entity-name="McsPmChangeTarget"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Mcs Pm Change Target">
+        <field name="usingObjectId" type="id-long-ne"></field>
+        <field name="transBy" type="id-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+		<field name="enabledType" type="id-long-ne"></field>
+		<field name="enabled" type="short-numeric"></field>
+
+		<prim-key field="usingObjectId"/>
+    </entity>
+
+    <entity entity-name="McsScanBarcode"
+				package-name="org.ofbiz"
+				never-cache="true"
+				no-auto-stamp="true"
+				title="Mcs Scan Barcode">
+        <field name="equipmentId" type="id-long-ne"></field>
+        <field name="mtrType" type="id-long-ne"></field>
+        <field name="barcode" type="id-long-ne"></field>
+		<field name="updateTime" type="date-timestamp"></field>
+		<field name="scannerProgram" type="id-long-ne"></field>
+    </entity>
+</entitymodel>

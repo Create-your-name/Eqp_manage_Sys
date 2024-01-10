@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT gui-constraint ( constraint* )> 
+
+<!ELEMENT constraint ( property* )>
+<!ATTLIST constraint
+    name CDATA #REQUIRED
+>
+<!ELEMENT property EMPTY>
+<!ATTLIST property
+    name CDATA #REQUIRED
+    value CDATA #REQUIRED
+>

@@ -1,0 +1,11 @@
+-JS部分
+	Ext.onReady(function(){
+	    var startDate = new Ext.form.DateField({
+	    	format: 'Y-m-d',//注意这里的大小写须一致
+	        allowBlank:true
+	    });
+	    //将控件与页面的INPUT框捆绑
+	    startDate.applyTo('start');   
+	});
+-HTML
+	<input type="text" ID="start" NAME="startDate" readonly>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE services PUBLIC "-//OFBiz//DTD Services Config//EN" "http://www.ofbiz.org/dtds/services.dtd">
+
+<services>
+    <description>Party Component Services</description>
+    <vendor>OFBiz</vendor>
+    <version>1.0</version>
+
+    <!--system login&user setup-->
+    <service name="checkGUIPriv" engine="java"
+            location="com.csmc.pms.webapp.security.SecurityServices" invoke="checkGUIPriv" use-transaction="false" auth="false">
+        <description>Check GUI Priv</description>
+		<attribute name="userlogin" type="org.ofbiz.entity.GenericValue" mode="IN" optional="false"/>
+		<attribute name="guipriv" type="java.util.List" mode="OUT" optional="false"/>
+        <attribute name="accountgroupset" type="java.util.Set" mode="OUT" optional="false"/>
+        <attribute name="accountcategoryset" type="java.util.Set" mode="OUT" optional="false"/>
+    </service>
+
+	<service name="csmcUserLogin" engine="java"
+            location="com.csmc.pms.webapp.security.login.LoginServices" invoke="userLogin" use-transaction="false" auth="false">
+		<description>Check GUI Priv</description>
+        <attribute name="username" type="String" mode="IN" optional="true"/>
+		<attribute name="password" type="String" mode="IN" optional="true"/>
+		<attribute name="visitId" type="String" mode="IN" optional="true"/>
+		<attribute name="userLogin" type="org.ofbiz.entity.GenericValue" mode="OUT"/>
+		<attribute name="menuString" type="String" mode="OUT"/>
+		<attribute name="guipriv" type="java.util.List" mode="OUT" optional="false"/>
+        <attribute name="accountgroupset" type="java.util.Set" mode="OUT" optional="false"/>
+        <attribute name="accountcategoryset" type="java.util.Set" mode="OUT" optional="false"/>
+    </service>
+    <!--end of user login-->
+
+    <!--权限设置-->
+    <service name="updateAccountPriv" engine="java"
+            location="com.csmc.pms.webapp.sys.service.SecuritySetupService" invoke="updateAccountPriv" auth="false">
+        <description>update Privs</description>
+		<attribute name="accountid" type="String" mode="IN" optional="false" />
+		<attribute name="privs" type="java.util.HashMap" mode="IN" string-map-prefix="chk_" optional="false" />
+    </service>
+     <!--end of 权限设置-->
+
+    <service name="saveFlowAction" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WorkflowService" invoke="saveFlowAction" auth="false">
+		<description>save Flow Action</description>
+		<attribute name="param" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="userNo" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+    <service name="deleteFlowAction" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WorkflowService" invoke="deleteFlowAction" auth="false">
+		<description>delete Flow Action</description>
+		<attribute name="actionIndex" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="userNo" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+    <service name="saveFlowActionItem" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WorkflowService" invoke="saveFlowActionItem" auth="false">
+		<description>save Flow Action Item</description>
+		<attribute name="param" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="userNo" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+    <service name="deleteFlowActionItem" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WorkflowService" invoke="deleteFlowActionItem" auth="false">
+		<description>delete Flow Action Item</description>
+		<attribute name="itemIndex" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="userNo" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+   <service name="saveFollowItemAction" engine="java"
+            location="com.csmc.pms.webapp.qufollow.service.QuFollowService" invoke="saveFollowItem" auth="false">
+		<description>save FollowItem Action Item</description>
+		<attribute name="itemMap" type="java.util.Map" mode="IN" optional="false" />
+    </service>
+
+   <service name="saveDocItemAction" engine="java"
+            location="com.csmc.pms.webapp.qufollow.service.QuFollowService" invoke="saveDocItem" auth="false">
+		<description>save FollowItem Action Item</description>
+		<attribute name="itemMap" type="java.util.Map" mode="IN" optional="false" />
+    </service>
+
+    <service name="saveDocItemImprove" engine="java"
+            location="com.csmc.pms.webapp.qufollow.service.QuFollowService" invoke="saveDocItemImprove" auth="false">
+		<description>save FollowItem Action Item</description>
+		<attribute name="itemMap" type="java.util.Map" mode="IN" optional="false" />
+    </service>
+
+    <service name="deleteFollowItemAction" engine="java"
+            location="com.csmc.pms.webapp.qufollow.service.QuFollowService" invoke="deleteFollowItem" auth="false">
+		<description>delete FollowItem Action Item</description>
+		<attribute name="eventType" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="itemIndex" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+    <service name="saveTsFormAction" engine="java"
+            location="com.csmc.pms.webapp.form.service.TsFormService" invoke="saveTsForm" auth="false">
+		<description>save TsForm Action Item</description>
+		<attribute name="tsInfoMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="parmMap" type="java.util.Map" mode="IN" optional="false" />
+    </service>
+
+    <service name="storeActionStepInfo" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WorkflowService" invoke="storeActionStep" auth="false">
+		<description>store Action Step Info</description>
+		<attribute name="jobEngine" type="com.csmc.pms.webapp.workflow.model.engine.JobEngine" mode="IN" optional="false" />
+    </service>
+
+     <service name="overAbnormalFormAction" engine="java"
+            location="com.csmc.pms.webapp.form.service.TsFormService" invoke="overAbnormalForm" auth="false">
+		<description>over abnormal Action Step Info</description>
+		<attribute name="abnormalFormMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="parmMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMsg" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+
+    <service name="saveFollowJobAction" engine="java"
+            location="com.csmc.pms.webapp.qufollow.service.QuFollowService" invoke="saveFollowJob" auth="false">
+		<description>save followjob Action Step Info</description>
+		<attribute name="followMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="eventType" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="eventIndex" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="resultStr" type="java.lang.String" mode="OUT" optional="false" />
+		<attribute name="followIndex" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+
+    <service name="delFollowJobAction" engine="java"
+            location="com.csmc.pms.webapp.qufollow.service.QuFollowService" invoke="deleteFollowJob" auth="false">
+		<description>delete followjob Action Step Info</description>
+		<attribute name="followIndex" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+    <service name="setupPcForm" engine="java"
+            location="com.csmc.pms.webapp.form.service.PcFormService" invoke="setupPcForm" auth="false">
+		<description>setup PcForm</description>
+		<attribute name="param" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="userNo" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+     <service name="overPmFormAction" engine="java"
+            location="com.csmc.pms.webapp.form.service.PmFormService" invoke="overPmForm" auth="false">
+		<description>over pm Action Step Info</description>
+		<attribute name="pmFormMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="parmMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMsg" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+
+ 	<service name="sendSubmit" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WfSubmitService" invoke="sendSubmit" auth="false">
+		<description>send submit</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="type" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="object" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="objectIndex" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="objectName" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="ownerProcess" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+	<service name="flowSubmit" engine="java"
+	        location="com.csmc.pms.webapp.workflow.service.WfSubmitService" invoke="flowSubmit" auth="false">
+		<description>flow submit</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="status" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="submit" type="org.ofbiz.entity.GenericValue" mode="IN" optional="false" />
+		<attribute name="comment" type="java.lang.String" mode="IN" optional="false" />
+	</service>
+
+    <service name="followSubmit" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WfSubmitService" invoke="followSubmit" auth="false">
+		<description>follow submit</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="status" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="submit" type="org.ofbiz.entity.GenericValue" mode="IN" optional="false" />
+		<attribute name="comment" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+    <service name="flowActionItemSubmit" engine="java"
+	        location="com.csmc.pms.webapp.workflow.service.WfSubmitService" invoke="flowActionItemSubmit" auth="false">
+		<description>flow Action Item Submit</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="status" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="submit" type="org.ofbiz.entity.GenericValue" mode="IN" optional="false" />
+		<attribute name="comment" type="java.lang.String" mode="IN" optional="false" />
+	</service>
+
+	<service name="pmDelaySubmit" engine="java"
+	        location="com.csmc.pms.webapp.workflow.service.WfSubmitService" invoke="pmDelaySubmit" auth="false">
+		<description>pm Delay Submit</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="status" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="submit" type="org.ofbiz.entity.GenericValue" mode="IN" optional="false" />
+		<attribute name="comment" type="java.lang.String" mode="IN" optional="false" />
+	</service>
+
+	<service name="pmSubmitForm" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WfSubmitService" invoke="tsFormSubmit" auth="false">
+		<description>follow submit</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="status" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="submit" type="org.ofbiz.entity.GenericValue" mode="IN" optional="false" />
+		<attribute name="comment" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+    
+    <service name="tsSubmitForm" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WfSubmitService" invoke="tsFormSubmit" auth="false">
+		<description>follow submit</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="status" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="submit" type="org.ofbiz.entity.GenericValue" mode="IN" optional="false" />
+		<attribute name="comment" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+    <service name="saveFlow" engine="java"
+        location="com.csmc.pms.webapp.workflow.service.WorkflowService" invoke="saveFlow" auth="false">
+		<description>flow submit</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="job" type="com.csmc.pms.webapp.workflow.model.Job" mode="IN" optional="false" />
+		<attribute name="returnJob" type="com.csmc.pms.webapp.workflow.model.Job" mode="OUT" optional="false" />
+	</service>
+
+	  <service name="outLineupload" engine="java"
+            location="com.csmc.pms.webapp.pda.service.OutLineService" invoke="outLineFormSave" auth="false">
+		<description>outline form submit</description>
+		<attribute name="jobMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMsg" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+
+    <service name="deletePmForm" engine="java"
+            location="com.csmc.pms.webapp.form.service.PmFormService" invoke="deletePmForm" auth="false">
+		<description>delete PM Form</description>
+		<attribute name="pmIndex" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+    <service name="saveFlowEditData" engine="java"
+        location="com.csmc.pms.webapp.workflow.service.WorkflowService" invoke="saveFlowEditedData" auth="false">
+		<description>flow submit</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="paramMap" type="java.util.Map" mode="IN" optional="false" />
+	</service>
+
+    <service name="creatSubPmForm" engine="java"
+        location="com.csmc.pms.webapp.form.service.PmFormService" invoke="creatSubPmForm" auth="false">
+		<description>create sub pm form</description>
+		<attribute name="user" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="equipmentId" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="periodIndex" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="formType" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="jobIndex" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="scheduleDate" type="java.lang.String" mode="IN" optional="false" />
+	</service>
+
+	<service name="copyFlowAction" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WorkflowService" invoke="copyFlowAction" auth="false">
+		<description>copy Flow Action</description>
+		<attribute name="actionIndex" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="userNo" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="actionName" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="eventName" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+    <service name="copyFlow" engine="java"
+            location="com.csmc.pms.webapp.workflow.service.WorkflowService" invoke="copyFlow" auth="false">
+		<description>copy Flow</description>
+		<attribute name="actionIndex" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="userNo" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="jobName" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="jobDescription" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+	<service name="createPmForm" engine="java"
+        location="com.csmc.pms.webapp.form.service.PmFormService" invoke="createPmForm" auth="false">
+		<description>create pm form</description>
+		<attribute name="paramMap" type="java.util.Map" mode="IN" optional="false" />
+	</service>
+
+	<service name="reScheduleTsUndoPM" engine="java"
+            location="com.csmc.pms.webapp.form.service.TsFormService" invoke="reScheduleTsUndoPM" auth="false">
+		<description>reSchedule TsUndoPM</description>
+		<attribute name="paramMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMsg" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+
+	<service name="deleteViolateRulePoint" engine="java"
+            location="com.csmc.pms.webapp.eqp.service.GenDCOPService" invoke="deleteViolateRulePoint" auth="false">
+		<description>delete violate rule point</description>
+		<attribute name="dcopId" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="chartId" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="revdate" type="java.sql.Timestamp" mode="IN" optional="false" />
+		<attribute name="collectionLevel" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="lotId" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="waferId" type="java.lang.String" mode="IN" optional="false" />
+    </service>
+
+	<service name="triggerAlarmByRule" engine="java"
+            location="com.csmc.pms.webapp.eqp.service.GenDCOPService" invoke="triggerAlarmByRule" auth="false">
+		<description>trigger Alarm By Rule</description>
+		<attribute name="objectType" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="objectId" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="trancComment" type="java.lang.String" mode="IN" optional="false" />
+		<attribute name="alarmDataMap" type="java.util.Map" mode="IN" optional="false" />
+    </service>
+
+	<service name="savePartsUse" engine="java"
+            location="com.csmc.mcs.webapp.cabinet.service.CabinetService" invoke="savePartsUse" auth="false">
+		<description>save Parts Use</description>
+		<attribute name="paramMap" type="java.util.Map" mode="IN" optional="false" />
+		<attribute name="returnMsg" type="java.lang.String" mode="OUT" optional="false" />
+    </service>
+
+</services>

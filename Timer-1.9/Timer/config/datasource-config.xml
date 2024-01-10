@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="pmsDataSource" class="com.csmc.db.GenericDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:oci:@10.163.76.16:1521/rxcosting"/>
+		<property name="username" value="pmsprod"/>
+		<property name="password" value="pmsprod"/>
+		<property name="initialSize" value="2"/>
+		<property name="dsName" value="pms"/>
+	</bean>
+</beans>

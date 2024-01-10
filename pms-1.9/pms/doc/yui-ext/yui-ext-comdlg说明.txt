@@ -1,0 +1,89 @@
+1.在页面的JS之前导入
+	<%@ include file="../yui-ext/ext-comdlg.jsp"%>
+  注：路径视文件夹而定
+  
+2.在本页面中加入对需要提交数据进行校验的JS方法
+	//改变弹出框大小
+	//(width,height)
+	//closeButtonFlag:dialog中的"×"按钮是否可见
+	//closeFunction:[关闭]按钮事件
+	extDlg.dlgInit('500','300',closeFunction,closeButtonFlag);
+
+	/**
+	* 数据校验功能
+	* (1)方法名不能变！
+	* (2)此方法需要有返回值，即对每个栏位的校验报错信息。如果没有，则返回空串
+	*
+	**/
+	function checkForm(){
+		var name = Ext.get('name').dom.value;
+        var description = Ext.get('description').dom.value;
+		if(name==""){
+			return "巡检名不能为空";
+		}
+		if(description==""){
+			return "描述不能为空";
+		}
+		return "";
+	}
+	
+	/**
+	* 新增功能时调用
+	* 如：<img  src="plus.gif" style="cursor:hand" onclick="addPcStyle(this);"/>
+	**/
+	function addPcStyle(obj){
+		//打开新增框,obj参数据必须
+		extDlg.showAddDialog(obj);
+	}
+	
+	/**
+	* 修改功能时调用
+	* 如：<img  src="plus.gif" style="cursor:hand" onclick="editPcStyle(this,'10008');"/>
+	**/
+	function editPcStyle(obj,pcStyleIndex){
+		Ext.get('styleIndex').dom.value=pcStyleIndex;
+		var url='<ofbiz:url>/queryPcStyleByIndex</ofbiz:url>?styleIndex='+pcStyleIndex;
+		//打开修改框,obj,url(提交数据的URL)参数据必须
+		extDlg.showEditDialog(obj,url);
+	}
+	
+	/**
+	* 远程调用成功后的回调函数,初始页面数据
+	* 修改功能必须用,方法名不能变
+	**/
+	function commentSuccess(o){
+		 var result = eval('(' + o.responseText + ')');
+		 if (result!=null & result!=""){
+			Ext.get('name').dom.value=result.name;
+			Ext.get('description').dom.value=result.desc;
+		}
+	}
+	  
+3.将下面代码拷入到需要的页面中，建议除了对form中的信息进行修改，其它的不要动！
+<!-- add dialog -->
+<div id="x-dlg" style="visibility:hidden;">
+    <div class="x-dlg-hd">巡检样式</div>
+    <div class="x-dlg-bd">
+        <div id="post-tab" class="x-dlg-tab" title="巡检样式">
+            <div class="inner-tab" id="x-form">
+                <form action="<%=request.getContextPath()%>/control/pcStyleDefine" method="post" id="pcStyleForm" onsubmit="return false;">
+                	<input id="styleIndex" type="hidden" name="styleIndex" value="" />
+                <p>
+                <label for="name"><small>巡检名</small></label>
+                <input class="textinput" type="text" name="name" id="name" value="" size="22" tabindex="1" />
+                </p>
+                <p><label for="description"><small>描述</small></label>
+                <input class="textinput" type="text" name="description" id="description" value="" size="22" tabindex="2" />
+                </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="x-dlg-ft">
+        <div id="dlg-msg">
+            <span id="post-error" class="posting-msg"><img src="<%=request.getContextPath()%>/pms/images/warning.gif" width="16" height="16" />&nbsp;<span id="post-error-msg"></span></span>
+        </div>
+    </div>
+</div>
+
+参考页面：csmcgui/pms/basic/pcStyleEntry.jsp

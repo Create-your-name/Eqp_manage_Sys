@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+     <!-- 文件上传下载 -->
+    <request-map uri="fileUploadDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.FileUploadEvent" invoke="intoFileUP"/>
+      <response name="success" type="view" value="fileUploadDefineEntry"/>
+    </request-map>
+
+    <request-map uri="loadFile">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.FileUploadEvent" invoke="fileLoad"/>
+      <response name="error" type="request" value="fileUploadDefineEntry"/>
+    </request-map>
+
+    <request-map uri="saveFile">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.FileUploadEvent" invoke="fileLoad"/>
+      <response name="error" type="request" value="intoAddItemQuFollow"/>
+    </request-map>
+
+    <request-map uri="fileUpDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.FileUploadEvent" invoke="fileUP"/>
+      <response name="success" type="request" value="fileUploadDefineEntry"/>
+    </request-map>
+
+     <request-map uri="delFileDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.FileUploadEvent" invoke="delFile"/>
+      <response name="success" type="request" value="fileUploadDefineEntry"/>
+      <response name="error" type="request" value="fileUploadDefineEntry"/>
+    </request-map>
+
+    <!-- recyle parts -->
+    <request-map uri="recylePartsDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="intoRcyleParts"/>
+      <response name="success" type="view" value="recylePartsDefineEntry"/>
+    </request-map>
+
+   <request-map uri="recylePartsDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="manageRecycleParts"/>
+      <response name="success" type="request" value="queryRecylePartsList"/>
+      <response name="error" type="request" value="queryRecylePartsList"/>
+    </request-map>
+
+    <request-map uri="queryRecylePartsByPartNo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="checkRecylePartsNo"/>
+    </request-map>
+
+    <request-map uri="queryRecylePartsList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryRecyclePartsList"/>
+      <response name="success" type="view" value="recylePartsDefineEntry"/>
+    </request-map>
+
+    <request-map uri="queryPartsNoList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartsNo"/>
+      <response name="success" type="view" value="partsNoDefineEntry"/>
+    </request-map>
+
+    <request-map uri="delRecylePartsByPartsNo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="deleteRecyclePartsByPk"/>
+      <response name="success" type="request" value="queryRecylePartsList"/>
+    </request-map>
+    <!-- end -->
+
+    <!-- 机台用料查询报表 -->
+    <request-map uri="partsUserDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoCleanRecordReport"/>
+      <response name="success" type="view" value="partsUserDefineEntry"/>
+    </request-map>
+
+    <request-map uri="getEqpIdAndPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getEqpipAndPeriodIDList"/>
+    </request-map>
+
+    <request-map uri="queryCleanRecordByCondition">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryCleanRecordByCondition"/>
+      <response name="success" type="view" value="partsUserDefineEntry"/>
+    </request-map>
+    <!-- end -->
+
+    <!-- Pm parts设定 -->
+    <request-map uri="pmPartsDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="intoPmParts"/>
+      <response name="success" type="view" value="pmPartsDefineEntry"/>
+    </request-map>
+
+   <request-map uri="pmPartsDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="managePmParts"/>
+      <response name="success" type="request" value="queryPmPartsList"/>
+      <response name="error" type="request" value="queryPmPartsList"/>
+    </request-map>
+
+    <request-map uri="queryEqpIdAndPmTypeList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="getEqpipAndPmTypeIDList"/>
+    </request-map>
+
+    <request-map uri="queryPmPartsInfo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="getPmPartsInfo"/>
+    </request-map>
+
+    <request-map uri="queryPmPartsList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartsPmList"/>
+      <response name="success" type="view" value="pmPartsDefineEntry"/>
+    </request-map>
+
+    <request-map uri="queryPartsNoList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartsNo"/>
+      <response name="success" type="view" value="partsNoDefineEntry"/>
+    </request-map>
+    <!-- end -->
+
+    <!-- 备件领料和使用差异查询 -->
+    <request-map uri="pmPartsUseDiffDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoDrawMateDifferentiaReport"/>
+      <response name="success" type="view" value="pmPartsUseDiffDefineEntry"/>
+    </request-map>
+
+    <request-map uri="pmPartsUseDiff">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryPartUseDiffList"/>
+      <response name="success" type="view" value="pmPartsUseDiffDefineEntry"/>
+    </request-map>
+
+    <request-map uri="pmPartsInfoList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryPartInfoList"/>
+      <response name="success" type="view" value="partsInfoDiffDefineEntry"/>
+    </request-map>
+
+    <!-- 问题跟踪 -->
+    <request-map uri="followJobDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="intoQuFollowList"/>
+      <response name="success" type="view" value="followJobDefineEntry"/>
+    </request-map>
+
+   <request-map uri="followJobDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="manageQuFollow"/>
+      <response name="addSuccess" type="request" value="queryFollowJobList"/>
+      <response name="formAddSuccess" type="request" value="intoEditQuFollow"/>
+      <response name="editSuccess" type="request" value="intoEditQuFollow"/>
+    </request-map>
+
+    <request-map uri="queryFollowJobList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="queryQuFollowList"/>
+      <response name="success" type="view" value="followJobDefineEntry"/>
+      <response name="error" type="request" value="followJobDefineEntry"/>
+    </request-map>
+
+    <request-map uri="intoAddQuFollow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="intoAddQuFollow"/>
+      <response name="followJob" type="view" value="addQuFollowDefineEntry"/>
+      <response name="abnormalform" type="view" value="addQuFollowByFormDefineEntry"/>
+    </request-map>
+
+    <request-map uri="intoAddItemQuFollow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="intoEditQuFollow"/>
+      <response name="success" type="view" value="addQuFolloItemwDefineEntry"/>
+    </request-map>
+
+    <request-map uri="intoEditQuFollow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="intoEditQuFollow"/>
+      <response name="success" type="view" value="editQuFolloDefineEntry"/>
+    </request-map>
+
+    <request-map uri="followItemManage">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="manageQuFollowItem"/>
+      <response name="success" type="request" value="intoAddItemQuFollow"/>
+      <response name="error" type="request" value="intoAddItemQuFollow"/>
+    </request-map>
+
+    <request-map uri="intoEditfollowItem">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="queryFollowItemByIndex"/>
+    </request-map>
+
+    <request-map uri="delEditfollowItem">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="deleteFollowIndexByPk"/>
+      <response name="success" type="request" value="intoAddItemQuFollow"/>
+    </request-map>
+
+   <request-map uri="followJobOverCase">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="updateFollowJobStatus"/>
+      <response name="success" type="view" value="followJobDefineEntry"/>
+    </request-map>
+
+     <request-map uri="delFollowJob">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="deleteFollowJob"/>
+      <response name="success" type="view" value="followJobDefineEntry"/>
+    </request-map>
+
+    <request-map uri="followJobOverDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="intoQueryQuFollow"/>
+      <response name="success" type="view" value="overFollowJobDefine"/>
+    </request-map>
+
+    <request-map uri="getSectionInfo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="getSectionInfo"/>
+    </request-map>
+
+    <request-map uri="queryOverCaseFollowJobInfo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="queryOverFollowJob"/>
+      <response name="success" type="view" value="overFollowJobDefine"/>
+    </request-map>
+
+    <request-map uri="overFollowJobShow">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.qufollow.event.QuFollowEvent" invoke="intoEditQuFollow"/>
+      <response name="success" type="view" value="overFollowJobDefineEntry"/>
+    </request-map>
+
+    <!-- 异常表单建立 -->
+    <request-map uri="setupTsFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="intoTsFormQuery"/>
+      <response name="success" type="view" value="tsInfoListEntry"/>
+    </request-map>
+
+     <request-map uri="queryTsRecordEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="queryTsForm"/>
+      <response name="success" type="view" value="tsInfoListEntry"/>
+    </request-map>
+
+    <request-map uri="intoAddTsFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="intoAddTsForm"/>
+      <response name="success" type="view" value="tsFormAddEntry"/>
+    </request-map>
+
+    <request-map uri="addTsFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="submitTsForm"/>
+      <response name="success" type="request" value="setupTsFormEntry"/>
+      <response name="error" type="request" value="setupTsFormEntry"/>
+    </request-map>
+
+    <request-map uri="intoPatchTsFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="intoPatchTsForm"/>
+      <response name="success" type="view" value="patchTsFormEntry"/>
+    </request-map>
+
+     <request-map uri="getDeapProEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="getDealPromByEqpId"/>
+    </request-map>
+
+    <request-map uri="savePatchTsFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="submitPatchTsForm"/>
+      <response name="success" type="request" value="setupTsFormEntry"/>
+      <response name="error" type="request" value="setupTsFormEntry"/>
+    </request-map>
+
+    <request-map uri="intoAbnormalFormQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="intoAbnormalForm"/>
+      <response name="success" type="view" value="abnormalFormList"/>
+      <response name="error" type="view" value="abnormalFormList"/>
+    </request-map>
+
+    <request-map uri="queryAbnormalFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="queryAbnormalFormList"/>
+      <response name="success" type="view" value="abnormalFormList"/>
+      <response name="error" type="view" value="abnormalFormList"/>
+   </request-map>
+
+   <request-map uri="startAbnormalFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="startAbnormalForm"/>
+      <response name="success" type="request" value="intoAbnormalFormManageEntry"/>
+      <response name="error" type="view" value="abnormalFormList"/>
+   </request-map>
+
+   <request-map uri="getEventSubList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="getEventSubCategoryList"/>
+   </request-map>
+
+   <request-map uri="intoAbnormalFormManageEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="intoAbnormalFormManage"/>
+      <response name="manager" type="view" value="abnormalFormManage"/>
+      <response name="start" type="view" value="abnormalFormStart"/>
+   </request-map>
+
+   <request-map uri="abnormalFormManageTempSaveEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="tempSaveAbnormalForm"/>
+      <response name="success" type="request" value="intoAbnormalFormManageEntry"/>
+   </request-map>
+
+   <request-map uri="abnormalFormManageOverEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="overAbnormalForm"/>
+      <response name="success" type="request" value="intoAbnormalFormQueryEntry"/>
+      <response name="error" type="request" value="intoAbnormalFormQueryEntry"/>
+      <response name="doPm" type="view" value="selectTsUnPmEntry"/>
+   </request-map>
+
+    <request-map uri="selectTsUnPm">
+        <security https="false" auth="true"/>
+        <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="selectTsUnPm"/>
+        <response name="success" type="request" value="createPmRecord"/>
+        <response name="error" type="view" value="selectTsUnPmEntry"/>
+    </request-map>
+
+    <request-map uri="intoQueryOverAbnormalForm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="intoQueryAbnormalForm"/>
+      <response name="success" type="view" value="queryOverAbnormalForm"/>
+   </request-map>
+
+   <request-map uri="delPathAbnormalForm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="delAbnormalForm"/>
+      <response name="success" type="request" value="intoAbnormalFormQueryEntry"/>
+      <response name="error" type="request" value="intoAbnormalFormQueryEntry"/>
+   </request-map>
+
+    <request-map uri="queryOverAbnormalFormByCondition">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="queryAbnormalFormByCondition"/>
+      <response name="success" type="view" value="queryOverAbnormalForm"/>
+      <response name="error" type="request" value="intoQueryOverAbnormalForm"/>
+   </request-map>
+
+    <request-map uri="overAbnormalFormView">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="intoAbnormalFormManage"/>
+      <response name="formview" type="view" value="viewOverAbnormalForm"/>
+      <response name="error" type="request" value="intoQueryOverAbnormalForm"/>
+      <response name="start" type="view" value="DefaultStartAbnormalForm"/>
+   </request-map>
+
+   <!-- 异常表单-PARTS建立 -->
+   <request-map uri="abnormalFormPartsSaveEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="savePartsUseInfo"/>
+      <response name="success" type="request" value="intoAbnormalFormPartsQueryEntry"/>
+      <response name="error" type="request" value="intoAbnormalFormPartsQueryEntry"/>
+   </request-map>
+
+   <request-map uri="abnormalFormPartsUpdateEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="updatePartsUse"/>
+      <response name="success" type="request" value="intoAbnormalFormManageEntry"/>
+      <response name="error" type="request" value="intoAbnormalFormManageEntry"/>
+   </request-map>
+
+   <request-map uri="abnormalFormPartsDelEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="delPartsUse"/>
+      <response name="success" type="request" value="intoAbnormalFormManageEntry"/>
+   </request-map>
+
+   <request-map uri="intoAbnormalFormPartsQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="intoPartsQuery"/>
+      <response name="success" type="view" value="abnormalFormPartsQueryEntry"/>
+   </request-map>
+
+   <request-map uri="abnormalFormPartsQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="queryPartsList"/>
+      <response name="success" type="view" value="abnormalFormPartsQueryEntry"/>
+      <response name="error" type="request" value="intoAbnormalFormPartsQueryEntry"/>
+   </request-map>
+
+   <request-map uri="partsUseInfoQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.help.PartsHelper" invoke="queryPartsBySeqIndex"/>
+   </request-map>
+
+   <!-- 设备状态的更新查询 -->
+   <request-map uri="abnormalFormEqpStatusUpdateEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="updateEqpState"/>
+   </request-map>
+
+   <request-map uri="abnormalFormEqpStatusQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="queryEqpState"/>
+   </request-map>
+
+   <!-- 表单job状态查询 -->
+   <request-map uri="abnormalFormJobStatusQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.TsFormEvent" invoke="getJObStatus"/>
+   </request-map>
+
+   <!-- 离线输入表单上传下载 -->
+    <request-map uri="outLineGetIndex">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.pda.event.OutLineEvent" invoke="getIndex"/>
+   </request-map>
+
+   <request-map uri="outLineFormDownload">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.pda.event.OutLineEvent" invoke="formDownload"/>
+   </request-map>
+
+    <request-map uri="outLinePdaUpload">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.pda.event.OutLineEvent" invoke="pdaUpLoad"/>
+   </request-map>
+
+    <!-- 线边仓common: 生成查询月份 -->
+    <request-map uri="queryMonthsList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.common.event.CommonEvent" invoke="getMonthsList"/>
+    </request-map>
+
+    <!-- 线边仓parts:Pm parts设定 -->
+    <request-map uri="delPmPartsByPmPartsIndex">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="deletePmPartsByPk"/>
+      <!-- <response name="success" type="request" value="queryPmPartsList"/> -->
+      <response name="success" type="request" value="queryPmPartsTemplateList"/>
+    </request-map>
+
+    <request-map uri="pmPartsCopy">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="copyPmParts"/>
+      <!--<response name="success" type="request" value="queryPmPartsList"/>
+      <response name="error" type="request" value="queryPmPartsList"/> -->
+      <response name="success" type="request" value="queryPmPartsTemplateList"/>
+      <response name="error" type="request" value="queryPmPartsTemplateList"/>
+    </request-map>
+
+    <request-map uri="fuzzyFindPartsNoList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="fuzzyFindPartsNoList"/>
+    </request-map>
+
+    <!-- 低价物料设定 -->
+    <request-map uri="filterPartsDefineEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="intoFilterParts"/>
+      <response name="success" type="view" value="filterPartsDefineEntry"/>
+    </request-map>
+
+    <request-map uri="queryFilterParts">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryFilterParts"/>
+      <response name="success" type="view" value="filterPartsDefineEntry"/>
+      <response name="error" type="view" value="filterPartsDefineEntry"/>
+    </request-map>
+
+    <request-map uri="addFilterParts">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="addFilterParts"/>
+      <response name="success" type="view" value="filterPartsDefineEntry"/>
+      <response name="error" type="view" value="filterPartsDefineEntry"/>
+    </request-map>
+
+    <request-map uri="delFilterPartsByPartsNo">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="deleteFilterPartsByPk"/>
+      <response name="success" type="request" value="filterPartsDefineEntry"/>
+    </request-map>
+
+    <!-- add by qinchao 通过保养种类获得处理流程列表-->
+    <request-map uri="queryJsonFlowList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryJsonFlowList"/>
+    </request-map>
+
+    <request-map uri="queryPmPartsTemplateList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPmPartsTemplateList"/>
+      <response name="success" type="view" value="pmPartsDefineEntry"/>
+    </request-map>
+
+    <request-map uri="intoPartsQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="intoPartsQuery"/>
+      <response name="success" type="view" value="partsQueryEntry"/>
+    </request-map>
+
+    <request-map uri="queryPartsNoTemplateList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartsNoTemplate"/>
+      <response name="success" type="view" value="partsQueryEntry"/>
+    </request-map>
+
+    <request-map uri="partsSaveEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="savePartsPmInfo"/>
+      <response name="success" type="view" value="partsQueryEntry"/>
+      <response name="error" type="view" value="partsQueryEntry"/>
+    </request-map>
+
+    <request-map uri="pmPartsTemplateDefine">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="managePmParts"/>
+      <response name="success" type="request" value="queryPmPartsTemplateList"/>
+      <response name="error" type="request" value="queryPmPartsTemplateList"/>
+    </request-map>
+
+    <!-- 查询本部线边仓有余量的物料pmForm -->
+    <request-map uri="queryPartsNoPMList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartsNoPMList"/>
+      <response name="success" type="view" value="pmFormPartsQueryEntry"/>
+    </request-map>
+
+    <!-- 查询本部线边仓有余量的物料abnormalForm -->
+    <request-map uri="queryTSPartsNoPMList">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.parts.event.PartsEvent" invoke="queryPartsNoPMList"/>
+      <response name="success" type="view" value="abnormalFormPartsQueryEntry"/>
+    </request-map>
+
+    <!-- 线边仓报表 -->
+    <!-- 线边仓report: 库存余量查询 -->
+    <request-map uri="mcsStoQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoMcsStoQueryReport"/>
+      <response name="success" type="view" value="mcsStoQueryEntry"/>
+    </request-map>
+
+    <request-map uri="mcsPartsUseDiff">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryMcsPartUseDiffList"/>
+      <response name="success" type="view" value="mcsStoQueryEntry"/>
+    </request-map>
+
+    <!--PM用料明细查询 -->
+    <request-map uri="pmPartsUsedQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoPmPartsUsedQueryReport"/>
+      <response name="success" type="view" value="pmPartsUsedQueryEntry"/>
+      <response name="error" type="view" value="pmPartsUsedQueryEntry"/>
+    </request-map>
+
+    <request-map uri="pmPartsUsedDetailQuery">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="pmPartsUsedDetailQuery"/>
+      <response name="success" type="view" value="pmPartsUsedQueryEntry"/>
+      <response name="error" type="view" value="pmPartsUsedQueryEntry"/>
+    </request-map>
+
+    <!--PM费用汇总查询 -->
+    <request-map uri="pmPartsUsedCostQueryEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="intoPmPartsUsedCostQueryReport"/>
+      <response name="success" type="view" value="pmPartsUsedCostQueryEntry"/>
+      <response name="error" type="view" value="pmPartsUsedCostQueryEntry"/>
+    </request-map>
+
+    <request-map uri="pmPartsUsedCostDetailQuery">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="pmPartsUsedCostDetailQuery"/>
+      <response name="success" type="view" value="pmPartsUsedCostQueryEntry"/>
+      <response name="error" type="view" value="pmPartsUsedCostQueryEntry"/>
+    </request-map>
+</site-conf>

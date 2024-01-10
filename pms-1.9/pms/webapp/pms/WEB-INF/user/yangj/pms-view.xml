@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site View-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+	
+	<view-map name="abnormalDocumentEntry" type="region"/>
+	<view-map name="abnormalDocDefine" type="region"/>
+	<view-map name="queryAbnormalDocument" type="region"/>
+	<view-map name="queryAbnormalDocDefine" type="region"/>
+	<view-map name="improveDocumentEntry" type="region"/>
+	<view-map name="improveDocDefine" type="region"/>
+	<view-map name="queryImproveDocument" type="region"/>
+	<view-map name="queryImproveDocDefine" type="region"/>
+	<view-map name="queryShowPmChart" type="region"/>
+	<view-map name="queryNotEndDocument" type="region"/>
+	<view-map name="flowLeadCheck" type="region"/>
+	<view-map name="flowIssueInfo" type="region"/>
+	<view-map name="pmsDefault" type="region"/>
+	<view-map name="pmsDefaultSub" type="region"/>
+	<view-map name="abnormalChartEntry" type="region"/>
+	<view-map name="abnormalChartTable" type="region"/>
+	<view-map name="abnormalChartShow" type="region"/>
+	<view-map name="equiList" page="/pms/basic/equiList.jsp"/>
+	<view-map name="queryLeadCheckNo" type="region"/>	
+	<view-map name="eventList" type="region"/>
+</site-conf>

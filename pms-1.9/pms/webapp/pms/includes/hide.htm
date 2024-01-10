@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="/csmcgui/images/default.css" rel="stylesheet" type="text/css">
+<SCRIPT LANGUAGE="JavaScript" >
+function hidenMenu(){
+alert("do hiden");
+}
+
+function openMenu(){
+alert("do open menu");
+}
+
+function clickMenu(){
+
+ 
+var strColumns_Current = "220,*";
+var image_hide_url="/csmcgui/images/hidemenu.gif";
+var image_open_url="/csmcgui/images/openmenu.gif";
+if(top.mainFrameSet.cols==strColumns_Current){
+   top.mainFrameSet.cols = "14,*";
+   document.all.image.src= image_open_url; 
+}else{
+   top.mainFrameSet.cols = strColumns_Current;
+   document.all.image.src= image_hide_url; 
+}
+   
+  
+}
+ 
+
+</SCRIPT>
+</head>
+
+<body leftmargin="0" topmargin="0">
+<table width="14" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center" background="/csmcgui/images/hide_bg.gif" bgcolor="#EAEAEA"><a href="javaScript:clickMenu()"><img  name="image" src="/csmcgui/images/hidemenu.gif" width="7" height="37" border="0"></a></td>
+  </tr>
+</table>
+</body>
+</html>

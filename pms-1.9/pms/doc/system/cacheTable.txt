@@ -1,0 +1,15 @@
+- Cache调用方法
+	1. List list = delegator.findAllCache(ENTITYNAME);
+	2. 12小时更新一次
+-pms CacheTable
+	PcStyle
+	Equipment
+	EquipmentDept
+	EquipmentType
+	EquipmentLocation
+	EquipmentBasicData
+	EquipmentSection
+
+-mcs CacheTable
+	McsMaterialGroup
+	McsMaterialStatusCode

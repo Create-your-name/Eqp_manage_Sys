@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/catalina.jar"/>
+	<classpathentry kind="lib" path="lib/catalina-manager.jar"/>
+	<classpathentry kind="lib" path="lib/ChartConfig.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.0.jar" sourcepath="E:/wind/apache/commons-lang-2.4-src"/>
+	<classpathentry kind="lib" path="lib/commons-modeler.jar"/>
+	<classpathentry kind="lib" path="lib/commons-pool.jar"/>
+	<classpathentry kind="lib" path="lib/exolabcore-0.3.7.jar"/>
+	<classpathentry kind="lib" path="lib/i18n.jar"/>
+	<classpathentry kind="lib" path="lib/j2ee.jar"/>
+	<classpathentry kind="lib" path="lib/jbcl.jar"/>
+	<classpathentry kind="lib" path="lib/jndi-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.8.jar"/>
+	<classpathentry kind="lib" path="lib/promisgwy.jar"/>
+	<classpathentry kind="lib" path="lib/TsService_33.jar"/>
+	<classpathentry kind="lib" path="lib/TsService_test.jar"/>
+	<classpathentry kind="lib" path="lib/webserviceclient.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="../ofbiz/base/lib/scripting/bsf.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/base/lib/scripting/bsh.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/base/build/lib/ofbiz-base.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/components/entity/build/lib/ofbiz-entity.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/components/service/build/lib/ofbiz-service.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/components/content/build/lib/ofbiz-content.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/components/security/build/lib/ofbiz-security.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/components/order/build/lib/ofbiz-order.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/components/entity/lib/jdbc/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/components/party/build/lib/ofbiz-party.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/components/product/build/lib/ofbiz-product.jar"/>
+	<classpathentry kind="lib" path="lib/jsonrpc-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-fileupload-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-1.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon-1.0.10.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.6.jar"/>
+	<classpathentry kind="lib" path="../ofbiz/base/lib/xerces.jar"/>
+	<classpathentry kind="lib" path="lib/ehcache-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/htmlparser.jar"/>
+	<classpathentry kind="lib" path="lib/tibrvj.jar"/>
+	<classpathentry kind="lib" path="lib/fastjson-1.2.56.jar"/>
+	<classpathentry kind="lib" path="lib/SPCTransactionsV1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/Asura.jar" sourcepath="/asura"/>
+	<classpathentry kind="output" path="webapp/pms/WEB-INF/classes"/>
+</classpath>

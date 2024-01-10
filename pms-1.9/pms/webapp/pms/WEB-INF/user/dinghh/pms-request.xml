@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE site-conf PUBLIC "-//OFBiz//DTD Request Config//EN" "http://www.ofbiz.org/dtds/site-conf.dtd">
+<site-conf>
+    <description>GUI Site Request-Map Configuration File</description>
+    <owner>The Open For Business Project (c) 2001 </owner>
+
+    <!-- 设备Available Up Time Chart-->
+    <request-map uri="queryEqpAvailUpTime">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryEqpAvailUpTimeEntry"/>
+      <response name="success" type="view" value="queryEqpAvailUpTime"/>
+    </request-map>
+
+    <request-map uri="getEqpIdByType">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getEqpIdByType"/>
+    </request-map>
+
+    <request-map uri="showEqpAvailUpTimeChart">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="showEqpAvailUpTimeChart"/>
+    </request-map>
+
+    <!-- applet init callServlet -->
+    <request-map uri="getEqpAvailUpTime">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getEqpAvailUpTimeList"/>
+    </request-map>
+
+    <!-- end 设备Available Up Time Chart-->
+
+     <!-- PM预测报表 -->
+    <request-map uri="pmForecastPlanEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="pmForecastPlanEntry"/>
+      <response name="success" type="view" value="pmForecastPlanByPeriod"/>
+    </request-map>
+
+    <request-map uri="pmForecastPlanByPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryPmForecastPlanByPeriod"/>
+      <response name="success" type="view" value="pmForecastPlanByPeriod"/>
+       <response name="error" type="request" value="pmForecastPlanEntry"/>
+    </request-map>
+
+    <request-map uri="pmForecastPlan">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryPmForecastPlan"/>
+      <response name="success" type="view" value="pmForecastPlan"/>
+       <response name="error" type="request" value="pmForecastPlanEntry"/>
+    </request-map>
+    <!-- end PM预测报表-->
+
+    <!-- 查询机台保养日期-->
+   	<request-map uri="queryPmScheduleEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="equipmentScheduleDefine"/>
+      <response name="success" type="view" value="queryPmSchedule"/>
+      <response name="error" type="view" value="queryPmSchedule"/>
+    </request-map>
+    
+    <request-map uri="queryPmSchedule">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="equipmentScheduleDefine"/>
+      <response name="success" type="view" value="queryPmSchedule"/>
+      <response name="error" type="view" value="queryPmSchedule"/>
+    </request-map>
+    <!-- end 查询机台保养日期-->
+
+    <!-- 查询巡检日期-->
+   	<request-map uri="queryPcScheduleEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="pcSchedule"/>
+      <response name="success" type="view" value="queryPcScheduleEntry"/>
+    </request-map>
+
+   	<request-map uri="queryPcSchedule">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.period.event.PeriodEvent" invoke="pcScheduleDefine"/>
+      <response name="success" type="view" value="queryPcSchedule"/>
+    </request-map>
+    <!-- end 查询巡检日期-->
+
+	<!-- 巡检表单建立/填写 -->
+	<request-map uri="setupPcFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PcFormEvent" invoke="setupPcFormEntry"/>
+      <response name="success" type="view" value="setupPcFormEntry"/>
+      <response name="error" type="view" value="setupPcFormEntry"/>
+    </request-map>
+
+    <request-map uri="setupPcForm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PcFormEvent" invoke="setupPcForm"/>
+      <response name="success" type="request" value="setupPcFormEntry"/>
+      <response name="error" type="request" value="setupPcFormEntry"/>
+    </request-map>
+
+    <request-map uri="inputPcFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PcFormEvent" invoke="inputPcFormEntry"/>
+      <response name="success" type="view" value="inputPcFormEntry"/>
+      <response name="error" type="request" value="setupPcFormEntry"/>
+    </request-map>
+	<!-- end巡检表单建立/填写 -->
+
+	<!-- 机台参数表 -->
+	<request-map uri="queryEqpParamHistEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="queryEqpParamHist"/>
+    </request-map>
+
+	<request-map uri="queryEqpParamHist">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryEqpParamHist"/>
+      <response name="success" type="request" value="queryEqpParamHistEntry"/>
+      <response name="error" type="request" value="queryEqpParamHistEntry"/>
+    </request-map>
+
+    <request-map uri="queryParamNameByEqpId">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryParamNameByEqpId"/>
+    </request-map>
+
+    <request-map uri="showEqpParamChart">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="showEqpParamChart"/>
+    </request-map>
+
+    <!-- applet init callServlet -->
+    <request-map uri="getEqpParamPoints">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getEqpParamPoints"/>
+    </request-map>
+	<!-- end机台参数表 -->
+
+	<!-- 机台保养纪录参数分析图 -->
+    <request-map uri="showPmParamAnalysisChartEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryPmParamAnalysisChart"/>
+      <response name="success" type="view" value="showPmParamAnalysisChartEntry"/>
+    </request-map>
+
+    <request-map uri="showPmParamAnalysisChart">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showPmParamAnalysisChart"/>
+      <response name="success" type="view" value="showPmParamAnalysisChart"/>
+      <response name="error" type="view" value="showPmParamAnalysisChartEntry"/>
+    </request-map>
+    
+	<!-- MSA机台保养纪录 -->
+    <request-map uri="showMsaPmEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showMsaPmParamEntry"/>
+      <response name="success" type="view" value="showMsaPmEntry"/>
+    </request-map>
+
+    <request-map uri="showMsaPm">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showMsaPm"/>
+      <response name="success" type="view" value="showMsaPm"/>
+      <response name="error" type="view" value="showMsaPmEntry"/>
+    </request-map>
+    
+   	<request-map uri="queryEqpIdByValidData">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryEquipmentByValidData"/>
+    </request-map>
+    
+    <request-map uri="queryEqpIdByValidDataInChart">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryEquipmentByValidDataInChart"/>
+    </request-map>
+
+    <request-map uri="queryFlowActionItemByEqpType">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryFlowActionItemByEqpType"/>
+    </request-map>
+
+    <request-map uri="queryFlowActionItemByEqpTypeAndPeriod">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryFlowActionItemByEqpTypeAndPeriod"/>
+    </request-map>
+    
+    <request-map uri="queryPMPeriodByEqpTypeAndDate">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryPMPeriodByEqpTypeAndDate"/>
+    </request-map>
+    
+    <request-map uri="queryPMPeriodByEqpTypeAndDateInChart">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="queryPMPeriodByEqpTypeAndDateInChart"/>
+    </request-map>
+
+    <!-- applet init callServlet -->
+    <request-map uri="getPmParamItemPoints">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getPmParamItemPoints"/>
+    </request-map>
+    <!-- end机台保养纪录参数分析图 -->
+
+    <!-- 设备保养用时查询 -->
+    <request-map uri="showPmFormChartEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="showPmFormChartEntry"/>
+    </request-map>
+
+    <request-map uri="showPmFormChart">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showPmFormChart"/>
+      <response name="success" type="view" value="showPmFormChart"/>
+      <response name="error" type="view" value="showPmFormChartEntry"/>
+    </request-map>
+
+    <!-- applet init callServlet -->
+    <request-map uri="getPmFormItemPoints">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getPmFormItemPoints"/>
+    </request-map>
+    <!-- end设备保养用时查询 -->
+
+
+    <!-- 设备异常用时查询 -->
+    <request-map uri="showAbnormalFormChartEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="showAbnormalFormChartEntry"/>
+    </request-map>
+
+    <request-map uri="showAbnormalFormChart">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showAbnormalFormChart"/>
+      <response name="success" type="view" value="showAbnormalFormChart"/>
+      <response name="error" type="view" value="showAbnormalFormChartEntry"/>
+    </request-map>
+
+    <!-- applet init callServlet -->
+    <request-map uri="getAbnormalFormItemPoints">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getAbnormalFormItemPoints"/>
+    </request-map>
+    <!-- end 设备异常用时查询 -->
+
+
+    <!-- 查询巡检表单 -->
+	<request-map uri="queryPcFormEntry">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.form.event.PcFormEvent" invoke="queryPcFormEntry"/>
+      <response name="success" type="view" value="queryPcFormEntry"/>
+      <response name="error" type="view" value="queryPcFormEntry"/>
+    </request-map>
+    <!-- end 查询巡检表单 -->
+
+    <!-- 机台保养事件分析图 -->
+    <request-map uri="showPmEventChartEntry">
+      <security https="false" auth="true"/>
+      <response name="success" type="view" value="showPmEventChartEntry"/>
+    </request-map>
+
+    <request-map uri="showPmEventChart">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showPmEventChart"/>
+      <response name="success" type="view" value="showPmEventChart"/>
+      <response name="error" type="view" value="showPmEventChartEntry"/>
+    </request-map>
+
+    <request-map uri="showPmEventEqpChart">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showPmEventEqpChart"/>
+      <response name="success" type="view" value="showPmEventEqpChart"/>
+      <response name="error" type="view" value="showPmEventChartEntry"/>
+    </request-map>
+
+    <request-map uri="showPmEventEqpDetail">
+      <security https="false" auth="true"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="showPmEventEqpDetail"/>
+      <response name="success" type="view" value="showPmEventEqpDetail"/>
+      <response name="error" type="view" value="showPmEventChartEntry"/>
+    </request-map>
+
+    <!-- applet init callServlet -->
+    <request-map uri="getPmEventHist">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getPmEventHist"/>
+    </request-map>
+
+    <!-- applet init callServlet -->
+    <request-map uri="getPmEventEqpHist">
+      <security https="false" auth="false"/>
+      <event type="java" path="com.csmc.pms.webapp.report.event.ReportEvent" invoke="getPmEventEqpHist"/>
+    </request-map>
+
+    <!-- end机台保养事件分析图 -->
+</site-conf>
